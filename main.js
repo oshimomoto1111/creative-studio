@@ -1,5 +1,5 @@
 /**
- * VISION (ATELIER VOID) — CINEMATIC CORE SCRIPTS
+ * ATELIER VOID — CINEMATIC CORE SCRIPTS
  * Modules:
  * 1. Ambient Gravitational Particle Canvas
  * 2. Pointer Spotlight Tracker

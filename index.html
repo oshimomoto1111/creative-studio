@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VISION — Auteur Visual Direction, Photography &amp; Film</title>
+  <title>ATELIER VOID — Auteur Visual Direction, Photography &amp; Film</title>
   <meta name="description" content="Independent auteur creative studio directed by Oscar in Albuquerque, NM. Specialized in bespoke brand identity, commercial photography, and cinematic motion for sports excellence, venture platforms, and haute cuisine.">
   <meta name="theme-color" content="#050505">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 
   <!-- Google Fonts: Syne, Inter, Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,12 +56,33 @@
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       
       <!-- Brand Monogram & Wordmark -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-3.5 h-3.5 rounded-full border border-amber-400/80 flex items-center justify-center transition-transform group-hover:scale-110">
-          <div class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></div>
+      <a href="#" class="flex items-center gap-3.5 group" aria-label="Atelier Void Home">
+        <div class="w-8 h-8 flex items-center justify-center transition-transform group-hover:scale-110">
+          <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="voidCoreGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fffbeb"/>
+                <stop offset="35%" stop-color="#e5a93c"/>
+                <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="45%" stop-color="#e5a93c"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" stroke="#e5a93c" stroke-width="1.8" stroke-dasharray="2 3" opacity="0.45"/>
+            <circle cx="50" cy="50" r="40" stroke="#f4f4f6" stroke-width="2.5" opacity="0.9"/>
+            <path d="M 27 28 L 50 78 L 73 28" stroke="url(#amberGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 27 72 L 50 22 L 73 72" stroke="#ffffff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="37" y1="53" x2="63" y2="53" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" opacity="0.95"/>
+            <circle cx="50" cy="50" r="9" fill="url(#voidCoreGlow)" opacity="0.75"/>
+            <circle cx="50" cy="50" r="4" fill="#ffffff"/>
+            <circle cx="50" cy="50" r="2" fill="#e5a93c"/>
+          </svg>
         </div>
-        <span class="font-syne font-extrabold text-base tracking-widest text-white group-hover:text-amber-300 transition-colors">
-          VISION
+        <span class="font-syne font-extrabold text-base sm:text-lg tracking-[0.16em] text-white group-hover:text-amber-300 transition-colors">
+          ATELIER VOID
         </span>
       </a>
 
@@ -109,8 +131,8 @@
         </h1>
 
         <!-- Cinematic Showreel Teaser Mockup -->
-        <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-video md:aspect-[21/9] bg-[#0c0c0f] mb-8 group cursor-pointer" onclick="openCaseModal('VISION Master Cinema Reel', 'Albuquerque // Global Commissions // 2026', 'Commercial Film &amp; 120 FPS High-Speed Showreel', 'A sensory optical journey exploring the interplay of extreme darkness, raw athletic velocity, culinary mis-en-place, and razor-sharp brand architecture.', 'assets/projects/motion-reel/poster.svg')">
-          <img src="assets/projects/motion-reel/poster.svg" alt="VISION Master Cinema Reel" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-85 transition-all duration-700">
+        <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-video md:aspect-[21/9] bg-[#0c0c0f] mb-8 group cursor-pointer" onclick="openCaseModal('Atelier Void Master Cinema Reel', 'Albuquerque // Global Commissions // 2026', 'Commercial Film &amp; 120 FPS High-Speed Showreel', 'A sensory optical journey exploring the interplay of extreme darkness, raw athletic velocity, culinary mis-en-place, and razor-sharp brand architecture.', 'assets/projects/motion-reel/poster.svg')">
+          <img src="assets/projects/motion-reel/poster.svg" alt="Atelier Void Master Cinema Reel" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-85 transition-all duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"></div>
           <div class="absolute bottom-6 left-6 flex items-center gap-4">
             <div class="w-12 h-12 rounded-full border border-amber-400/80 bg-black/60 backdrop-blur-md flex items-center justify-center text-amber-300 font-mono text-sm group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-black transition-all">
@@ -421,7 +443,7 @@
           <div class="space-y-4 pt-4 border-t border-white/10 font-mono text-xs">
             <div>
               <span class="text-neutral-500 block mb-1">DIRECT TRANSMISSION:</span>
-              <a href="mailto:hello@visionstudio.agency" class="text-neutral-200 hover:text-amber-400 transition-colors">hello@visionstudio.agency</a>
+              <a href="mailto:hello@ateliervoid.com" class="text-neutral-200 hover:text-amber-400 transition-colors">hello@ateliervoid.com</a>
             </div>
             <div>
               <span class="text-neutral-500 block mb-1">HEADQUARTERS &amp; COMMISSIONS:</span>
@@ -486,9 +508,9 @@
   <!-- ==================== FOOTER ==================== -->
   <footer class="border-t border-white/5 py-10 bg-[#030304]">
     <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-[11px] text-neutral-500">
-      <div class="flex items-center gap-2">
-        <span class="text-amber-400">✦</span>
-        <span>VISION © 2026 // ALL RIGHTS RESERVED</span>
+      <div class="flex items-center gap-2.5">
+        <img src="assets/logo.svg" alt="Atelier Void Emblem" class="w-4 h-4 opacity-85">
+        <span>ATELIER VOID © 2026 // ALL RIGHTS RESERVED</span>
       </div>
 
       <div class="flex items-center gap-6">
