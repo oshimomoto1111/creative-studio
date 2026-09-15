@@ -93,6 +93,59 @@ body {
   transition: opacity 0.3s ease;
 }
 
+/* ==========================================================================
+   RELATIVISTIC BLACK HOLE SINGULARITY (THE CREATIVE VOID)
+   ========================================================================== */
+.hero-black-hole-wrapper {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  width: 760px;
+  height: 760px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 60px rgba(229, 169, 60, 0.22));
+  transition: opacity 0.5s ease;
+}
+
+#blackHoleCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.black-hole-vignette {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 48%, var(--void-bg) 75%);
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .hero-black-hole-wrapper {
+    top: 5%;
+    right: 50%;
+    transform: translateX(50%);
+    width: 520px;
+    height: 520px;
+    opacity: 0.82;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-black-hole-wrapper {
+    top: 2%;
+    width: 360px;
+    height: 360px;
+    opacity: 0.78;
+  }
+}
+
 /* Layout Utilities (Fluid Container & Flex/Grid) */
 .max-w-7xl {
   max-width: 80rem;
