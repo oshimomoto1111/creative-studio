@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VISION — Independent Brand &amp; Visual Direction Studio // Albuquerque &amp; Global</title>
-  <meta name="description" content="Independent brand and visual direction studio founded by Oscar in Albuquerque, NM. Synthesizing fifteen years of executive culinary discipline, kinetic athletics, and high-contrast editorial craft into singular brand universes.">
-  <meta name="theme-color" content="#08080a">
-
-  <!-- Open Graph / Meta -->
-  <meta property="og:title" content="VISION — Independent Brand &amp; Visual Direction Studio">
-  <meta property="og:description" content="Auteur brand identity, digital architecture, commercial photography, and cinematic motion. Albuquerque // Global Commissions.">
-  <meta property="og:type" content="website">
+  <title>VISION — Auteur Visual Direction, Photography &amp; Film</title>
+  <meta name="description" content="Independent auteur creative studio directed by Oscar in Albuquerque, NM. Specialized in bespoke brand identity, commercial photography, and cinematic motion for sports excellence, venture platforms, and haute cuisine.">
+  <meta name="theme-color" content="#050505">
 
   <!-- Google Fonts: Syne, Inter, Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,14 +19,12 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#08080a',
-            surface: '#111114',
-            surfaceHover: '#18181c',
-            chalk: '#f4f4f6',
-            ash: '#8e8e93',
-            darkAsh: '#27272a',
-            amberAccent: '#e5a93c',
-            amberGlow: 'rgba(229, 169, 60, 0.15)'
+            void: '#050505',
+            amber: {
+              300: '#fcd34d',
+              400: '#e5a93c',
+              500: '#d97706'
+            }
           },
           fontFamily: {
             syne: ['Syne', 'sans-serif'],
@@ -46,715 +39,443 @@
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-obsidian text-chalk antialiased selection:bg-amberAccent selection:text-black">
+<body class="bg-void text-chalk antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- Tactile Micro Film Grain Overlay -->
+  <!-- Film Grain Overlay -->
   <div class="film-grain" aria-hidden="true"></div>
 
-  <!-- Ambient Cursor Optical Spotlight -->
+  <!-- Ambient Cursor Spotlight Glow -->
   <div id="spotlight" class="spotlight-glow" aria-hidden="true"></div>
 
-  <!-- Floating Cursor Preview Card (&Walsh Kinetic Reveal) -->
-  <div id="floatingPreview" class="floating-preview" aria-hidden="true">
-    <div class="preview-inner">
-      <img id="previewImage" src="assets/projects/duke-city-fencing/poster.svg" alt="Preview" class="preview-img">
-      <div class="preview-caption">
-        <span id="previewLabel" class="preview-tag">ARCHIVE PREVIEW</span>
-        <span id="previewTitle" class="preview-name">DUKE CITY FENCING</span>
-      </div>
-    </div>
-  </div>
+  <!-- Background Particle Field Canvas -->
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
 
-  <!-- ==================== UTILITY HEADER NAVIGATION ==================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-obsidian/90 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-6 py-3.5 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
+  <!-- ==================== HEADER NAVIGATION ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#050505]/85 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       
-      <!-- Studio Wordmark & Live Studio Clock (PORTO ROCHA Utility) -->
-      <div class="flex items-center gap-5 w-full md:w-auto justify-between md:justify-start">
-        <a href="#" class="flex items-center gap-3 group" aria-label="VISION Studio Home">
-          <span class="w-2.5 h-2.5 rounded-full bg-amberAccent ring-4 ring-amberAccent/20 animate-pulse"></span>
-          <span class="font-syne font-black text-lg tracking-wider text-white group-hover:text-amberAccent transition-colors">
-            VISION
-          </span>
-        </a>
-
-        <!-- Live Albuquerque Studio Clock -->
-        <div class="flex items-center gap-2 pl-4 border-l border-white/10 text-[11px] font-mono tracking-widest text-ash">
-          <span>ALBUQUERQUE, NM</span>
-          <span class="text-darkAsh">//</span>
-          <span id="studioClock" class="text-chalk font-semibold">12:00:00 MST</span>
+      <!-- Brand Monogram & Wordmark -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-3.5 h-3.5 rounded-full border border-amber-400/80 flex items-center justify-center transition-transform group-hover:scale-110">
+          <div class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></div>
         </div>
-      </div>
+        <span class="font-syne font-extrabold text-base tracking-widest text-white group-hover:text-amber-300 transition-colors">
+          VISION
+        </span>
+      </a>
 
-      <!-- Navigation Links (Pentagram Editorial Rigor) -->
-      <nav class="hidden lg:flex items-center gap-8 text-xs font-mono tracking-widest text-ash">
-        <a href="#work" class="nav-link hover:text-amberAccent transition-colors">[01] WORK</a>
-        <a href="#studio" class="nav-link hover:text-amberAccent transition-colors">[02] STUDIO</a>
-        <a href="#services" class="nav-link hover:text-amberAccent transition-colors">[03] SERVICES</a>
-        <a href="#contact" class="nav-link hover:text-amberAccent transition-colors">[04] INQUIRY</a>
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-neutral-400">
+        <a href="#about" class="hover:text-amber-400 transition-colors">[01] ESSENCE</a>
+        <a href="#work" class="hover:text-amber-400 transition-colors">[02] ARCHIVE</a>
+        <a href="#capabilities" class="hover:text-amber-400 transition-colors">[03] DISCIPLINES</a>
+        <a href="#process" class="hover:text-amber-400 transition-colors">[04] METHOD</a>
       </nav>
 
-      <!-- Availability Pill & Audio Controller -->
-      <div class="flex items-center gap-3">
-        <!-- Status Pill -->
-        <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 text-[11px] font-mono text-zinc-300">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-          <span>AVAILABLE Q4 '26 / '27</span>
-        </div>
-
-        <!-- Ambient Drone Audio Toggle -->
-        <button id="audioToggle" class="text-[11px] font-mono px-3 py-1.5 rounded-full border border-white/10 hover:border-amberAccent/50 text-ash hover:text-amberAccent transition-all flex items-center gap-2 cursor-pointer" aria-label="Toggle ambient studio sound">
+      <!-- Action Cluster -->
+      <div class="flex items-center gap-4">
+        <!-- Web Audio Ambient Drone Toggle -->
+        <button id="audioToggle" class="text-[11px] font-mono px-3.5 py-1.5 rounded-full border border-white/10 hover:border-amber-400/60 text-neutral-400 hover:text-amber-400 transition-all flex items-center gap-2 cursor-pointer" aria-label="Toggle ambient studio drone">
           <span id="audioIcon">🔈</span>
           <span id="audioText">SOUND: OFF</span>
         </button>
 
-        <!-- Direct Action Button -->
-        <a href="#contact" class="text-xs font-mono font-medium px-3.5 py-1.5 rounded bg-surface border border-white/15 hover:border-amberAccent hover:text-amberAccent text-chalk transition-all">
-          START PROJECT ↗
+        <!-- Direct CTA -->
+        <a href="#contact" class="hidden sm:inline-flex text-xs font-mono font-medium px-4 py-2 rounded border border-amber-400/60 text-amber-300 hover:bg-amber-400 hover:text-black transition-all duration-300">
+          INITIATE PROJECT ↗
         </a>
       </div>
 
     </div>
   </header>
 
-  <!-- ==================== MAIN EDITORIAL CONTENT ==================== -->
+  <!-- ==================== MAIN CONTENT ==================== -->
   <main class="relative z-10 pt-28">
 
-    <!-- HERO SECTION: MONUMENTAL EDITORIAL STATEMENT -->
-    <section class="min-h-[85vh] max-w-7xl mx-auto px-6 pt-8 pb-16 flex flex-col justify-between">
-      
-      <!-- Top Meta Coordinates Ribbon -->
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4 text-xs font-mono tracking-widest text-ash">
-        <div>AUTEUR BRAND ARCHITECTURE &amp; VISUAL DIRECTION</div>
-        <div>35.0844° N, 106.6504° W // ELEV. 5,312 FT</div>
-        <div class="text-amberAccent">COMMISSION DISCIPLINE</div>
-      </div>
+    <!-- HERO SECTION -->
+    <section class="min-h-[88vh] flex flex-col justify-between max-w-7xl mx-auto px-6 py-12">
+      <div>
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="px-3 py-1 rounded border border-amber-400/30 bg-amber-400/5 text-[11px] font-mono text-amber-400 tracking-wider">
+            ● COMMISSIONS OPEN // Q4 2026 / 2027
+          </span>
+          <span class="text-neutral-500 font-mono text-xs">// AUTEUR CREATIVE STUDIO · ALBUQUERQUE // GLOBAL</span>
+        </div>
 
-      <!-- Monumental Headline (PORTO ROCHA / Pentagram Scale) -->
-      <div class="my-auto py-12 md:py-16">
-        <h1 class="font-syne font-black text-4xl sm:text-6xl md:text-8xl lg:text-[6.8rem] leading-[0.92] tracking-tight uppercase">
-          INDEPENDENT BRAND<br>
-          <span class="text-neutral-500 font-light">&amp;</span> VISUAL DIRECTION.<br>
-          <span class="headline-highlight">WE BRING FORTH</span> WHAT<br>
-          SLEEPS IN THE VOID.
+        <h1 class="font-syne font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight leading-[0.95] text-neutral-100 max-w-5xl mb-8">
+          WE BRING FORTH <br>
+          <span class="gradient-text">WHAT SLEEPS</span> <br>
+          IN THE VOID.
         </h1>
 
-        <!-- Subhead with Interactive &Walsh Hover Preview Triggers -->
-        <div class="mt-10 max-w-3xl text-lg md:text-xl font-sans text-neutral-300 font-light leading-relaxed">
-          Founded by <span class="text-white font-normal">Oscar</span>. Rooted in Albuquerque, NM, collaborating worldwide. 
-          We synthesize 
-          <span class="preview-trigger" data-preview-id="gastronomy" data-preview-img="assets/projects/gastronomy/poster.svg" data-preview-title="Auteur Gastronomy" data-preview-tag="15+ YRS CHEF DISCIPLINE">executive culinary discipline</span>, 
-          <span class="preview-trigger" data-preview-id="fencing" data-preview-img="assets/projects/duke-city-fencing/poster.svg" data-preview-title="Duke City Fencing" data-preview-tag="ATHLETIC KINETICS">athletic kinetic tension</span>, and 
-          <span class="preview-trigger" data-preview-id="motion" data-preview-img="assets/projects/motion-reel/poster.svg" data-preview-title="Commercial Film" data-preview-tag="120 FPS CINEMA">anamorphic cinema craft</span> 
-          into singular, uncompromising brand universes.
+        <!-- Cinematic Showreel Teaser Mockup -->
+        <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-video md:aspect-[21/9] bg-[#0c0c0f] mb-8 group cursor-pointer" onclick="openCaseModal('VISION Master Cinema Reel', 'Albuquerque // Global Commissions // 2026', 'Commercial Film &amp; 120 FPS High-Speed Showreel', 'A sensory optical journey exploring the interplay of extreme darkness, raw athletic velocity, culinary mis-en-place, and razor-sharp brand architecture.', 'assets/projects/motion-reel/poster.svg')">
+          <img src="assets/projects/motion-reel/poster.svg" alt="VISION Master Cinema Reel" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-85 transition-all duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full border border-amber-400/80 bg-black/60 backdrop-blur-md flex items-center justify-center text-amber-300 font-mono text-sm group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-black transition-all">
+              ▶
+            </div>
+            <div>
+              <span class="text-amber-400 font-mono text-[10px] tracking-widest block">// SHOWREEL 2026</span>
+              <h3 class="font-syne font-bold text-white text-base sm:text-xl">THE RADIANCE OF FORM — 4K MASTER CUT</h3>
+            </div>
+          </div>
+          <div class="absolute top-4 right-4 font-mono text-[10px] px-3 py-1 rounded bg-black/80 border border-white/10 text-neutral-300">
+            01:24 // 24 FPS
+          </div>
         </div>
       </div>
 
-      <!-- Bottom Studio Pillars Ribbon -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-white/10 text-xs font-mono text-ash">
-        <div>
-          <span class="text-amberAccent block mb-1">01 // IDENTITY</span>
-          Brand Strategy, Verbal Posture, High-Contrast Systems
-        </div>
-        <div>
-          <span class="text-amberAccent block mb-1">02 // DIGITAL</span>
-          Bespoke Web Engineering, Tactile Interfaces, No Bloat
-        </div>
-        <div>
-          <span class="text-amberAccent block mb-1">03 // MOTION</span>
-          4K / 120 FPS Cinema, Spatial Sound, Color Mastery
-        </div>
-        <div>
-          <span class="text-amberAccent block mb-1">04 // LEADERSHIP</span>
-          Direct Founder Collaboration, Relentless Execution
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ==================== ARCHIVE / SELECTED COMMISSIONS ==================== -->
-    <section id="work" class="py-24 border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-6">
-
-        <!-- Section Header with PORTO ROCHA View Switcher -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
-          <div>
-            <div class="text-xs font-mono tracking-widest text-amberAccent uppercase mb-2">INDEX OF WORKS // 2024—2026</div>
-            <h2 class="font-syne font-extrabold text-3xl md:text-5xl text-white tracking-tight">
-              SELECTED COMMISSIONS
-            </h2>
-          </div>
-
-          <!-- Dual View Switcher (Grid vs Index) -->
-          <div class="flex items-center gap-2 p-1 rounded-lg bg-surface border border-white/10 font-mono text-xs">
-            <button id="viewGridBtn" class="view-btn active px-3.5 py-1.5 rounded flex items-center gap-2 text-white bg-white/10 transition-all cursor-pointer" aria-pressed="true">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                <rect x="1" y="1" width="6" height="6" rx="1"/>
-                <rect x="9" y="1" width="6" height="6" rx="1"/>
-                <rect x="1" y="9" width="6" height="6" rx="1"/>
-                <rect x="9" y="9" width="6" height="6" rx="1"/>
-              </svg>
-              <span>GRID</span>
-            </button>
-            <button id="viewIndexBtn" class="view-btn px-3.5 py-1.5 rounded flex items-center gap-2 text-ash hover:text-white transition-all cursor-pointer" aria-pressed="false">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                <rect x="1" y="2" width="14" height="2.5" rx="0.5"/>
-                <rect x="1" y="6.75" width="14" height="2.5" rx="0.5"/>
-                <rect x="1" y="11.5" width="14" height="2.5" rx="0.5"/>
-              </svg>
-              <span>INDEX</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- ==================== VIEW 1: GRID MODE (Default) ==================== -->
-        <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 pt-12">
-
-          <!-- PROJECT 01: DUKE CITY FENCING CLUB -->
-          <article class="project-card group" data-project-id="duke-city-fencing">
-            <div class="project-media-wrapper overflow-hidden rounded-xl border border-white/10 bg-surface relative aspect-[4/5] cursor-pointer">
-              <img src="assets/projects/duke-city-fencing/poster.svg" alt="Duke City Fencing Club Editorial Poster" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy">
-              
-              <!-- Hover Overlay with Pentagram Metadata -->
-              <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                  <span class="px-3 py-1 rounded bg-black/60 backdrop-blur-md text-[11px] font-mono text-amberAccent border border-amberAccent/30">
-                    4K REEL / FULL IDENTITY
-                  </span>
-                  <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg transform -translate-y-2 group-hover:translate-y-0 transition-transform">
-                    ↗
-                  </span>
-                </div>
-                <div>
-                  <p class="text-xs font-mono text-ash mb-1">ALBUQUERQUE, NM // 2025</p>
-                  <h3 class="font-syne text-2xl font-bold text-white">Duke City Fencing Club</h3>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card Bottom Editorial Details -->
-            <div class="pt-5 flex items-start justify-between">
-              <div>
-                <div class="text-xs font-mono text-amberAccent tracking-wider mb-1">01 // SPORTS EXCELLENCE &amp; CAMPAIGN</div>
-                <h3 class="font-syne text-2xl font-bold text-white group-hover:text-amberAccent transition-colors">
-                  Duke City Fencing Club
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-2 font-light max-w-md">
-                  Digital architecture overhaul, brand posture, and dynamic promotional film capturing the kinetic tension of saber, foil, and epee in the American Southwest.
-                </p>
-              </div>
-              <button class="open-modal-btn mt-1 text-xs font-mono px-3 py-1.5 rounded border border-white/10 hover:border-amberAccent text-neutral-300 hover:text-white transition-all whitespace-nowrap cursor-pointer" data-project="duke-city-fencing">
-                VIEW CASE ↗
-              </button>
-            </div>
-          </article>
-
-          <!-- PROJECT 02: PARKINGLY -->
-          <article class="project-card group" data-project-id="parkingly">
-            <div class="project-media-wrapper overflow-hidden rounded-xl border border-white/10 bg-surface relative aspect-[4/5] cursor-pointer">
-              <img src="assets/projects/parkingly/poster.svg" alt="Parkingly App Identity Poster" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy">
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                  <span class="px-3 py-1 rounded bg-black/60 backdrop-blur-md text-[11px] font-mono text-cyan-400 border border-cyan-400/30">
-                    VENTURE LAUNCH / PRODUCT UI
-                  </span>
-                  <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg transform -translate-y-2 group-hover:translate-y-0 transition-transform">
-                    ↗
-                  </span>
-                </div>
-                <div>
-                  <p class="text-xs font-mono text-ash mb-1">SAN FRANCISCO / GLOBAL // 2025</p>
-                  <h3 class="font-syne text-2xl font-bold text-white">Parkingly Ecosystem</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-5 flex items-start justify-between">
-              <div>
-                <div class="text-xs font-mono text-cyan-400 tracking-wider mb-1">02 // VENTURE DESIGN &amp; UI/UX</div>
-                <h3 class="font-syne text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                  Parkingly Platform
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-2 font-light max-w-md">
-                  Zero-friction urban mobility platform. Full product brand identity, high-conversion launch strategy, and tactile interface architecture engineered for rapid adoption.
-                </p>
-              </div>
-              <button class="open-modal-btn mt-1 text-xs font-mono px-3 py-1.5 rounded border border-white/10 hover:border-cyan-400 text-neutral-300 hover:text-white transition-all whitespace-nowrap cursor-pointer" data-project="parkingly">
-                VIEW CASE ↗
-              </button>
-            </div>
-          </article>
-
-          <!-- PROJECT 03: AUTEUR GASTRONOMY & SPATIAL -->
-          <article class="project-card group" data-project-id="gastronomy">
-            <div class="project-media-wrapper overflow-hidden rounded-xl border border-white/10 bg-surface relative aspect-[4/5] cursor-pointer">
-              <img src="assets/projects/gastronomy/poster.svg" alt="Auteur Gastronomy & Spatial Poster" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy">
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                  <span class="px-3 py-1 rounded bg-black/60 backdrop-blur-md text-[11px] font-mono text-amberAccent border border-amberAccent/30">
-                    15+ YRS CHEF DISCIPLINE
-                  </span>
-                  <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg transform -translate-y-2 group-hover:translate-y-0 transition-transform">
-                    ↗
-                  </span>
-                </div>
-                <div>
-                  <p class="text-xs font-mono text-ash mb-1">ALBUQUERQUE // MEXICO CITY // 2024—2026</p>
-                  <h3 class="font-syne text-2xl font-bold text-white">Auteur Gastronomy &amp; Spatial</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-5 flex items-start justify-between">
-              <div>
-                <div class="text-xs font-mono text-amberAccent tracking-wider mb-1">03 // HAUTE CUISINE &amp; SPATIAL DIRECTION</div>
-                <h3 class="font-syne text-2xl font-bold text-white group-hover:text-amberAccent transition-colors">
-                  Auteur Gastronomy &amp; Spatial
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-2 font-light max-w-md">
-                  Translating fifteen years of executive kitchen leadership into multi-sensory hospitality identity, degustation plating geometry, and spatial brand architecture.
-                </p>
-              </div>
-              <button class="open-modal-btn mt-1 text-xs font-mono px-3 py-1.5 rounded border border-white/10 hover:border-amberAccent text-neutral-300 hover:text-white transition-all whitespace-nowrap cursor-pointer" data-project="gastronomy">
-                VIEW CASE ↗
-              </button>
-            </div>
-          </article>
-
-          <!-- PROJECT 04: COMMERCIAL FILM & MOVEMENT -->
-          <article class="project-card group" data-project-id="motion-reel">
-            <div class="project-media-wrapper overflow-hidden rounded-xl border border-white/10 bg-surface relative aspect-[4/5] cursor-pointer">
-              <img src="assets/projects/motion-reel/poster.svg" alt="Commercial Film and Movement Poster" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy">
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-between">
-                <div class="flex justify-between items-start">
-                  <span class="px-3 py-1 rounded bg-black/60 backdrop-blur-md text-[11px] font-mono text-blue-400 border border-blue-400/30">
-                    120 FPS / ACES COLOR
-                  </span>
-                  <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-bold text-lg transform -translate-y-2 group-hover:translate-y-0 transition-transform">
-                    ↗
-                  </span>
-                </div>
-                <div>
-                  <p class="text-xs font-mono text-ash mb-1">GLOBAL COMMISSIONS // 2024—2026</p>
-                  <h3 class="font-syne text-2xl font-bold text-white">Commercial Film &amp; Movement</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="pt-5 flex items-start justify-between">
-              <div>
-                <div class="text-xs font-mono text-blue-400 tracking-wider mb-1">04 // CINEMATOGRAPHY &amp; SOUND</div>
-                <h3 class="font-syne text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  Commercial Film &amp; Movement
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-2 font-light max-w-md">
-                  120 FPS high-speed optical capture, bespoke spatial sound design, and precision color grading for visionary products, kinetic sports, and luxury gastronomy.
-                </p>
-              </div>
-              <button class="open-modal-btn mt-1 text-xs font-mono px-3 py-1.5 rounded border border-white/10 hover:border-blue-400 text-neutral-300 hover:text-white transition-all whitespace-nowrap cursor-pointer" data-project="motion-reel">
-                VIEW CASE ↗
-              </button>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- ==================== VIEW 2: INDEX TABLE MODE (PORTO ROCHA) ==================== -->
-        <div id="archiveIndex" class="hidden pt-12 overflow-x-auto">
-          <table class="w-full text-left font-mono text-xs border-collapse">
-            <thead>
-              <tr class="border-b border-white/20 text-ash pb-3">
-                <th class="py-4 pr-4">#</th>
-                <th class="py-4 pr-6">CLIENT / PROJECT</th>
-                <th class="py-4 pr-6">DISCIPLINE</th>
-                <th class="py-4 pr-6">LOCATION</th>
-                <th class="py-4 pr-6">YEAR</th>
-                <th class="py-4 text-right">ACTION</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-white/5">
-              
-              <!-- Row 01 -->
-              <tr class="index-row hover:bg-surface/80 transition-colors cursor-pointer group" data-project="duke-city-fencing" data-preview-img="assets/projects/duke-city-fencing/poster.svg" data-preview-title="Duke City Fencing" data-preview-tag="SPORTS IDENTITY">
-                <td class="py-5 text-amberAccent font-bold">01</td>
-                <td class="py-5 font-syne font-bold text-base text-white group-hover:text-amberAccent transition-colors">
-                  Duke City Fencing Club
-                </td>
-                <td class="py-5 text-zinc-300">Brand Identity, Web Overhaul &amp; Campaign Film</td>
-                <td class="py-5 text-ash">Albuquerque, NM</td>
-                <td class="py-5 text-ash">2025</td>
-                <td class="py-5 text-right">
-                  <span class="inline-flex items-center gap-1 text-amberAccent underline">
-                    EXPLORE ↗
-                  </span>
-                </td>
-              </tr>
-
-              <!-- Row 02 -->
-              <tr class="index-row hover:bg-surface/80 transition-colors cursor-pointer group" data-project="parkingly" data-preview-img="assets/projects/parkingly/poster.svg" data-preview-title="Parkingly App" data-preview-tag="VENTURE UI">
-                <td class="py-5 text-cyan-400 font-bold">02</td>
-                <td class="py-5 font-syne font-bold text-base text-white group-hover:text-cyan-400 transition-colors">
-                  Parkingly Platform
-                </td>
-                <td class="py-5 text-zinc-300">Venture Strategy, Product Design &amp; Launch Campaign</td>
-                <td class="py-5 text-ash">San Francisco / Global</td>
-                <td class="py-5 text-ash">2025</td>
-                <td class="py-5 text-right">
-                  <span class="inline-flex items-center gap-1 text-cyan-400 underline">
-                    EXPLORE ↗
-                  </span>
-                </td>
-              </tr>
-
-              <!-- Row 03 -->
-              <tr class="index-row hover:bg-surface/80 transition-colors cursor-pointer group" data-project="gastronomy" data-preview-img="assets/projects/gastronomy/poster.svg" data-preview-title="Auteur Gastronomy" data-preview-tag="CULINARY DIRECTION">
-                <td class="py-5 text-amberAccent font-bold">03</td>
-                <td class="py-5 font-syne font-bold text-base text-white group-hover:text-amberAccent transition-colors">
-                  Auteur Gastronomy &amp; Spatial
-                </td>
-                <td class="py-5 text-zinc-300">Haute Cuisine Art Direction &amp; Hospitality System</td>
-                <td class="py-5 text-ash">Albuquerque // Mexico City</td>
-                <td class="py-5 text-ash">2024—2026</td>
-                <td class="py-5 text-right">
-                  <span class="inline-flex items-center gap-1 text-amberAccent underline">
-                    EXPLORE ↗
-                  </span>
-                </td>
-              </tr>
-
-              <!-- Row 04 -->
-              <tr class="index-row hover:bg-surface/80 transition-colors cursor-pointer group" data-project="motion-reel" data-preview-img="assets/projects/motion-reel/poster.svg" data-preview-title="Commercial Motion" data-preview-tag="HIGH-SPEED FILM">
-                <td class="py-5 text-blue-400 font-bold">04</td>
-                <td class="py-5 font-syne font-bold text-base text-white group-hover:text-blue-400 transition-colors">
-                  Commercial Film &amp; Movement
-                </td>
-                <td class="py-5 text-zinc-300">120 FPS High-Speed Optical, Color Grading &amp; Sound Mix</td>
-                <td class="py-5 text-ash">Global Commissions</td>
-                <td class="py-5 text-ash">2024—2026</td>
-                <td class="py-5 text-right">
-                  <span class="inline-flex items-center gap-1 text-blue-400 underline">
-                    EXPLORE ↗
-                  </span>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== STUDIO SECTION: THE CULINARY SPINE ==================== -->
-    <section id="studio" class="py-24 border-t border-white/10 bg-surface/30">
-      <div class="max-w-7xl mx-auto px-6">
-        
-        <!-- Section Header -->
-        <div class="text-xs font-mono tracking-widest text-amberAccent uppercase mb-2">STUDIO ETHOS // THE CULINARY SPINE</div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8">
-          
-          <!-- Left Column: Monumental Quote & Oscar's Story (Fuzzco Warmth + Pentagram Rigor) -->
-          <div class="lg:col-span-7">
-            <h2 class="font-syne font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight mb-8">
-              "WHEN SERVICE BEGINS AT 6:00 PM, PERFECTION IS NOT A STYLISTIC CHOICE. IT IS AN ABSOLUTE OBLIGATION."
-            </h2>
-
-            <div class="space-y-6 text-base md:text-lg font-sans text-neutral-300 font-light leading-relaxed">
-              <p>
-                Before launching <strong class="text-white font-semibold">VISION</strong>, founder Oscar spent fifteen years leading high-stakes commercial and fine-dining kitchens. That crucible forged a creative methodology unlike any traditional design agency:
-              </p>
-              <p class="text-neutral-400">
-                In an executive kitchen, there is zero tolerance for fluff. You cannot hide behind marketing platitudes when forty orders hit the pass simultaneously. You succeed only through relentless <em class="text-white not-italic font-medium">mis-en-place</em> (preparation to the millimeter), absolute timing, and sensory restraint.
-              </p>
-              <p class="text-neutral-400">
-                We bring that exact same culinary spine to visual direction. Every typography pairing, digital micro-interaction, frame rate curve, and sonic stem is cut with the precision of a forged Japanese blade. We do not do bloated decks or cookie-cutter templates. We build singular identities that endure.
-              </p>
-            </div>
-
-            <!-- Signature & Title Block -->
-            <div class="pt-8 mt-8 border-t border-white/10 flex items-center justify-between">
-              <div>
-                <div class="font-syne font-bold text-white text-lg">Oscar</div>
-                <div class="text-xs font-mono text-ash">Founder &amp; Creative Director // VISION Studio</div>
-              </div>
-              <div class="text-xs font-mono text-amberAccent">
-                15+ YRS HAUTE-CUISINE // ALBUQUERQUE, NM
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: 4 Concrete Operating Pillars -->
-          <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
-            
-            <div class="p-6 rounded-xl border border-white/10 bg-surface/70">
-              <div class="text-xs font-mono text-amberAccent mb-1">01 // RUTHLESS MIS-EN-PLACE</div>
-              <h3 class="font-syne font-bold text-xl text-white mb-2">Deep Preparation First</h3>
-              <p class="text-sm font-sans text-neutral-400 font-light">
-                We dissect your brand's core tension, competitive landscape, and cultural context before a single pixel or camera lens is placed.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-xl border border-white/10 bg-surface/70">
-              <div class="text-xs font-mono text-cyan-400 mb-1">02 // KINETIC TIMING &amp; RHYTHM</div>
-              <h3 class="font-syne font-bold text-xl text-white mb-2">Precision Milliseconds</h3>
-              <p class="text-sm font-sans text-neutral-400 font-light">
-                Borrowing from the explosive velocity of athletic fencing and the cadence of service, our motion and interactions flow with instinctual grace.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-xl border border-white/10 bg-surface/70">
-              <div class="text-xs font-mono text-emerald-400 mb-1">03 // SENSORY WEIGHT</div>
-              <h3 class="font-syne font-bold text-xl text-white mb-2">Design You Can Feel</h3>
-              <p class="text-sm font-sans text-neutral-400 font-light">
-                Digital surfaces shouldn't feel flat. We embed tactile grain, rich audio frequencies, and Swiss contrast that leave a visceral imprint.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-xl border border-white/10 bg-surface/70">
-              <div class="text-xs font-mono text-purple-400 mb-1">04 // FOUNDER-DIRECT ACCESS</div>
-              <h3 class="font-syne font-bold text-xl text-white mb-2">No Account Middlemen</h3>
-              <p class="text-sm font-sans text-neutral-400 font-light">
-                You work directly with Oscar and the core specialist team. High velocity, radical transparency, zero diluted vision.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== DISCIPLINES / SERVICES (&Walsh Interactive Hover) ==================== -->
-    <section id="services" class="py-24 border-t border-white/10">
-      <div class="max-w-7xl mx-auto px-6">
-        
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/10">
-          <div>
-            <div class="text-xs font-mono tracking-widest text-amberAccent uppercase mb-2">CAPABILITIES // DISCIPLINE MATRIX</div>
-            <h2 class="font-syne font-extrabold text-3xl md:text-5xl text-white tracking-tight">
-              CORE DISCIPLINES
-            </h2>
-          </div>
-          <p class="text-xs font-mono text-ash max-w-xs">
-            HOVER OVER ANY DISCIPLINE TO REVEAL SPECIFICATIONS &amp; VISUAL REFERENCES.
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end pt-8 border-t border-white/5">
+        <div class="md:col-span-6">
+          <p class="text-neutral-400 text-sm md:text-base leading-relaxed max-w-xl font-light">
+            An independent studio dedicated to radical visual distinction. Directed by Oscar. Rooted in Albuquerque, NM, operating globally. We listen to the unspoken core of sports excellence, smart venture platforms, and haute cuisine—forging magnetic brand identities, sensory photography, and cinematic film.
           </p>
         </div>
 
-        <!-- Interactive Service Rows (&Walsh kinetic hover previews) -->
-        <div class="divide-y divide-white/10 pt-4">
+        <div class="md:col-span-6 flex flex-wrap items-center justify-start md:justify-end gap-4">
+          <a href="#work" class="px-6 py-3.5 bg-neutral-100 text-black font-mono text-xs tracking-wider rounded hover:bg-amber-400 transition-all">
+            EXPLORE ARCHIVE ↓
+          </a>
+          <a href="#contact" class="px-6 py-3.5 border border-white/15 text-neutral-300 font-mono text-xs tracking-wider rounded hover:border-amber-400/80 hover:text-white transition-all">
+            INITIATE DIALOGUE ✦
+          </a>
+        </div>
+      </div>
+    </section>
 
-          <!-- Discipline 01 -->
-          <div class="service-row group py-8 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer transition-colors hover:bg-surface/50 px-4 -mx-4 rounded-xl"
-               data-preview-img="assets/projects/duke-city-fencing/poster.svg" data-preview-title="Brand Architecture" data-preview-tag="STRATEGY">
-            <div class="flex items-start md:items-center gap-6">
-              <span class="text-sm font-mono text-amberAccent">01</span>
-              <div>
-                <h3 class="font-syne font-bold text-2xl sm:text-3xl text-white group-hover:text-amberAccent transition-colors">
-                  Brand Architecture &amp; Verbal Posture
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-1 font-light">
-                  Singular naming, tone of voice, typographic systems, and luxury visual guidelines.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 text-xs font-mono text-ash">
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">NAMING</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">TYPOGRAPHY</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">GUIDELINES</span>
-              <span class="text-amberAccent text-lg ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </div>
+    <!-- SECTION 01: THE PHILOSOPHY / ABOUT -->
+    <section id="about" class="py-24 border-t border-white/5 bg-[#070709]/60">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-28">
+            <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 01 — THE ETHOS ]</span>
+            <h2 class="font-syne text-2xl sm:text-3xl font-bold text-neutral-200 mb-4">
+              True visual gravity is never accidental.
+            </h2>
+            <p class="text-neutral-500 font-mono text-xs leading-relaxed">
+              It is the deliberate extraction of radiant light from absolute silence.
+            </p>
           </div>
+        </div>
 
-          <!-- Discipline 02 -->
-          <div class="service-row group py-8 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer transition-colors hover:bg-surface/50 px-4 -mx-4 rounded-xl"
-               data-preview-img="assets/projects/parkingly/poster.svg" data-preview-title="Digital Systems" data-preview-tag="ENGINEERING">
-            <div class="flex items-start md:items-center gap-6">
-              <span class="text-sm font-mono text-cyan-400">02</span>
-              <div>
-                <h3 class="font-syne font-bold text-2xl sm:text-3xl text-white group-hover:text-cyan-400 transition-colors">
-                  Digital Architecture &amp; Web Engineering
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-1 font-light">
-                  Tailored web experiences, tactile micro-interactions, high-speed Core Web Vitals performance.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 text-xs font-mono text-ash">
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">UI/UX</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">WEB APPS</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">PERFORMANCE</span>
-              <span class="text-cyan-400 text-lg ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-          </div>
+        <div class="lg:col-span-8 space-y-8 text-neutral-300 font-light text-base sm:text-lg leading-relaxed">
+          <article class="p-8 rounded-lg border border-white/5 bg-[#0b0b0e] hover:border-amber-400/30 transition-all duration-300">
+            <span class="text-xs font-mono text-amber-400/80 block mb-2">// 01. DEEP LISTENING</span>
+            <p>
+              Every transcendent identity begins in stillness. We do not impose generic templates or fleeting algorithmic trends. We practice relentless listening—interrogating the architecture of your vision, your heritage, and your ambitions until the singular, unrepeatable soul of your brand demands form.
+            </p>
+          </article>
 
-          <!-- Discipline 03 -->
-          <div class="service-row group py-8 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer transition-colors hover:bg-surface/50 px-4 -mx-4 rounded-xl"
-               data-preview-img="assets/projects/gastronomy/poster.svg" data-preview-title="Spatial & Culinary" data-preview-tag="HOSPITALITY">
-            <div class="flex items-start md:items-center gap-6">
-              <span class="text-sm font-mono text-amberAccent">03</span>
-              <div>
-                <h3 class="font-syne font-bold text-2xl sm:text-3xl text-white group-hover:text-amberAccent transition-colors">
-                  Spatial, Plating &amp; Hospitality Experience
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-1 font-light">
-                  Executive culinary direction, degustation curation, restaurant spatial branding, and menu choreography.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 text-xs font-mono text-ash">
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">DEGUSTATION</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">SPATIAL</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">SENSORY</span>
-              <span class="text-amberAccent text-lg ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-          </div>
+          <article class="p-8 rounded-lg border border-white/5 bg-[#0b0b0e] hover:border-amber-400/30 transition-all duration-300">
+            <span class="text-xs font-mono text-amber-400/80 block mb-2">// 02. RESTRAINT AS RADICAL LUXURY</span>
+            <p>
+              The digital world is inundated with visual noise. We believe true authority is silent, tactile, and restrained. By stripping away every superfluous element, we allow the essential substance of your brand—its materials, its typography, and its light—to command undivided attention.
+            </p>
+          </article>
 
-          <!-- Discipline 04 -->
-          <div class="service-row group py-8 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer transition-colors hover:bg-surface/50 px-4 -mx-4 rounded-xl"
-               data-preview-img="assets/projects/motion-reel/poster.svg" data-preview-title="Cinema & Motion" data-preview-tag="120 FPS">
-            <div class="flex items-start md:items-center gap-6">
-              <span class="text-sm font-mono text-blue-400">04</span>
-              <div>
-                <h3 class="font-syne font-bold text-2xl sm:text-3xl text-white group-hover:text-blue-400 transition-colors">
-                  Commercial Cinema &amp; High-Speed Motion
-                </h3>
-                <p class="text-sm font-sans text-neutral-400 mt-1 font-light">
-                  4K / 120 FPS optical production, anamorphic framing, ACES color grading, and bespoke spatial audio.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 text-xs font-mono text-ash">
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">120 FPS</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">COLOR GRADE</span>
-              <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10">SPATIAL SOUND</span>
-              <span class="text-blue-400 text-lg ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-          </div>
-
+          <article class="p-8 rounded-lg border border-white/5 bg-[#0b0b0e] hover:border-amber-400/30 transition-all duration-300">
+            <span class="text-xs font-mono text-amber-400/80 block mb-2">// 03. KINETIC PERMANENCE</span>
+            <p>
+              We craft visual systems engineered to endure. Whether capturing the razor-sharp velocity of competitive fencing, the intuitive ease of modern software interfaces, or the multi-sensory discipline of haute cuisine, every frame is treated as a permanent work of art.
+            </p>
+          </article>
         </div>
 
       </div>
     </section>
 
-    <!-- ==================== CONTACT / INQUIRY SECTION ==================== -->
-    <section id="contact" class="py-24 border-t border-white/10 bg-surface/40">
+    <!-- SECTION 02: SELECTED WORKS / PORTFOLIO -->
+    <section id="work" class="py-24 max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
+        <div>
+          <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 02 — REPERTORY ]</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white">SELECTED COMMISSIONS</h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2 font-mono text-xs">
+          <button type="button" class="filter-btn active px-3.5 py-1.5 rounded border border-amber-400 bg-amber-400/10 text-amber-300 transition-all cursor-pointer" data-filter="all" onclick="filterWorks('all')">ALL (04)</button>
+          <button type="button" class="filter-btn px-3.5 py-1.5 rounded border border-white/10 hover:border-white/30 text-neutral-400 hover:text-white transition-all cursor-pointer" data-filter="identity" onclick="filterWorks('identity')">IDENTITY</button>
+          <button type="button" class="filter-btn px-3.5 py-1.5 rounded border border-white/10 hover:border-white/30 text-neutral-400 hover:text-white transition-all cursor-pointer" data-filter="photography" onclick="filterWorks('photography')">PHOTOGRAPHY</button>
+          <button type="button" class="filter-btn px-3.5 py-1.5 rounded border border-white/10 hover:border-white/30 text-neutral-400 hover:text-white transition-all cursor-pointer" data-filter="film" onclick="filterWorks('film')">FILM &amp; MOTION</button>
+        </div>
+      </div>
+
+      <!-- Asymmetric Portfolio Grid -->
+      <div id="worksGrid" class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+        <!-- Case 01: Duke City Fencing Club -->
+        <div class="portfolio-card md:col-span-7 group cursor-pointer" data-category="identity film" data-title="Duke City Fencing Club" data-sector="Sports Excellence &amp; Athletics · Albuquerque, NM" data-discipline="Brand Overhaul, Web Architecture &amp; Dynamic Promotional Campaign" data-desc="Complete digital ecosystem overhaul, brand posture, and dynamic promotional film capturing the kinetic tension of saber, foil, and epee in the American Southwest." data-image="assets/projects/duke-city-fencing/poster.svg">
+          <div class="relative overflow-hidden rounded-lg aspect-[16/10] bg-[#111116] border border-white/10 mb-4">
+            <img src="assets/projects/duke-city-fencing/poster.svg" alt="Duke City Fencing Club Editorial Poster" class="card-zoom-img absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent z-10"></div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/80 border border-white/10 text-neutral-300">
+              IDENTITY + FILM // 2025
+            </div>
+            <div class="absolute bottom-5 left-5 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 001</span>
+              <h3 class="font-syne font-bold text-2xl sm:text-3xl text-white">DUKE CITY FENCING CLUB</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Athletic Excellence · Brand Identity, Web Ecosystem &amp; 4K Promotional Film</p>
+        </div>
+
+        <!-- Case 02: Parkingly Platform -->
+        <div class="portfolio-card md:col-span-5 group cursor-pointer" data-category="identity" data-title="Parkingly Platform" data-sector="Urban Mobility &amp; Venture Design · San Francisco / Global" data-discipline="Product Brand Identity, UI/UX &amp; Launch Strategy" data-desc="Zero-friction smart parking platform. Full product brand identity, high-conversion launch strategy, and tactile interface architecture engineered for rapid metropolitan adoption." data-image="assets/projects/parkingly/poster.svg">
+          <div class="relative overflow-hidden rounded-lg aspect-[4/5] bg-[#111116] border border-white/10 mb-4">
+            <img src="assets/projects/parkingly/poster.svg" alt="Parkingly App Identity Poster" class="card-zoom-img absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent z-10"></div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/80 border border-white/10 text-neutral-300">
+              VENTURE + UI/UX // 2025
+            </div>
+            <div class="absolute bottom-5 left-5 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 002</span>
+              <h3 class="font-syne font-bold text-xl sm:text-2xl text-white">PARKINGLY PLATFORM</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Smart Urban Mobility · Venture Brand Identity &amp; Interface Design System</p>
+        </div>
+
+        <!-- Case 03: Auteur Gastronomy & Spatial -->
+        <div class="portfolio-card md:col-span-5 group cursor-pointer" data-category="photography identity" data-title="Auteur Gastronomy &amp; Spatial" data-sector="Haute Cuisine &amp; Hospitality · Albuquerque // Mexico City" data-discipline="15+ Yrs Chef Leadership · Degustation Art Direction &amp; Spatial Identity" data-desc="Translating fifteen years of executive kitchen leadership into multi-sensory hospitality identity, degustation plating geometry, and spatial brand architecture." data-image="assets/projects/gastronomy/poster.svg">
+          <div class="relative overflow-hidden rounded-lg aspect-[4/5] bg-[#111116] border border-white/10 mb-4">
+            <img src="assets/projects/gastronomy/poster.svg" alt="Auteur Gastronomy &amp; Spatial Poster" class="card-zoom-img absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent z-10"></div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/80 border border-white/10 text-neutral-300">
+              HAUTE CUISINE // 2024—2026
+            </div>
+            <div class="absolute bottom-5 left-5 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 003</span>
+              <h3 class="font-syne font-bold text-xl sm:text-2xl text-white">AUTEUR GASTRONOMY &amp; SPATIAL</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Culinary Artistry · Degustation Direction, Plating Geometry &amp; Spatial Branding</p>
+        </div>
+
+        <!-- Case 04: Commercial Film & Movement -->
+        <div class="portfolio-card md:col-span-7 group cursor-pointer" data-category="film photography" data-title="Commercial Film &amp; Movement" data-sector="High-Speed Cinema &amp; Sound · Global Commissions" data-discipline="120 FPS High-Speed Optical Capture, ACES Color Science &amp; Sound Design" data-desc="120 FPS high-speed optical capture, bespoke spatial sound design, and precision color grading for visionary products, kinetic sports, and luxury gastronomy." data-image="assets/projects/motion-reel/poster.svg">
+          <div class="relative overflow-hidden rounded-lg aspect-[16/10] bg-[#111116] border border-white/10 mb-4">
+            <img src="assets/projects/motion-reel/poster.svg" alt="Commercial Film and Movement Poster" class="card-zoom-img absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent z-10"></div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/80 border border-white/10 text-neutral-300">
+              CINEMATIC FILM // 2024—2026
+            </div>
+            <div class="absolute bottom-5 left-5 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 004</span>
+              <h3 class="font-syne font-bold text-2xl sm:text-3xl text-white">COMMERCIAL FILM &amp; MOVEMENT</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Precision Cinematography · 120 FPS High-Speed Optical Capture &amp; Audio Mixing</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 03: CAPABILITIES & DISCIPLINES -->
+    <section id="capabilities" class="py-24 border-t border-white/5 bg-[#060608]">
       <div class="max-w-7xl mx-auto px-6">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="max-w-3xl mb-16">
+          <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 03 — CAPABILITIES ]</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-4">THE REPERTOIRE</h2>
+          <p class="text-neutral-400 font-light text-base">
+            Disciplines orchestrated under a unified aesthetic spine. No disjointed agency handoffs.
+          </p>
+        </div>
+
+        <div class="divide-y divide-white/10 border-y border-white/10">
           
-          <!-- Left Column: Direct Inquiries & Studio Info -->
-          <div class="lg:col-span-5 flex flex-col justify-between">
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">01 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Brand Identity &amp; Systems
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Visual strategy, custom wordmarks, typographic systems, brand guidelines &amp; physical print matter.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">02 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Commercial &amp; Spatial Photography
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Hospitality architectural stills, product sculpture, and high-contrast editorial portraiture.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">03 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Cinematic Film &amp; Soundscapes
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    4K / 120 FPS high-speed commercials, launch trailers, vertical cinematic stories &amp; bespoke ambient scores.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">04 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Creative &amp; Executive Direction
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Holistic brand curation, multi-sensory hospitality choreography, and executive design consulting.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: THE METHOD / PROCESS -->
+    <section id="process" class="py-24 border-t border-white/5 bg-[#050507]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl mb-16">
+          <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 04 — THE METHODOLOGY ]</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-4">THE GRAVITATIONAL PULL</h2>
+          <p class="text-neutral-400 font-light text-base">
+            A three-phase progression from primordial conception to polished cultural artifact.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="p-8 rounded-lg bg-[#0b0b0e] border border-white/5 relative group hover:border-amber-400/40 transition-all duration-300">
+            <span class="text-4xl font-syne font-extrabold text-neutral-700 group-hover:text-amber-400/40 transition-colors block mb-6">01</span>
+            <span class="text-xs font-mono text-amber-400 block mb-2">// PHASE I</span>
+            <h3 class="font-syne font-bold text-xl text-white mb-3">EXTRACTION</h3>
+            <p class="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+              Immersion in your brand's core tension. We dissect historical context, competitor monotony, and aesthetic opportunities to define a razor-sharp conceptual foundation.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-lg bg-[#0b0b0e] border border-white/5 relative group hover:border-amber-400/40 transition-all duration-300">
+            <span class="text-4xl font-syne font-extrabold text-neutral-700 group-hover:text-amber-400/40 transition-colors block mb-6">02</span>
+            <span class="text-xs font-mono text-amber-400 block mb-2">// PHASE II</span>
+            <h3 class="font-syne font-bold text-xl text-white mb-3">CODIFICATION</h3>
+            <p class="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+              Translating concept into tactile form. Custom wordmarks, calibrated color palettes, lighting formulas, and typographic hierarchy designed to withstand digital fatigue.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-lg bg-[#0b0b0e] border border-white/5 relative group hover:border-amber-400/40 transition-all duration-300">
+            <span class="text-4xl font-syne font-extrabold text-neutral-700 group-hover:text-amber-400/40 transition-colors block mb-6">03</span>
+            <span class="text-xs font-mono text-amber-400 block mb-2">// PHASE III</span>
+            <h3 class="font-syne font-bold text-xl text-white mb-3">REALIZATION</h3>
+            <p class="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+              Production, cinematic shoot execution, grading, web engineering, and final delivery of master archives ready to make an indelible mark on the world.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: CONTACT / INITIATION -->
+    <section id="contact" class="py-24 border-t border-white/5 bg-[#030304]">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 05 — INITIATION ]</span>
+            <h2 class="font-syne text-4xl sm:text-6xl font-extrabold text-white leading-none mb-6">
+              LET’S BRING YOUR VISION TO LIGHT.
+            </h2>
+            <p class="text-neutral-400 font-light text-sm sm:text-base leading-relaxed">
+              We take on a curated quota of 3 projects per quarter to preserve uncompromising creative depth. Reach out to discuss identity, photography, or cinematic commissions.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-white/10 font-mono text-xs">
             <div>
-              <div class="text-xs font-mono tracking-widest text-amberAccent uppercase mb-2">INITIATE COMMISSION // DIRECT CHANNEL</div>
-              <h2 class="font-syne font-extrabold text-4xl sm:text-5xl text-white tracking-tight leading-none mb-6">
-                LET'S SHAPE<br>WHAT'S NEXT.
-              </h2>
-              <p class="text-neutral-300 font-sans font-light text-base leading-relaxed mb-8">
-                We accept a strictly limited number of commissions per quarter to ensure deep, obsessive focus. Whether you need a ground-up brand architecture, a digital overhaul, or commercial film direction, tell us about your vision.
-              </p>
+              <span class="text-neutral-500 block mb-1">DIRECT TRANSMISSION:</span>
+              <a href="mailto:hello@visionstudio.agency" class="text-neutral-200 hover:text-amber-400 transition-colors">hello@visionstudio.agency</a>
+            </div>
+            <div>
+              <span class="text-neutral-500 block mb-1">HEADQUARTERS &amp; COMMISSIONS:</span>
+              <span class="text-neutral-200">ALBUQUERQUE // GLOBAL COMMISSIONS</span>
+            </div>
+            <div>
+              <span class="text-neutral-500 block mb-1">PRIVATE CONSULTATION:</span>
+              <a href="#contact" class="text-amber-400 hover:underline">Reserve 25-min Director Discovery Call ↗</a>
+            </div>
+          </div>
+        </div>
 
-              <!-- Direct Email & Signal Coordinates -->
-              <div class="space-y-4 font-mono text-xs text-ash border-t border-white/10 pt-6">
-                <div>
-                  <span class="text-neutral-500 block mb-1">DIRECT INQUIRIES</span>
-                  <a href="mailto:hello@visionstudio.agency" class="text-white text-base font-bold hover:text-amberAccent transition-colors">
-                    hello@visionstudio.agency ↗
-                  </a>
-                </div>
-                <div>
-                  <span class="text-neutral-500 block mb-1">PHYSICAL HEADQUARTERS</span>
-                  <span class="text-zinc-300">Albuquerque, New Mexico, USA</span>
-                </div>
-                <div>
-                  <span class="text-neutral-500 block mb-1">COORDINATES &amp; TIMEZONE</span>
-                  <span class="text-zinc-300">35.0844° N, 106.6504° W // UTC-7 (MST)</span>
-                </div>
+        <!-- Minimalist Interactive Form -->
+        <div class="lg:col-span-7 bg-[#0b0b0f] p-8 sm:p-10 rounded-xl border border-white/10 relative">
+          <form id="inquiryForm" class="space-y-6">
+            <div>
+              <label for="clientName" class="block font-mono text-xs text-neutral-400 mb-2">01 // YOUR NAME OR ENTERPRISE</label>
+              <input type="text" id="clientName" required placeholder="Jordan Vance — Acme Ventures" class="w-full bg-transparent border-b border-white/20 pb-3 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors">
+            </div>
+
+            <div>
+              <label for="clientEmail" class="block font-mono text-xs text-neutral-400 mb-2">02 // YOUR EMAIL ADDRESS</label>
+              <input type="email" id="clientEmail" required placeholder="jordan@acme.com" class="w-full bg-transparent border-b border-white/20 pb-3 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors">
+            </div>
+
+            <div>
+              <span class="block font-mono text-xs text-neutral-400 mb-3">03 // SCOPE OF ENGAGEMENT</span>
+              <div class="flex flex-wrap gap-2.5">
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Brand Identity</button>
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Commercial Photography</button>
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Cinematic Motion &amp; Reels</button>
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Full Re-Brand</button>
               </div>
             </div>
 
-            <!-- Availability Note -->
-            <div class="mt-8 p-4 rounded-lg bg-surface border border-white/10 flex items-center gap-3">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 flex-shrink-0 animate-ping"></span>
-              <span class="text-xs font-mono text-zinc-300">
-                Current Booking Window: <strong>Q4 2026 / Q1 2027</strong> Commissions.
-              </span>
+            <div>
+              <label for="projectBrief" class="block font-mono text-xs text-neutral-400 mb-2">04 // THE ESSENCE OF YOUR PROJECT</label>
+              <textarea id="projectBrief" rows="3" required placeholder="Tell us about the project, your timeline, and what makes your vision distinct..." class="w-full bg-transparent border-b border-white/20 pb-3 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors resize-none"></textarea>
             </div>
+
+            <button type="submit" class="w-full py-4 bg-amber-400 hover:bg-amber-300 text-black font-mono font-bold text-xs tracking-widest uppercase rounded transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span>TRANSMIT INQUIRY</span>
+              <span>✦</span>
+            </button>
+          </form>
+
+          <div id="formSuccess" class="hidden absolute inset-0 bg-[#0b0b0f] rounded-xl flex flex-col items-center justify-center p-8 text-center">
+            <span class="text-4xl text-amber-400 mb-4">✦</span>
+            <h4 class="font-syne font-bold text-2xl text-white mb-2">INQUIRY TRANSMITTED</h4>
+            <p class="text-neutral-400 text-xs font-mono max-w-sm mb-6">
+              Your message has penetrated the void. We review all communications personally within 24 hours.
+            </p>
+            <button id="resetFormBtn" type="button" class="px-4 py-2 border border-white/20 text-xs font-mono rounded text-neutral-300 hover:text-white cursor-pointer">SEND ANOTHER MESSAGE</button>
           </div>
-
-          <!-- Right Column: Interactive Commission Form -->
-          <div class="lg:col-span-7">
-            <form id="inquiryForm" class="p-8 sm:p-10 rounded-2xl bg-surface border border-white/10 space-y-6">
-              
-              <!-- Scope Selection Chips -->
-              <div>
-                <label class="block text-xs font-mono tracking-wider text-ash uppercase mb-3">
-                  01 // Commission Scope (Select all that apply)
-                </label>
-                <div class="flex flex-wrap gap-2.5" id="scopeChips">
-                  <button type="button" class="scope-chip px-3.5 py-2 rounded-lg bg-black/40 border border-white/15 text-xs font-mono text-zinc-300 hover:border-amberAccent hover:text-white transition-all cursor-pointer" data-value="brand">
-                    Brand Identity
-                  </button>
-                  <button type="button" class="scope-chip px-3.5 py-2 rounded-lg bg-black/40 border border-white/15 text-xs font-mono text-zinc-300 hover:border-amberAccent hover:text-white transition-all cursor-pointer" data-value="digital">
-                    Web &amp; Digital Engineering
-                  </button>
-                  <button type="button" class="scope-chip px-3.5 py-2 rounded-lg bg-black/40 border border-white/15 text-xs font-mono text-zinc-300 hover:border-amberAccent hover:text-white transition-all cursor-pointer" data-value="film">
-                    Commercial Cinema &amp; 120fps Reel
-                  </button>
-                  <button type="button" class="scope-chip px-3.5 py-2 rounded-lg bg-black/40 border border-white/15 text-xs font-mono text-zinc-300 hover:border-amberAccent hover:text-white transition-all cursor-pointer" data-value="culinary">
-                    Culinary &amp; Spatial Direction
-                  </button>
-                </div>
-              </div>
-
-              <!-- Contact Inputs -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label for="clientName" class="block text-xs font-mono text-ash uppercase mb-2">Your Name *</label>
-                  <input type="text" id="clientName" required class="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/15 text-white font-sans text-sm focus:outline-none focus:border-amberAccent transition-colors placeholder:text-neutral-600" placeholder="e.g. Jordan Vance">
-                </div>
-                <div>
-                  <label for="clientEmail" class="block text-xs font-mono text-ash uppercase mb-2">Work Email *</label>
-                  <input type="email" id="clientEmail" required class="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/15 text-white font-sans text-sm focus:outline-none focus:border-amberAccent transition-colors placeholder:text-neutral-600" placeholder="jordan@company.com">
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label for="clientCompany" class="block text-xs font-mono text-ash uppercase mb-2">Company / Organization</label>
-                  <input type="text" id="clientCompany" class="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/15 text-white font-sans text-sm focus:outline-none focus:border-amberAccent transition-colors placeholder:text-neutral-600" placeholder="e.g. Acme Ventures">
-                </div>
-                <div>
-                  <label for="projectBudget" class="block text-xs font-mono text-ash uppercase mb-2">Target Investment</label>
-                  <select id="projectBudget" class="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/15 text-white font-mono text-xs focus:outline-none focus:border-amberAccent transition-colors">
-                    <option value="tier-1">$15,000 — $30,000 USD</option>
-                    <option value="tier-2">$30,000 — $60,000 USD</option>
-                    <option value="tier-3">$60,000+ USD</option>
-                    <option value="custom">Bespoke Retainer</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label for="projectBrief" class="block text-xs font-mono text-ash uppercase mb-2">Project Vision &amp; Timeline</label>
-                <textarea id="projectBrief" rows="4" required class="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/15 text-white font-sans text-sm focus:outline-none focus:border-amberAccent transition-colors placeholder:text-neutral-600 resize-none" placeholder="Describe the mission, key challenges, desired deliverables, and intended launch date..."></textarea>
-              </div>
-
-              <!-- Submit CTA -->
-              <div>
-                <button type="submit" id="submitBtn" class="w-full py-4 rounded-lg bg-amberAccent hover:bg-amber-300 text-black font-syne font-extrabold text-sm tracking-wider uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amberAccent/10">
-                  <span>TRANSMIT COMMISSION BRIEF ↗</span>
-                </button>
-              </div>
-
-              <div id="formFeedback" class="hidden p-4 rounded-lg text-xs font-mono"></div>
-            </form>
-          </div>
-
         </div>
 
       </div>
@@ -762,123 +483,55 @@
 
   </main>
 
-  <!-- ==================== COLOPHON & FOOTER ==================== -->
-  <footer class="border-t border-white/10 bg-obsidian py-12 text-ash text-xs font-mono">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-white/5 py-10 bg-[#030304]">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-[11px] text-neutral-500">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400">✦</span>
+        <span>VISION © 2026 // ALL RIGHTS RESERVED</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <span>ALBUQUERQUE // GLOBAL COMMISSIONS</span>
+      </div>
+
       <div>
-        <div class="flex items-center gap-3 text-white font-syne font-black text-sm mb-1">
-          <span class="w-2 h-2 rounded-full bg-amberAccent"></span>
-          VISION STUDIO
-        </div>
-        <p class="text-neutral-500">
-          ALBUQUERQUE, NM // GLOBAL COMMISSIONS // EST. 2024
-        </p>
+        <span>CRAFTED IN LUX IN TENEBRIS</span>
       </div>
-
-      <div class="flex flex-wrap gap-6 text-neutral-400">
-        <a href="#work" class="hover:text-white transition-colors">Archive</a>
-        <a href="#studio" class="hover:text-white transition-colors">Studio Ethos</a>
-        <a href="#services" class="hover:text-white transition-colors">Disciplines</a>
-        <a href="#contact" class="hover:text-white transition-colors">Inquiry</a>
-        <a href="https://github.com/oshimomoto1111/creative-studio" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub ↗</a>
-      </div>
-
-      <div class="text-right text-neutral-500">
-        <div>ALL RIGHTS RESERVED © 2026 VISION</div>
-        <div>SWISS RIGOR // CULINARY PRECISION</div>
-      </div>
-
     </div>
   </footer>
 
-  <!-- ==================== MODERN CASE STUDY MODAL DIALOG ==================== -->
-  <dialog id="caseStudyModal" class="case-study-modal" aria-labelledby="modalProjectTitle">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-    
-    <div class="modal-card">
+  <!-- ==================== CASE STUDY MODAL DIALOG ==================== -->
+  <div id="caseModal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden items-center justify-center p-6" role="dialog" aria-modal="true">
+    <div class="bg-[#0e0e12] border border-white/10 rounded-xl max-w-2xl w-full p-8 relative space-y-6">
+      <button id="closeModalBtn" class="absolute top-6 right-6 text-neutral-400 hover:text-white font-mono text-sm cursor-pointer" aria-label="Close modal">[ESC / ✕]</button>
       
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <div class="flex items-center gap-3">
-          <span id="modalProjectTag" class="px-2.5 py-1 rounded bg-amberAccent/10 text-amberAccent border border-amberAccent/30 text-[11px] font-mono uppercase">
-            SPORTS EXCELLENCE
-          </span>
-          <span id="modalProjectYear" class="text-xs font-mono text-ash">2025</span>
-        </div>
-        <button id="closeModalBtn" class="modal-close-btn" aria-label="Close Case Study">
-          ✕
-        </button>
+      <div>
+        <span id="modalCategory" class="text-amber-400 font-mono text-xs tracking-wider block mb-1">CATEGORY</span>
+        <h3 id="modalTitle" class="font-syne font-extrabold text-2xl sm:text-3xl text-white">PROJECT TITLE</h3>
+        <span id="modalSector" class="text-neutral-500 font-mono text-xs block mt-1">SECTOR &amp; LOCATION</span>
       </div>
 
-      <!-- Modal Body (Deep-Dive Metadata Pentagram Style) -->
-      <div class="modal-content">
-        
-        <h2 id="modalProjectTitle" class="font-syne font-black text-3xl sm:text-4xl text-white mb-2">
-          Duke City Fencing Club
-        </h2>
-        
-        <p id="modalProjectSubtitle" class="text-base text-zinc-300 font-sans font-light mb-8">
-          Brand Reinvention, Modern Web Architecture &amp; High-Speed Cinematography
-        </p>
-
-        <!-- Media Hero Frame -->
-        <div class="modal-media-frame mb-8 rounded-xl overflow-hidden border border-white/10 bg-black">
-          <img id="modalProjectImage" src="assets/projects/duke-city-fencing/poster.svg" alt="Project Showcase" class="w-full max-h-[520px] object-cover">
+      <div class="h-64 sm:h-80 rounded-lg bg-neutral-900 border border-white/10 overflow-hidden relative">
+        <img id="modalImg" src="assets/projects/duke-city-fencing/poster.svg" alt="Project Visual Preview" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0e0e12] via-transparent to-black/30 pointer-events-none"></div>
+        <div class="absolute bottom-3 left-3 font-mono text-[10px] text-amber-400 bg-black/80 px-2.5 py-1 rounded border border-white/10 backdrop-blur-sm">
+          ✦ MASTER ASSET
         </div>
-
-        <!-- Pentagram-style 4-column Metadata Bar -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-white/10 text-xs font-mono mb-8">
-          <div>
-            <span class="text-neutral-500 block mb-1">CLIENT</span>
-            <span id="modalMetaClient" class="text-white font-semibold">Duke City Fencing Club</span>
-          </div>
-          <div>
-            <span class="text-neutral-500 block mb-1">LOCATION</span>
-            <span id="modalMetaLocation" class="text-white font-semibold">Albuquerque, NM</span>
-          </div>
-          <div>
-            <span class="text-neutral-500 block mb-1">SERVICES</span>
-            <span id="modalMetaServices" class="text-white font-semibold">Identity, Web, Motion</span>
-          </div>
-          <div>
-            <span class="text-neutral-500 block mb-1">STATUS</span>
-            <span id="modalMetaStatus" class="text-emerald-400 font-semibold">Live in Production</span>
-          </div>
-        </div>
-
-        <!-- Narrative Blocks -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm font-sans leading-relaxed text-neutral-300">
-          <div>
-            <h4 class="font-mono text-xs text-amberAccent uppercase tracking-widest mb-3">01 // THE CHALLENGE</h4>
-            <p id="modalNarrativeChallenge" class="font-light">
-              Duke City Fencing Club needed to break free from outdated sports club aesthetics and reflect the electrifying, razor-sharp discipline of modern Olympic-caliber fencing.
-            </p>
-          </div>
-          <div>
-            <h4 class="font-mono text-xs text-amberAccent uppercase tracking-widest mb-3">02 // THE STRATEGY &amp; CRAFT</h4>
-            <p id="modalNarrativeStrategy" class="font-light">
-              We engineered a stark monochrome visual identity punctuated by electric amber accents, paired with 120 FPS high-speed blade cinematography and a seamless web reservation platform.
-            </p>
-          </div>
-        </div>
-
-        <!-- Dropzone Callout for Oscar -->
-        <div class="mt-8 p-4 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-zinc-400 flex items-center justify-between">
-          <div>
-            📁 <strong>Media Slot Ready</strong>: Raw video and high-res stills can be dropped into <code class="text-amberAccent">assets/projects/&lt;id&gt;/</code>.
-          </div>
-          <button id="modalActionBtn" class="px-4 py-2 rounded bg-white text-black font-bold hover:bg-amberAccent transition-colors">
-            CLOSE PREVIEW
-          </button>
-        </div>
-
       </div>
 
+      <p id="modalDesc" class="text-neutral-300 text-sm font-light leading-relaxed">
+        Description...
+      </p>
+
+      <div class="flex items-center justify-between pt-4 border-t border-white/10 font-mono text-xs">
+        <span class="text-amber-400">STATUS: DELIVERED // MASTER ARCHIVE</span>
+        <button id="returnModalBtn" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded cursor-pointer">RETURN TO ARCHIVE</button>
+      </div>
     </div>
-  </dialog>
+  </div>
 
-  <!-- Core JavaScript Engine -->
+  <!-- Core Scripts -->
   <script src="main.js"></script>
 </body>
 </html>
