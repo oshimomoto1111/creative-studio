@@ -98,52 +98,19 @@ body {
    ========================================================================== */
 .hero-black-hole-stage {
   position: absolute;
-  top: 48%;
-  right: -5%;
-  transform: translateY(-50%);
-  width: 960px;
-  height: 600px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 0 100px rgba(229, 169, 60, 0.4));
-  transition: opacity 0.5s ease;
+  overflow: hidden;
+  display: block;
 }
 
 #blackHoleCanvas {
   width: 100%;
   height: 100%;
   display: block;
-}
-
-@media (max-width: 1200px) {
-  .hero-black-hole-stage {
-    right: -12%;
-    width: 820px;
-    height: 520px;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-black-hole-stage {
-    top: 40%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 680px;
-    height: 440px;
-    opacity: 0.7;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-black-hole-stage {
-    top: 30%;
-    width: 480px;
-    height: 320px;
-    opacity: 0.65;
-  }
 }
 
 /* Layout Utilities (Fluid Container & Flex/Grid) */
