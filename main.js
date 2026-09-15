@@ -28,12 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function resizeBlackHole() {
       const rect = bhCanvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      bhWidth = bhCanvas.width = rect.width * dpr;
-      bhHeight = bhCanvas.height = rect.height * dpr;
-      bhCtx.scale(dpr, dpr);
+      bhWidth = rect.width * dpr;
+      bhHeight = rect.height * dpr;
+      bhCanvas.width = bhWidth;
+      bhCanvas.height = bhHeight;
       cx = rect.width / 2;
       cy = rect.height / 2;
-      eventHorizonRadius = Math.min(rect.width, rect.height) * 0.17;
+      eventHorizonRadius = Math.min(rect.width, rect.height) * 0.18;
     }
     window.addEventListener('resize', resizeBlackHole);
     resizeBlackHole();
@@ -111,9 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderBlackHole() {
       const rect = bhCanvas.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
-      bhCtx.clearRect(0, 0, w, h);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      bhCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      bhCtx.clearRect(0, 0, rect.width, rect.height);
 
       tiltX += (targetTiltX - tiltX) * 0.05;
       tiltY += (targetTiltY - tiltY) * 0.05;
