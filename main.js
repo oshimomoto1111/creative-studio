@@ -217,15 +217,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalSector = document.getElementById('modalSector');
   const modalCategory = document.getElementById('modalCategory');
   const modalDesc = document.getElementById('modalDesc');
+  const modalImg = document.getElementById('modalImg');
   const closeModalBtn = document.getElementById('closeModalBtn');
   const returnModalBtn = document.getElementById('returnModalBtn');
 
-  window.openCaseModal = function(title, sector, category, desc) {
+  window.openCaseModal = function(title, sector, category, desc, image) {
     if (!modal) return;
     modalTitle.textContent = title;
     modalSector.textContent = sector;
     modalCategory.textContent = category;
     modalDesc.textContent = desc;
+    if (modalImg) {
+      modalImg.src = image || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=85';
+    }
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');
@@ -257,7 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const sector = card.getAttribute('data-sector') || 'Sector';
       const discipline = card.getAttribute('data-discipline') || 'Discipline';
       const desc = card.getAttribute('data-desc') || 'Case description...';
-      openCaseModal(title, sector, discipline, desc);
+      const image = card.getAttribute('data-image') || '';
+      openCaseModal(title, sector, discipline, desc, image);
     });
   });
 
