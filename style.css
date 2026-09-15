@@ -1,20 +1,27 @@
 /* ==========================================================================
-   ATELIER VOID — CINEMATIC CORE STYLESHEET
-   Design Philosophy: Ex Nihilo / Lux in Tenebris (Dark Mode Dominant)
+   VISION STUDIO — CORE EDITORIAL STYLESHEET
+   Design Synthesis:
+   - PORTO ROCHA: Editorial brutalism, live utility time, dual Grid/Index view
+   - Pentagram: Work-first archival rigor, Swiss typography, disciplined space
+   - &Walsh: Kinetic hover reveals, floating preview card physics
+   - Fuzzco: Human warmth and the culinary spine narrative
+   - Anagrama: Contemporary luxury minimalism, obsidian & amber palette
    ========================================================================== */
 
-/* Modern CSS Reset & Baseline Variables */
+/* Modern CSS Reset & Baseline Custom Properties */
 :root {
-  --void-bg: #050505;
-  --void-card: #0e0e11;
-  --void-card-hover: #141418;
-  --void-border: rgba(255, 255, 255, 0.08);
-  --void-border-hover: rgba(229, 169, 60, 0.35);
+  --obsidian: #08080a;
+  --surface: #111114;
+  --surface-hover: #18181d;
+  --border-dim: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.16);
+  --border-focus: #e5a93c;
+  --chalk: #f4f4f6;
+  --ash: #8e8e93;
+  --dark-ash: #27272a;
   --solar-amber: #e5a93c;
-  --solar-amber-dim: rgba(229, 169, 60, 0.15);
-  --pure-chalk: #f5f5f7;
-  --muted-silver: #8e8e93;
-  --dark-ash: #1f1f24;
+  --cyan-accent: #22d3ee;
+  --blue-accent: #60a5fa;
 
   --font-display: 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -40,8 +47,8 @@
 }
 
 html {
-  background-color: var(--void-bg);
-  color: var(--pure-chalk);
+  background-color: var(--obsidian);
+  color: var(--chalk);
   font-family: var(--font-body);
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -50,225 +57,300 @@ html {
 }
 
 body {
-  background-color: var(--void-bg);
-  color: var(--pure-chalk);
+  background-color: var(--obsidian);
+  color: var(--chalk);
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
 
-/* Typography Utility Classes */
-.font-syne { font-family: var(--font-display); }
-.font-mono { font-family: var(--font-mono); }
-.bg-void { background-color: var(--void-bg); }
-.text-chalk { color: var(--pure-chalk); }
+/* ==========================================================================
+   TACTILE FILM GRAIN OVERLAY
+   ========================================================================== */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
 
-/* Text Gradient */
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #e2e2e6 50%, var(--solar-amber) 100%);
+/* ==========================================================================
+   AMBIENT CURSOR SPOTLIGHT
+   ========================================================================== */
+.spotlight-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(229, 169, 60, 0.035),
+    transparent 70%
+  );
+  transition: opacity 0.5s ease;
+}
+
+/* ==========================================================================
+   EDITORIAL HEADLINE HIGHLIGHT
+   ========================================================================== */
+.headline-highlight {
+  background: linear-gradient(135deg, #ffffff 20%, #e2e2e6 60%, var(--solar-amber) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* 35mm Analog Film Grain Overlay */
-.film-grain {
+/* ==========================================================================
+   &WALSH FLOATING CURSOR PREVIEW CARD
+   ========================================================================== */
+.floating-preview {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 220px;
   pointer-events: none;
-  z-index: 999;
-  opacity: 0.038;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 60;
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.92);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
-/* Ambient Cursor Spotlight Glow */
-.spotlight-glow {
-  position: fixed;
-  pointer-events: none;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(229, 169, 60, 0.07) 0%, rgba(229, 169, 60, 0.01) 45%, transparent 70%);
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  transition: opacity 0.3s ease;
+.floating-preview.active {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+}
+
+.preview-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0d0d10;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85),
+              0 0 30px rgba(229, 169, 60, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #000;
+}
+
+.preview-caption {
+  padding: 8px 12px;
+  background: #111114;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--solar-amber);
+  letter-spacing: 1px;
+}
+
+.preview-name {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Interactive preview trigger text link */
+.preview-trigger {
+  color: #ffffff;
+  border-bottom: 1px dashed rgba(229, 169, 60, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 400;
+}
+
+.preview-trigger:hover {
+  color: var(--solar-amber);
+  border-bottom-color: var(--solar-amber);
+  background-color: rgba(229, 169, 60, 0.08);
 }
 
 /* ==========================================================================
-   RELATIVISTIC GARGANTUA BLACK HOLE (THE CREATIVE VOID)
+   PORTO ROCHA DUAL VIEW SWITCHER
    ========================================================================== */
-.hero-black-hole-stage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-  display: block;
+.view-btn.active {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-#blackHoleCanvas {
-  width: 100%;
-  height: 100%;
-  display: block;
+/* Index Table Styling */
+.index-row {
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Layout Utilities (Fluid Container & Flex/Grid) */
-.max-w-7xl {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
+.index-row:hover td {
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
-.mx-auto { margin-left: auto; margin-right: auto; }
-.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-.py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
-.pt-28 { padding-top: 7rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-3 { margin-bottom: 0.75rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-6 { margin-bottom: 1.5rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mb-12 { margin-bottom: 3rem; }
-.mb-16 { margin-bottom: 4rem; }
-
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.items-end { align-items: flex-end; }
-.items-baseline { align-items: baseline; }
-.justify-between { justify-content: space-between; }
-.justify-center { justify-content: center; }
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 0.75rem; }
-.gap-4 { gap: 1rem; }
-.gap-6 { gap: 1.5rem; }
-.gap-8 { gap: 2rem; }
-.gap-12 { gap: 3rem; }
-.gap-16 { gap: 4rem; }
-.flex-wrap { flex-wrap: wrap; }
-
-.grid { display: grid; }
-.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-.aspect-\[16\/10\] { aspect-ratio: 16 / 10; }
-.aspect-\[4\/5\] { aspect-ratio: 4 / 5; }
-
-/* Grid Responsive Columns */
-@media (min-width: 768px) {
-  .md\:flex-row { flex-direction: row; }
-  .md\:items-center { align-items: center; }
-  .md\:items-end { align-items: flex-end; }
-  .md\:justify-end { justify-content: flex-end; }
-  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .md\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-  .md\:col-span-5 { grid-column: span 5 / span 5; }
-  .md\:col-span-6 { grid-column: span 6 / span 6; }
-  .md\:col-span-7 { grid-column: span 7 / span 7; }
-  .md\:flex { display: flex; }
-  .md\:text-base { font-size: 1rem; line-height: 1.5rem; }
-  .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
-  .md\:text-8xl { font-size: 6rem; line-height: 0.95; }
-}
-
-@media (min-width: 1024px) {
-  .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-  .lg\:col-span-4 { grid-column: span 4 / span 4; }
-  .lg\:col-span-5 { grid-column: span 5 / span 5; }
-  .lg\:col-span-7 { grid-column: span 7 / span 7; }
-  .lg\:col-span-8 { grid-column: span 8 / span 8; }
-  .lg\:sticky { position: sticky; }
-  .lg\:top-28 { top: 7rem; }
-}
-
-/* Portfolio Card Zoom & Lighting */
-.portfolio-card {
-  position: relative;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.card-zoom-img {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-}
-
-.portfolio-card:hover .card-zoom-img {
-  transform: scale(1.045);
-  filter: brightness(1.1) contrast(1.05);
-}
-
-.portfolio-card:hover h3 {
-  color: var(--solar-amber);
-  transition: color 0.3s ease;
-}
-
-/* Capability Row Interactions */
-.capability-row {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.capability-row:hover {
-  padding-left: 1rem;
-  border-bottom-color: var(--solar-amber);
-}
-
-/* Form Styles */
-input, textarea {
-  font-family: var(--font-body);
-}
-
-input:focus, textarea:focus {
-  border-color: var(--solar-amber) !important;
-  box-shadow: 0 1px 0 0 var(--solar-amber);
-}
-
-.scope-chip {
-  background: transparent;
-  transition: all 0.25s ease;
-}
-
+/* ==========================================================================
+   SCOPE SELECTION CHIPS (INQUIRY FORM)
+   ========================================================================== */
 .scope-chip.selected {
+  background-color: var(--solar-amber);
+  color: #000000;
+  font-weight: 700;
   border-color: var(--solar-amber);
-  background-color: var(--solar-amber-dim);
-  color: var(--solar-amber);
 }
 
-/* Custom Thin Scrollbar */
+/* ==========================================================================
+   TOP-LAYER ANIMATED MODAL DIALOG (MODERN WEB GUIDANCE COMPLIANT)
+   ========================================================================== */
+dialog.case-study-modal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--chalk);
+  overflow-y: auto;
+  z-index: 100;
+
+  /* Base exit/closed state */
+  opacity: 0;
+  transform: scale(0.97);
+
+  /* Mandatory discrete transitions for top layer */
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-behavior: allow-discrete;
+}
+
+/* Open State */
+dialog.case-study-modal[open] {
+  opacity: 1;
+  transform: scale(1);
+
+  /* Entry animation starting state */
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+/* Modal Backdrop */
+dialog.case-study-modal::backdrop {
+  background-color: rgba(8, 8, 10, 0);
+  backdrop-filter: blur(0px);
+  transition: display 0.3s allow-discrete,
+              overlay 0.3s allow-discrete,
+              background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+dialog.case-study-modal[open]::backdrop {
+  background-color: rgba(8, 8, 10, 0.85);
+  backdrop-filter: blur(12px);
+
+  @starting-style {
+    background-color: rgba(8, 8, 10, 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* Modal Internal Layout */
+.modal-card {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #0f0f13;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+}
+
+.modal-header {
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #141418;
+}
+
+.modal-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.modal-close-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: rotate(90deg);
+}
+
+.modal-content {
+  padding: 32px 36px 40px;
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  dialog.case-study-modal,
+  .floating-preview,
+  .spotlight-glow {
+    transform: none !important;
+    transition-duration: 0.05s !important;
+  }
+
+  @starting-style {
+    dialog.case-study-modal[open] {
+      transform: none !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: var(--obsidian);
 }
 ::-webkit-scrollbar-thumb {
-  background: #202025;
-  border-radius: 3px;
+  background: #27272a;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--solar-amber);
-}
-
-/* Keyframes & Animations */
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-.animate-pulse {
-  animation: pulseGlow 2.5s infinite ease-in-out;
-}
-
-/* Modal Transitions */
-#caseModal.active {
-  display: flex !important;
-}
-
-/* Reduced Motion Override */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .card-zoom-img { transition: none !important; }
-  .spotlight-glow { display: none !important; }
+  background: #3f3f46;
 }

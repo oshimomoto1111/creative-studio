@@ -1,0 +1,45 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgDcf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0e11"/>
+      <stop offset="60%" stop-color="#08080a"/>
+      <stop offset="100%" stop-color="#14120e"/>
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#e5a93c"/>
+      <stop offset="100%" stop-color="#7a5518"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgDcf)"/>
+  <rect x="24" y="24" width="1152" height="752" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  
+  <!-- Subtle Grid lines -->
+  <line x1="80" y1="200" x2="1120" y2="200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="80" y1="620" x2="1120" y2="620" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <!-- Fencing Target & Crossed Blades Graphic -->
+  <g transform="translate(600, 410)">
+    <circle cx="0" cy="0" r="140" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="rgba(229,169,60,0.15)" stroke-width="1" stroke-dasharray="4,6"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="rgba(229,169,60,0.3)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="4" fill="#e5a93c"/>
+
+    <!-- Foil 1 -->
+    <line x1="-180" y1="140" x2="180" y2="-140" stroke="url(#goldAcc)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-160" cy="125" r="14" fill="none" stroke="#e5a93c" stroke-width="2"/>
+    <!-- Foil 2 -->
+    <line x1="-180" y1="-140" x2="180" y2="140" stroke="url(#goldAcc)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="-160" cy="-125" r="14" fill="none" stroke="#e5a93c" stroke-width="2"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="80" y="90" font-family="'Space Mono', monospace" font-size="12" letter-spacing="3" fill="#e5a93c">01 // CLIENT COMMISSION</text>
+  <text x="80" y="135" font-family="'Syne', 'Inter', sans-serif" font-weight="800" font-size="38" fill="#ffffff" letter-spacing="-0.5">DUKE CITY FENCING CLUB</text>
+  <text x="80" y="170" font-family="'Inter', sans-serif" font-weight="400" font-size="15" fill="#8e8e93">Albuquerque, New Mexico · Athletics &amp; Heritage</text>
+
+  <!-- Metadata Bar -->
+  <text x="80" y="665" font-family="'Space Mono', monospace" font-size="11" letter-spacing="2" fill="#e5a93c">DELIVERABLES</text>
+  <text x="80" y="695" font-family="'Inter', sans-serif" font-weight="400" font-size="14" fill="#f4f4f6">Complete Web Redesign · High-Speed Kinetic Photography · 4K Promotional Cinema Reel</text>
+  <text x="1120" y="695" text-anchor="end" font-family="'Space Mono', monospace" font-size="11" fill="#8e8e93">VISION STUDIO // 2026</text>
+</svg>

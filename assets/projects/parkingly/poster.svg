@@ -1,0 +1,43 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgPark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090b10"/>
+      <stop offset="60%" stop-color="#08080a"/>
+      <stop offset="100%" stop-color="#0d1418"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgPark)"/>
+  <rect x="24" y="24" width="1152" height="752" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  
+  <line x1="80" y1="200" x2="1120" y2="200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="80" y1="620" x2="1120" y2="620" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <!-- Phone & Radar UI Graphic -->
+  <g transform="translate(600, 410)">
+    <circle cx="0" cy="0" r="160" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="rgba(229,169,60,0.12)" stroke-width="1" stroke-dasharray="3,6"/>
+    
+    <!-- Mobile Frame -->
+    <rect x="-90" y="-130" width="180" height="260" rx="24" fill="#13131a" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <rect x="-30" y="-120" width="60" height="6" rx="3" fill="#24242e"/>
+    
+    <!-- Parking Pin Icon -->
+    <circle cx="0" cy="-20" r="24" fill="rgba(229,169,60,0.15)" stroke="#e5a93c" stroke-width="1.5"/>
+    <text x="0" y="-13" text-anchor="middle" font-family="'Syne', sans-serif" font-weight="800" font-size="18" fill="#ffffff">P</text>
+    
+    <!-- UI Card -->
+    <rect x="-70" y="40" width="140" height="50" rx="10" fill="#1c1c24" stroke="rgba(229,169,60,0.25)" stroke-width="1"/>
+    <text x="-58" y="60" font-family="'Space Mono', monospace" font-size="8" fill="#e5a93c">SMART PARKING SPOT</text>
+    <text x="-58" y="77" font-family="'Inter', sans-serif" font-weight="600" font-size="11" fill="#f4f4f6">Available Now · 0.2 mi</text>
+  </g>
+
+  <!-- Typography -->
+  <text x="80" y="90" font-family="'Space Mono', monospace" font-size="12" letter-spacing="3" fill="#e5a93c">02 // VENTURE LAUNCH STRATEGY</text>
+  <text x="80" y="135" font-family="'Syne', 'Inter', sans-serif" font-weight="800" font-size="38" fill="#ffffff" letter-spacing="-0.5">PARKINGLY APP</text>
+  <text x="80" y="170" font-family="'Inter', sans-serif" font-weight="400" font-size="15" fill="#8e8e93">Urban Mobility &amp; Transit Technology · Product Launch</text>
+
+  <!-- Metadata Bar -->
+  <text x="80" y="665" font-family="'Space Mono', monospace" font-size="11" letter-spacing="2" fill="#e5a93c">DELIVERABLES</text>
+  <text x="80" y="695" font-family="'Inter', sans-serif" font-weight="400" font-size="14" fill="#f4f4f6">Launch Strategy · UI/UX Visual Architecture · Product Motion Demos · Investor Deck</text>
+  <text x="1120" y="695" text-anchor="end" font-family="'Space Mono', monospace" font-size="11" fill="#8e8e93">VISION STUDIO // 2026</text>
+</svg>

@@ -1,297 +1,438 @@
 /**
- * ATELIER VOID — CINEMATIC CORE SCRIPTS
+ * VISION STUDIO — CORE INTERACTION ENGINE
  * Modules:
- * 1. Ambient Gravitational Particle Canvas
- * 2. Pointer Spotlight Tracker
- * 3. Web Audio Ambient Drone Synthesizer
- * 4. Portfolio Category Filter Engine
- * 5. Case Study Modal Controller
- * 6. Interactive Scope Chips & Inquiry Form
+ * 1. Live Studio Utility Clock (Albuquerque MST)
+ * 2. Ambient Cursor Spotlight Tracker
+ * 3. &Walsh Floating Cursor Preview Physics (Lerp)
+ * 4. PORTO ROCHA Dual View Switcher (Grid vs Index)
+ * 5. Modern Top-Layer Case Study Modal Dialog
+ * 6. Commission Inquiry Form & Scope Chips
+ * 7. Web Audio Warm Harmonic Pad Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // =========================================================================
-  // 1. AMBIENT GRAVITATIONAL PARTICLE CANVAS
+  // 1. LIVE STUDIO UTILITY CLOCK (Albuquerque, NM MST)
   // =========================================================================
-  const canvas = document.getElementById('ambientCanvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+  const clockEl = document.getElementById('studioClock');
+  function updateStudioClock() {
+    if (!clockEl) return;
+    try {
+      const now = new Date();
+      // Format to America/Denver (Albuquerque)
+      const options = {
+        timeZone: 'America/Denver',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const formatter = new Intl.DateTimeFormat([], options);
+      const parts = formatter.formatToParts(now);
+      const timeStr = `${parts.find(p => p.type === 'hour').value}:${parts.find(p => p.type === 'minute').value}:${parts.find(p => p.type === 'second').value}`;
+      clockEl.textContent = `${timeStr} MST`;
+    } catch (err) {
+      // Fallback if timezone lookup fails
+      const fallback = new Date().toTimeString().split(' ')[0];
+      clockEl.textContent = `${fallback} MST`;
     }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+  }
+  updateStudioClock();
+  setInterval(updateStudioClock, 1000);
 
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.35;
-        this.vy = (Math.random() - 0.5) * 0.35;
-        this.radius = Math.random() * 1.5 + 0.5;
-        this.baseAlpha = Math.random() * 0.35 + 0.1;
-        this.alpha = this.baseAlpha;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
 
-        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
-          this.reset();
-        }
+  // =========================================================================
+  // 2. AMBIENT CURSOR SPOTLIGHT TRACKER
+  // =========================================================================
+  const spotlight = document.getElementById('spotlight');
+  if (spotlight) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
 
-        // Repulsion physics from mouse
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 130) {
-          this.alpha = 0.85;
-          this.x -= (dx / dist) * 1.4;
-          this.y -= (dy / dist) * 1.4;
-        } else {
-          this.alpha = this.baseAlpha;
-        }
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(229, 169, 60, ${this.alpha})`;
-        ctx.fill();
-      }
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+
+    function renderSpotlight() {
+      // Gentle smoothing
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      spotlight.style.setProperty('--mouse-x', `${currentX.toFixed(1)}px`);
+      spotlight.style.setProperty('--mouse-y', `${currentY.toFixed(1)}px`);
+      requestAnimationFrame(renderSpotlight);
     }
+    requestAnimationFrame(renderSpotlight);
+  }
 
-    const particleCount = Math.min(Math.floor(window.innerWidth / 20), 75);
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+
+  // =========================================================================
+  // 3. &WALSH FLOATING CURSOR PREVIEW PHYSICS
+  // =========================================================================
+  const previewEl = document.getElementById('floatingPreview');
+  const previewImg = document.getElementById('previewImage');
+  const previewTag = document.getElementById('previewTag');
+  const previewTitle = document.getElementById('previewTitle');
+
+  if (previewEl && previewImg && previewTag && previewTitle) {
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isHovering = false;
+
+    window.addEventListener('mousemove', (e) => {
+      // Offset slightly to the top-right of cursor
+      targetX = e.clientX + 30;
+      targetY = e.clientY - 40;
+
+      // Keep preview within screen bounds
+      const maxX = window.innerWidth - 340;
+      const maxY = window.innerHeight - 240;
+      if (targetX > maxX) targetX = e.clientX - 340;
+      if (targetY > maxY) targetY = maxY;
+      if (targetY < 20) targetY = 20;
+    }, { passive: true });
+
+    function renderPreview() {
+      if (isHovering) {
+        currentX += (targetX - currentX) * 0.18;
+        currentY += (targetY - currentY) * 0.18;
+        previewEl.style.transform = `translate3d(${currentX.toFixed(1)}px, ${currentY.toFixed(1)}px, 0) scale(1)`;
+      }
+      requestAnimationFrame(renderPreview);
     }
+    requestAnimationFrame(renderPreview);
 
-    function renderParticles() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
+    // Bind triggers
+    const triggers = document.querySelectorAll('.preview-trigger, .service-row, .index-row');
+    triggers.forEach(trigger => {
+      trigger.addEventListener('mouseenter', () => {
+        const img = trigger.getAttribute('data-preview-img');
+        const title = trigger.getAttribute('data-preview-title');
+        const tag = trigger.getAttribute('data-preview-tag');
+
+        if (img) previewImg.src = img;
+        if (title) previewTitle.textContent = title;
+        if (tag) previewTag.textContent = tag;
+
+        isHovering = true;
+        previewEl.classList.add('active');
       });
-      requestAnimationFrame(renderParticles);
-    }
-    renderParticles();
 
-    // =========================================================================
-    // 2. POINTER SPOTLIGHT TRACKER
-    // =========================================================================
-    const spotlight = document.getElementById('spotlight');
-    window.addEventListener('pointermove', (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-      if (spotlight) {
-        spotlight.style.left = `${e.clientX}px`;
-        spotlight.style.top = `${e.clientY}px`;
-      }
+      trigger.addEventListener('mouseleave', () => {
+        isHovering = false;
+        previewEl.classList.remove('active');
+      });
     });
   }
 
+
   // =========================================================================
-  // 3. WEB AUDIO AMBIENT DRONE SYNTHESIZER
+  // 4. PORTO ROCHA DUAL VIEW SWITCHER (GRID vs INDEX)
   // =========================================================================
-  let audioCtx = null;
-  let isPlaying = false;
-  let osc1 = null;
-  let osc2 = null;
-  let gainNode = null;
-  let filter = null;
+  const viewGridBtn = document.getElementById('viewGridBtn');
+  const viewIndexBtn = document.getElementById('viewIndexBtn');
+  const archiveGrid = document.getElementById('archiveGrid');
+  const archiveIndex = document.getElementById('archiveIndex');
 
-  const audioToggle = document.getElementById('audioToggle');
-  const audioIcon = document.getElementById('audioIcon');
-  const audioText = document.getElementById('audioText');
+  if (viewGridBtn && viewIndexBtn && archiveGrid && archiveIndex) {
+    viewGridBtn.addEventListener('click', () => {
+      viewGridBtn.classList.add('active');
+      viewGridBtn.setAttribute('aria-pressed', 'true');
+      viewIndexBtn.classList.remove('active');
+      viewIndexBtn.setAttribute('aria-pressed', 'false');
 
-  if (audioToggle) {
-    audioToggle.addEventListener('click', () => {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
+      archiveGrid.classList.remove('hidden');
+      archiveIndex.classList.add('hidden');
+    });
 
-      if (!isPlaying) {
-        audioCtx.resume();
-        osc1 = audioCtx.createOscillator();
-        osc2 = audioCtx.createOscillator();
-        gainNode = audioCtx.createGain();
-        filter = audioCtx.createBiquadFilter();
+    viewIndexBtn.addEventListener('click', () => {
+      viewIndexBtn.classList.add('active');
+      viewIndexBtn.setAttribute('aria-pressed', 'true');
+      viewGridBtn.classList.remove('active');
+      viewGridBtn.setAttribute('aria-pressed', 'false');
 
-        // 55 Hz (Fundamental A1) + 110 Hz Harmonic (A2)
-        osc1.type = 'sine';
-        osc1.frequency.setValueAtTime(55, audioCtx.currentTime);
-
-        osc2.type = 'triangle';
-        osc2.frequency.setValueAtTime(110, audioCtx.currentTime);
-
-        // Lowpass warm filter
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(180, audioCtx.currentTime);
-
-        // Soft fade-in ramp
-        gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 3);
-
-        osc1.connect(filter);
-        osc2.connect(filter);
-        filter.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-
-        osc1.start();
-        osc2.start();
-
-        isPlaying = true;
-        if (audioIcon) audioIcon.textContent = '🔊';
-        if (audioText) audioText.textContent = 'SOUND: ON';
-        audioToggle.style.borderColor = 'var(--solar-amber)';
-        audioToggle.style.color = 'var(--solar-amber)';
-      } else {
-        // Soft fade-out ramp
-        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
-        setTimeout(() => {
-          try {
-            osc1.stop();
-            osc2.stop();
-          } catch (e) {
-            // Cleanup safe guard
-          }
-          isPlaying = false;
-        }, 1200);
-
-        if (audioIcon) audioIcon.textContent = '🔈';
-        if (audioText) audioText.textContent = 'SOUND: OFF';
-        audioToggle.style.borderColor = '';
-        audioToggle.style.color = '';
-      }
+      archiveIndex.classList.remove('hidden');
+      archiveGrid.classList.add('hidden');
     });
   }
 
-  // =========================================================================
-  // 4. PORTFOLIO FILTER ENGINE
-  // =========================================================================
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const portfolioCards = document.querySelectorAll('.portfolio-card');
-
-  window.filterWorks = function(category) {
-    filterBtns.forEach(btn => {
-      btn.classList.remove('active', 'border-amber-400', 'bg-amber-400/10', 'text-amber-300');
-      btn.classList.add('border-white/10', 'text-neutral-400');
-    });
-
-    const activeBtn = document.querySelector(`[data-filter="${category}"]`);
-    if (activeBtn) {
-      activeBtn.classList.add('active', 'border-amber-400', 'bg-amber-400/10', 'text-amber-300');
-      activeBtn.classList.remove('border-white/10', 'text-neutral-400');
-    }
-
-    portfolioCards.forEach(card => {
-      const cardCats = card.getAttribute('data-category') || '';
-      if (category === 'all' || cardCats.includes(category)) {
-        card.style.display = 'block';
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 50);
-      } else {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(15px)';
-        setTimeout(() => {
-          card.style.display = 'none';
-        }, 300);
-      }
-    });
-  };
 
   // =========================================================================
-  // 5. CASE STUDY MODAL DIALOG
+  // 5. MODERN TOP-LAYER CASE STUDY MODAL DIALOG
   // =========================================================================
-  const modal = document.getElementById('caseModal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalSector = document.getElementById('modalSector');
-  const modalCategory = document.getElementById('modalCategory');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalImg = document.getElementById('modalImg');
+  const modal = document.getElementById('caseStudyModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
-  const returnModalBtn = document.getElementById('returnModalBtn');
+  const modalActionBtn = document.getElementById('modalActionBtn');
+  const modalBackdrop = document.getElementById('modalBackdrop');
 
-  window.openCaseModal = function(title, sector, category, desc, image) {
-    if (!modal) return;
-    modalTitle.textContent = title;
-    modalSector.textContent = sector;
-    modalCategory.textContent = category;
-    modalDesc.textContent = desc;
-    if (modalImg) {
-      modalImg.src = image || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=85';
+  const modalProjectTag = document.getElementById('modalProjectTag');
+  const modalProjectYear = document.getElementById('modalProjectYear');
+  const modalProjectTitle = document.getElementById('modalProjectTitle');
+  const modalProjectSubtitle = document.getElementById('modalProjectSubtitle');
+  const modalProjectImage = document.getElementById('modalProjectImage');
+  const modalMetaClient = document.getElementById('modalMetaClient');
+  const modalMetaLocation = document.getElementById('modalMetaLocation');
+  const modalMetaServices = document.getElementById('modalMetaServices');
+  const modalMetaStatus = document.getElementById('modalMetaStatus');
+  const modalNarrativeChallenge = document.getElementById('modalNarrativeChallenge');
+  const modalNarrativeStrategy = document.getElementById('modalNarrativeStrategy');
+
+  // Case study project registry
+  const projectsData = {
+    'duke-city-fencing': {
+      tag: 'SPORTS EXCELLENCE',
+      year: '2025',
+      title: 'Duke City Fencing Club',
+      subtitle: 'Brand Reinvention, Modern Web Architecture & High-Speed Cinematography',
+      image: 'assets/projects/duke-city-fencing/poster.svg',
+      client: 'Duke City Fencing Club',
+      location: 'Albuquerque, NM',
+      services: 'Identity, Web Overhaul, Campaign Film',
+      status: 'Live in Production',
+      challenge: 'Duke City Fencing Club needed to break free from dusty recreational sports tropes and establish a commanding visual identity honoring the elite, razor-sharp speed of Olympic saber and foil in the American Southwest.',
+      strategy: 'We built a high-contrast brutalist design system grounded in obsidian and electric amber. We directed and produced high-speed promotional footage showcasing the raw kinetic tension between blade and athlete, paired with an instantaneous class booking platform.'
+    },
+    'parkingly': {
+      tag: 'VENTURE DESIGN & UI/UX',
+      year: '2025',
+      title: 'Parkingly Platform',
+      subtitle: 'Zero-Friction Urban Mobility Ecosystem & Product Design System',
+      image: 'assets/projects/parkingly/poster.svg',
+      client: 'Parkingly Inc.',
+      location: 'San Francisco / Global',
+      services: 'Product Strategy, UI/UX, Launch Campaign',
+      status: 'Venture Live',
+      challenge: 'Urban parking is notoriously fragmented, stressful, and clunky. Parkingly needed an intuitive, tactile digital product and an authoritative brand posture to convert busy drivers in high-density metropolitan markets.',
+      strategy: 'We crafted an intelligent interface architecture featuring one-tap geospatial reservations, real-time bay sensor status, and high-visibility typography that cuts through street glare. The brand identity balances civic reliability with high-tech momentum.'
+    },
+    'gastronomy': {
+      tag: 'HAUTE CUISINE & SPATIAL',
+      year: '2024—2026',
+      title: 'Auteur Gastronomy & Spatial Experience',
+      subtitle: 'Multi-Sensory Hospitality Identity & Degustation Plating Choreography',
+      image: 'assets/projects/gastronomy/poster.svg',
+      client: 'Vision Hospitality Group',
+      location: 'Albuquerque // Mexico City',
+      services: 'Culinary Direction, Spatial Branding, Degustation',
+      status: 'Ongoing Program',
+      challenge: 'High-concept tasting menus often suffer from generic minimalist branding that lacks the emotional heat and tactile intensity of executive kitchen craft.',
+      strategy: 'Directing fifteen years of executive chef mastery into physical and visual design. We engineered bespoke bronze-foil menu artifacts, choreographed multi-course lighting and soundtrack transitions, and codified plating guidelines inspired by architectural brutalism.'
+    },
+    'motion-reel': {
+      tag: 'CINEMATOGRAPHY & SOUND',
+      year: '2024—2026',
+      title: 'Commercial Film & Movement Direction',
+      subtitle: '4K / 120 FPS Optical Direction, ACES Color Science & Spatial Audio',
+      image: 'assets/projects/motion-reel/poster.svg',
+      client: 'Global Commissions',
+      location: 'International Broadcast / Web',
+      services: '120 FPS High-Speed, ACES Color, Sound Design',
+      status: 'Commission Roster',
+      challenge: 'Commercial storytelling in the luxury and performance space is crowded with derivative, oversaturated content that fades from memory in seconds.',
+      strategy: 'We capture movement with optical discipline. Utilizing anamorphic optics, high-frame-rate shutter timing, and customized low-end spatial audio mastering, we create visceral brand films that freeze time and command undivided attention.'
     }
-
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
   };
 
-  function closeModal() {
+  function openCaseStudy(projectId) {
+    const data = projectsData[projectId] || projectsData['duke-city-fencing'];
     if (!modal) return;
-    modal.classList.remove('flex');
-    modal.classList.add('hidden');
+
+    modalProjectTag.textContent = data.tag;
+    modalProjectYear.textContent = data.year;
+    modalProjectTitle.textContent = data.title;
+    modalProjectSubtitle.textContent = data.subtitle;
+    modalProjectImage.src = data.image;
+    modalMetaClient.textContent = data.client;
+    modalMetaLocation.textContent = data.location;
+    modalMetaServices.textContent = data.services;
+    modalMetaStatus.textContent = data.status;
+    modalNarrativeChallenge.textContent = data.challenge;
+    modalNarrativeStrategy.textContent = data.strategy;
+
+    modal.showModal();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCaseStudy() {
+    if (!modal) return;
+    modal.close();
     document.body.style.overflow = '';
   }
 
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-  if (returnModalBtn) returnModalBtn.addEventListener('click', closeModal);
+  // Trigger buttons
+  document.querySelectorAll('.open-modal-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const projectId = btn.getAttribute('data-project');
+      openCaseStudy(projectId);
+    });
+  });
+
+  // Project cards click
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = card.getAttribute('data-project-id');
+      openCaseStudy(projectId);
+    });
+  });
+
+  // Index rows click
+  document.querySelectorAll('.index-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const projectId = row.getAttribute('data-project');
+      openCaseStudy(projectId);
+    });
+  });
+
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeCaseStudy);
+  if (modalActionBtn) modalActionBtn.addEventListener('click', closeCaseStudy);
+
+  // Close on backdrop click (Modern light-dismiss pattern)
   if (modal) {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
+      if (e.target === modal) {
+        closeCaseStudy();
+      }
+    });
+
+    modal.addEventListener('cancel', () => {
+      document.body.style.overflow = '';
     });
   }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
 
-  // Attach card click handlers directly from data attributes
-  portfolioCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.getAttribute('data-title') || 'Project Title';
-      const sector = card.getAttribute('data-sector') || 'Sector';
-      const discipline = card.getAttribute('data-discipline') || 'Discipline';
-      const desc = card.getAttribute('data-desc') || 'Case description...';
-      const image = card.getAttribute('data-image') || '';
-      openCaseModal(title, sector, discipline, desc, image);
-    });
-  });
 
   // =========================================================================
-  // 6. SCOPE CHIPS & FORM HANDLING
+  // 6. COMMISSION INQUIRY FORM & SCOPE CHIPS
   // =========================================================================
-  const chips = document.querySelectorAll('.scope-chip');
-  chips.forEach(chip => {
+  const scopeChips = document.querySelectorAll('.scope-chip');
+  const inquiryForm = document.getElementById('inquiryForm');
+  const formFeedback = document.getElementById('formFeedback');
+
+  scopeChips.forEach(chip => {
     chip.addEventListener('click', () => {
       chip.classList.toggle('selected');
     });
   });
 
-  const inquiryForm = document.getElementById('inquiryForm');
-  const formSuccess = document.getElementById('formSuccess');
-  const resetFormBtn = document.getElementById('resetFormBtn');
-
   if (inquiryForm) {
     inquiryForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      if (formSuccess) formSuccess.classList.remove('hidden');
+
+      const selectedScopes = Array.from(document.querySelectorAll('.scope-chip.selected'))
+                                  .map(c => c.textContent.trim());
+      const name = document.getElementById('clientName').value.trim();
+      const email = document.getElementById('clientEmail').value.trim();
+      const company = document.getElementById('clientCompany').value.trim();
+      const budget = document.getElementById('projectBudget').value;
+      const brief = document.getElementById('projectBrief').value.trim();
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>ENCRYPTING &amp; TRANSMITTING...</span>';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>COMMISSION BRIEF TRANSMITTED ✓</span>';
+
+        if (formFeedback) {
+          formFeedback.className = 'p-4 rounded-lg text-xs font-mono bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 block';
+          formFeedback.innerHTML = `
+            <strong>INQUIRY RECEIVED FOR ${name.toUpperCase()}</strong><br>
+            Selected Scopes: ${selectedScopes.length ? selectedScopes.join(', ') : 'Comprehensive Architecture'}<br>
+            Oscar &amp; the VISION team will review your brief within 24 hours. A confirmation has been routed to <code>${email}</code>.
+          `;
+        }
+
+        // Reset form inputs after delay
+        setTimeout(() => {
+          inquiryForm.reset();
+          scopeChips.forEach(c => c.classList.remove('selected'));
+          submitBtn.innerHTML = '<span>TRANSMIT COMMISSION BRIEF ↗</span>';
+        }, 6000);
+      }, 1000);
     });
   }
 
-  if (resetFormBtn && inquiryForm) {
-    resetFormBtn.addEventListener('click', () => {
-      inquiryForm.reset();
-      chips.forEach(chip => chip.classList.remove('selected'));
-      if (formSuccess) formSuccess.classList.add('hidden');
+
+  // =========================================================================
+  // 7. WEB AUDIO WARM HARMONIC PAD SYNTHESIZER
+  // =========================================================================
+  const audioToggle = document.getElementById('audioToggle');
+  const audioIcon = document.getElementById('audioIcon');
+  const audioText = document.getElementById('audioText');
+
+  let audioCtx = null;
+  let masterGain = null;
+  let isPlaying = false;
+  let oscillators = [];
+
+  function initAudioEngine() {
+    if (audioCtx) return;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContextClass();
+
+    masterGain = audioCtx.createGain();
+    masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+
+    // Filter for luxurious warm analog character
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(420, audioCtx.currentTime);
+    filter.Q.setValueAtTime(2.5, audioCtx.currentTime);
+
+    // Warm chord notes: D2, A2, D3, F#3 (Deep cinematic grounding)
+    const freqs = [73.42, 110.00, 146.83, 185.00];
+
+    freqs.forEach((freq, idx) => {
+      const osc = audioCtx.createOscillator();
+      const oscGain = audioCtx.createGain();
+
+      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      // Subtle detune for natural analog chorus drift
+      osc.detune.setValueAtTime((idx - 1.5) * 4, audioCtx.currentTime);
+
+      oscGain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+
+      osc.connect(oscGain);
+      oscGain.connect(filter);
+      osc.start();
+      oscillators.push(osc);
+    });
+
+    filter.connect(masterGain);
+    masterGain.connect(audioCtx.destination);
+  }
+
+  if (audioToggle) {
+    audioToggle.addEventListener('click', async () => {
+      if (!audioCtx) initAudioEngine();
+      if (audioCtx.state === 'suspended') {
+        await audioCtx.resume();
+      }
+
+      if (!isPlaying) {
+        // Fade in smoothly (no click)
+        masterGain.gain.linearRampToValueAtTime(0.35, audioCtx.currentTime + 1.2);
+        isPlaying = true;
+        audioIcon.textContent = '🔊';
+        audioText.textContent = 'SOUND: ON';
+        audioToggle.classList.add('border-amberAccent/80', 'text-amberAccent');
+      } else {
+        // Fade out smoothly
+        masterGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+        isPlaying = false;
+        audioIcon.textContent = '🔈';
+        audioText.textContent = 'SOUND: OFF';
+        audioToggle.classList.remove('border-amberAccent/80', 'text-amberAccent');
+      }
     });
   }
+
 });

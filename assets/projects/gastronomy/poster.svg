@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" style="background:#09090b; font-family:'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <radialGradient id="culinaryGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#b45309" stop-opacity="0.35"/>
+      <stop offset="45%" stop-color="#78350f" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#09090b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f5f7"/>
+      <stop offset="35%" stop-color="#d4d4d8"/>
+      <stop offset="70%" stop-color="#71717a"/>
+      <stop offset="100%" stop-color="#27272a"/>
+    </linearGradient>
+    <linearGradient id="bronzeBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="50%" stop-color="#78350f"/>
+      <stop offset="100%" stop-color="#451a03"/>
+    </linearGradient>
+    <pattern id="dotGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#27272a" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="1500" fill="#09090b"/>
+  <rect width="1200" height="1500" fill="url(#dotGrid)"/>
+  <rect width="1200" height="1500" fill="url(#culinaryGlow)"/>
+
+  <!-- Top Metadata Ribbon (Pentagram Style) -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="0" fill="#e5a93c" font-size="14" letter-spacing="4" font-family="monospace">VOL. 03 // CULINARY SPINE</text>
+    <text x="1040" y="0" text-anchor="end" fill="#71717a" font-size="14" letter-spacing="3" font-family="monospace">15+ YRS CHEF DISCIPLINE</text>
+    <line x1="0" y1="20" x2="1040" y2="20" stroke="#27272a" stroke-width="1"/>
+  </g>
+
+  <!-- Hero Typography Block (Brutalist / Editorial) -->
+  <g transform="translate(80, 200)">
+    <text x="0" y="0" fill="#71717a" font-size="16" letter-spacing="3" font-family="monospace">COMMISSION ARCHIVE</text>
+    <text x="0" y="70" fill="#f4f4f6" font-size="76" font-weight="900" letter-spacing="-2">AUTEUR GASTRONOMY</text>
+    <text x="0" y="140" fill="#a1a1aa" font-size="44" font-weight="300" letter-spacing="-1">&amp; SPATIAL SENSORY DESIGN</text>
+  </g>
+
+  <!-- Central Visual: Plating Geometry & Artisan Blade Composition -->
+  <g transform="translate(600, 780)">
+    <!-- Concentric Plating Geometry Rings -->
+    <circle cx="0" cy="0" r="340" fill="none" stroke="#27272a" stroke-width="1" stroke-dasharray="4 6"/>
+    <circle cx="0" cy="0" r="280" fill="#111114" stroke="#3f3f46" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="210" fill="none" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+    <circle cx="0" cy="0" r="140" fill="none" stroke="#78350f" stroke-width="1" stroke-dasharray="2 4"/>
+    
+    <!-- Fine Crosshairs -->
+    <line x1="-360" y1="0" x2="360" y2="0" stroke="#27272a" stroke-width="1"/>
+    <line x1="0" y1="-360" x2="0" y2="360" stroke="#27272a" stroke-width="1"/>
+
+    <!-- Chef Knife Silhouette Stylized Cutout -->
+    <g transform="rotate(-35)">
+      <!-- Blade -->
+      <path d="M -220,-24 L 140,-24 Q 240,-20 280,0 Q 240,24 140,24 L -220,24 Z" fill="url(#bladeGrad)" opacity="0.95"/>
+      <!-- Bolster & Tang / Handle -->
+      <rect x="-310" y="-18" width="90" height="36" rx="4" fill="#1c1917" stroke="#78350f" stroke-width="1.5"/>
+      <!-- Handle Rivets -->
+      <circle cx="-280" cy="0" r="3.5" fill="#d97706"/>
+      <circle cx="-245" cy="0" r="3.5" fill="#d97706"/>
+      <!-- Laser Engraved Studio Mark on Blade -->
+      <text x="40" y="3" fill="#09090b" font-size="9" letter-spacing="3" font-family="monospace" font-weight="bold">VISION // PRECISION</text>
+    </g>
+
+    <!-- Plating Emulsion Dots & Botanical Garnish Points -->
+    <circle cx="90" cy="-120" r="8" fill="#d97706"/>
+    <circle cx="120" cy="-100" r="5" fill="#b45309"/>
+    <circle cx="140" cy="-80" r="3.5" fill="#e5a93c"/>
+    <circle cx="-130" cy="110" r="9" fill="#d97706" opacity="0.8"/>
+    <circle cx="-155" cy="130" r="5" fill="#78350f"/>
+
+    <!-- Degustation Coordinates / Temperature Callouts -->
+    <text x="230" y="-230" fill="#71717a" font-size="11" letter-spacing="2" font-family="monospace">HEAT TRANSFER: 63.5°C</text>
+    <text x="230" y="-212" fill="#e5a93c" font-size="10" letter-spacing="1" font-family="monospace">PRESSURE: 1.013 BAR</text>
+    <text x="-320" y="260" fill="#71717a" font-size="11" letter-spacing="2" font-family="monospace">TEXTURE PROFILE: SILK / CRUSH</text>
+    <text x="-320" y="278" fill="#a1a1aa" font-size="10" letter-spacing="1" font-family="monospace">RHYTHM: 14-COURSE ARCHITECTURE</text>
+  </g>
+
+  <!-- Narrative Excerpt Pill (Fuzzco / Modern Editorial Tone) -->
+  <g transform="translate(80, 1260)">
+    <rect x="0" y="0" width="1040" height="150" rx="16" fill="#111114" stroke="#27272a" stroke-width="1"/>
+    <text x="40" y="45" fill="#e5a93c" font-size="12" letter-spacing="3" font-family="monospace">PHILOSOPHY // THE CULINARY SPINE</text>
+    <text x="40" y="80" fill="#f4f4f6" font-size="20" font-weight="400" letter-spacing="-0.2">
+      "Fifteen years leading haute-cuisine kitchens taught us that timing, relentless mis-en-place,
+    </text>
+    <text x="40" y="110" fill="#a1a1aa" font-size="18" font-weight="300">
+      and sensory restraint build experiences no marketing deck can replicate."
+    </text>
+    <text x="960" y="85" text-anchor="end" fill="#71717a" font-size="14" font-family="monospace">[03]</text>
+  </g>
+</svg>

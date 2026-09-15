@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" style="background:#08080a; font-family:'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <radialGradient id="lensGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.18"/>
+      <stop offset="45%" stop-color="#1e1b4b" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#08080a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="reelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27272a"/>
+      <stop offset="50%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <pattern id="cinemaGrid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#18181b" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="1500" fill="#08080a"/>
+  <rect width="1200" height="1500" fill="url(#cinemaGrid)"/>
+  <rect width="1200" height="1500" fill="url(#lensGlow)"/>
+
+  <!-- Top Metadata Ribbon (Pentagram Style) -->
+  <g transform="translate(80, 80)">
+    <text x="0" y="0" fill="#60a5fa" font-size="14" letter-spacing="4" font-family="monospace">VOL. 04 // MOTION DIRECTION</text>
+    <text x="1040" y="0" text-anchor="end" fill="#71717a" font-size="14" letter-spacing="3" font-family="monospace">4K / 120 FPS // DCI ANAMORPHIC</text>
+    <line x1="0" y1="20" x2="1040" y2="20" stroke="#27272a" stroke-width="1"/>
+  </g>
+
+  <!-- Hero Typography Block (Brutalist / Editorial) -->
+  <g transform="translate(80, 200)">
+    <text x="0" y="0" fill="#71717a" font-size="16" letter-spacing="3" font-family="monospace">COMMISSION ARCHIVE</text>
+    <text x="0" y="70" fill="#f4f4f6" font-size="76" font-weight="900" letter-spacing="-2">COMMERCIAL FILM</text>
+    <text x="0" y="140" fill="#a1a1aa" font-size="44" font-weight="300" letter-spacing="-1">&amp; HIGH-SPEED BRAND REEL</text>
+  </g>
+
+  <!-- Centerpiece: Anamorphic Cinema Frame with Film Reticle -->
+  <g transform="translate(80, 420)">
+    <!-- 2.39:1 Aspect Frame Container -->
+    <rect x="0" y="0" width="1040" height="435" rx="12" fill="url(#reelGrad)" stroke="#27272a" stroke-width="2"/>
+    
+    <!-- Film Perforation Notches on Sides -->
+    <g fill="#08080a">
+      <rect x="15" y="30" width="20" height="14" rx="3"/>
+      <rect x="15" y="80" width="20" height="14" rx="3"/>
+      <rect x="15" y="130" width="20" height="14" rx="3"/>
+      <rect x="15" y="180" width="20" height="14" rx="3"/>
+      <rect x="15" y="230" width="20" height="14" rx="3"/>
+      <rect x="15" y="280" width="20" height="14" rx="3"/>
+      <rect x="15" y="330" width="20" height="14" rx="3"/>
+      <rect x="15" y="380" width="20" height="14" rx="3"/>
+
+      <rect x="1005" y="30" width="20" height="14" rx="3"/>
+      <rect x="1005" y="80" width="20" height="14" rx="3"/>
+      <rect x="1005" y="130" width="20" height="14" rx="3"/>
+      <rect x="1005" y="180" width="20" height="14" rx="3"/>
+      <rect x="1005" y="230" width="20" height="14" rx="3"/>
+      <rect x="1005" y="280" width="20" height="14" rx="3"/>
+      <rect x="1005" y="330" width="20" height="14" rx="3"/>
+      <rect x="1005" y="380" width="20" height="14" rx="3"/>
+    </g>
+
+    <!-- Center Crosshairs & Safe Title Zone -->
+    <rect x="120" y="45" width="800" height="345" fill="none" stroke="#3f3f46" stroke-width="1" stroke-dasharray="8 8" opacity="0.6"/>
+    <circle cx="520" cy="217" r="90" fill="none" stroke="#52525b" stroke-width="1"/>
+    <circle cx="520" cy="217" r="4" fill="#60a5fa"/>
+    <line x1="520" y1="97" x2="520" y2="337" stroke="#3f3f46" stroke-width="1" opacity="0.6"/>
+    <line x1="400" y1="217" x2="640" y2="217" stroke="#3f3f46" stroke-width="1" opacity="0.6"/>
+
+    <!-- Large Play / Kinetic Shutter Icon -->
+    <polygon points="510,195 540,217 510,239" fill="#f4f4f6"/>
+
+    <!-- SMPTE Timecode & Lens Callout Overlays -->
+    <text x="60" y="55" fill="#ef4444" font-size="12" letter-spacing="2" font-family="monospace">● REC [00:14:28:18]</text>
+    <text x="980" y="55" text-anchor="end" fill="#71717a" font-size="12" letter-spacing="2" font-family="monospace">SHUTTER: 180° // 1/240s</text>
+    <text x="60" y="405" fill="#71717a" font-size="12" letter-spacing="2" font-family="monospace">ARRI ALEXA 35 // COOKE ANAMORPHIC /i</text>
+    <text x="980" y="405" text-anchor="end" fill="#60a5fa" font-size="12" letter-spacing="2" font-family="monospace">FPS: 120 // ISO 800</text>
+  </g>
+
+  <!-- Audio Waveform Graphic Segment -->
+  <g transform="translate(80, 895)">
+    <text x="0" y="0" fill="#71717a" font-size="12" letter-spacing="3" font-family="monospace">MASTER AUDIO STEM // 24-BIT 96KHZ DYNAMIC SPECTRUM</text>
+    <g transform="translate(0, 20)">
+      <!-- Stylized audio waveform bars -->
+      <path d="M 0 40 L 40 40 L 60 10 L 80 70 L 100 20 L 120 60 L 140 30 L 160 50 L 180 5 L 200 75 L 220 15 L 240 65 L 260 25 L 280 55 L 300 10 L 320 70 L 340 20 L 360 60 L 380 35 L 400 45 L 420 0 L 440 80 L 460 15 L 480 65 L 500 25 L 520 55 L 540 5 L 560 75 L 580 20 L 600 60 L 620 30 L 640 50 L 660 10 L 680 70 L 700 20 L 720 60 L 740 35 L 760 45 L 780 0 L 800 80 L 820 15 L 840 65 L 860 25 L 880 55 L 900 10 L 920 70 L 940 20 L 960 60 L 980 35 L 1000 45 L 1040 40" fill="none" stroke="#60a5fa" stroke-width="1.8" opacity="0.75"/>
+      <line x1="0" y1="40" x2="1040" y2="40" stroke="#27272a" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- Metadata Spec Grid (Anagrama / Pentagram Structure) -->
+  <g transform="translate(80, 1020)">
+    <line x1="0" y1="0" x2="1040" y2="0" stroke="#27272a" stroke-width="1"/>
+    
+    <g transform="translate(0, 35)">
+      <text x="0" y="0" fill="#71717a" font-size="12" letter-spacing="2" font-family="monospace">DIRECTOR</text>
+      <text x="0" y="25" fill="#f4f4f6" font-size="16" font-weight="600">Oscar &amp; Vision Dept.</text>
+    </g>
+    
+    <g transform="translate(260, 35)">
+      <text x="0" y="0" fill="#71717a" font-size="12" letter-spacing="2" font-family="monospace">COLOR GRADING</text>
+      <text x="0" y="25" fill="#f4f4f6" font-size="16" font-weight="600">DaVinci ACES Gen 5</text>
+    </g>
+
+    <g transform="translate(520, 35)">
+      <text x="0" y="0" fill="#71717a" font-size="12" letter-spacing="2" font-family="monospace">SOUND DESIGN</text>
+      <text x="0" y="25" fill="#f4f4f6" font-size="16" font-weight="600">Bespoke Spatial Mix</text>
+    </g>
+
+    <g transform="translate(780, 35)">
+      <text x="0" y="0" fill="#71717a" font-size="12" letter-spacing="2" font-family="monospace">DEPLOYMENT</text>
+      <text x="0" y="25" fill="#f4f4f6" font-size="16" font-weight="600">Global Broadcast / OTT</text>
+    </g>
+
+    <line x1="0" y1="85" x2="1040" y2="85" stroke="#27272a" stroke-width="1"/>
+  </g>
+
+  <!-- Bottom Quote Bar -->
+  <g transform="translate(80, 1260)">
+    <rect x="0" y="0" width="1040" height="150" rx="16" fill="#111114" stroke="#27272a" stroke-width="1"/>
+    <text x="40" y="45" fill="#60a5fa" font-size="12" letter-spacing="3" font-family="monospace">DISCIPLINE // VISUAL VELOCITY</text>
+    <text x="40" y="80" fill="#f4f4f6" font-size="20" font-weight="400" letter-spacing="-0.2">
+      "Every frame is treated as a museum print. We capture velocity with optical discipline
+    </text>
+    <text x="40" y="110" fill="#a1a1aa" font-size="18" font-weight="300">
+      and sculpt time so brand stories hit with unforgettable kinetic impact."
+    </text>
+    <text x="960" y="85" text-anchor="end" fill="#71717a" font-size="14" font-family="monospace">[04]</text>
+  </g>
+</svg>
