@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATELIER VOID — Auteur Visual Direction, Photography & Film</title>
+  <meta name="description" content="Independent auteur creative studio specialized in bespoke brand identity, commercial photography, and cinematic motion for luxury hospitality, sports, and visionary brands.">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-void text-chalk antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- Film Grain Overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ambient Cursor Spotlight Glow -->
+  <div id="spotlight" class="spotlight-glow" aria-hidden="true"></div>
+
+  <!-- Background Particle Field Canvas -->
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></canvas>
+
+  <!-- ==================== HEADER NAVIGATION ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#050505]/85 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Brand Monogram & Wordmark -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-3.5 h-3.5 rounded-full border border-amber-400/80 flex items-center justify-center transition-transform group-hover:scale-110">
+          <div class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></div>
+        </div>
+        <span class="font-syne font-extrabold text-base tracking-widest text-white group-hover:text-amber-300 transition-colors">
+          ATELIER VOID
+        </span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-neutral-400">
+        <a href="#about" class="hover:text-amber-400 transition-colors">[01] ESSENCE</a>
+        <a href="#work" class="hover:text-amber-400 transition-colors">[02] ARCHIVE</a>
+        <a href="#capabilities" class="hover:text-amber-400 transition-colors">[03] DISCIPLINES</a>
+        <a href="#process" class="hover:text-amber-400 transition-colors">[04] METHOD</a>
+      </nav>
+
+      <!-- Action Cluster -->
+      <div class="flex items-center gap-4">
+        <!-- Web Audio Ambient Drone Toggle -->
+        <button id="audioToggle" class="text-[11px] font-mono px-3.5 py-1.5 rounded-full border border-white/10 hover:border-amber-400/60 text-neutral-400 hover:text-amber-400 transition-all flex items-center gap-2 cursor-pointer">
+          <span id="audioIcon">🔈</span>
+          <span id="audioText">SOUND: OFF</span>
+        </button>
+
+        <!-- Direct CTA -->
+        <a href="#contact" class="hidden sm:inline-flex text-xs font-mono font-medium px-4 py-2 rounded border border-amber-400/60 text-amber-300 hover:bg-amber-400 hover:text-black transition-all duration-300">
+          INITIATE PROJECT ↗
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="relative z-10 pt-28">
+
+    <!-- HERO SECTION -->
+    <section class="min-h-[88vh] flex flex-col justify-between max-w-7xl mx-auto px-6 py-12">
+      <div>
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="px-3 py-1 rounded border border-amber-400/30 bg-amber-400/5 text-[11px] font-mono text-amber-400 tracking-wider">
+            ● COMMISSIONS OPEN // Q3-Q4 2026
+          </span>
+          <span class="text-neutral-500 font-mono text-xs">// AUTEUR CREATIVE STUDIO</span>
+        </div>
+
+        <h1 class="font-syne font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight leading-[0.95] text-neutral-100 max-w-5xl mb-8">
+          WE BRING FORTH <br>
+          <span class="gradient-text">WHAT SLEEPS</span> <br>
+          IN THE VOID.
+        </h1>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end pt-8 border-t border-white/5">
+        <div class="md:col-span-6">
+          <p class="text-neutral-400 text-sm md:text-base leading-relaxed max-w-xl font-light">
+            An independent studio dedicated to radical visual distinction. We listen to the unspoken core of luxury hospitality, high-performance athletic ventures, and auteur brands—forging magnetic brand identities, sensory photography, and cinematic film.
+          </p>
+        </div>
+
+        <div class="md:col-span-6 flex flex-wrap items-center justify-start md:justify-end gap-4">
+          <a href="#work" class="px-6 py-3.5 bg-neutral-100 text-black font-mono text-xs tracking-wider rounded hover:bg-amber-400 transition-all">
+            EXPLORE ARCHIVE ↓
+          </a>
+          <a href="#contact" class="px-6 py-3.5 border border-white/15 text-neutral-300 font-mono text-xs tracking-wider rounded hover:border-amber-400/80 hover:text-white transition-all">
+            INITIATE DIALOGUE ✦
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 01: THE PHILOSOPHY / ABOUT -->
+    <section id="about" class="py-24 border-t border-white/5 bg-[#070709]/60">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-4">
+          <div class="lg:sticky lg:top-28">
+            <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 01 — THE ETHOS ]</span>
+            <h2 class="font-syne text-2xl sm:text-3xl font-bold text-neutral-200 mb-4">
+              True visual gravity is never accidental.
+            </h2>
+            <p class="text-neutral-500 font-mono text-xs leading-relaxed">
+              It is the deliberate extraction of radiant light from absolute silence.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 space-y-8 text-neutral-300 font-light text-base sm:text-lg leading-relaxed">
+          <article class="p-8 rounded-lg border border-white/5 bg-[#0b0b0e] hover:border-amber-400/30 transition-all duration-300">
+            <span class="text-xs font-mono text-amber-400/80 block mb-2">// 01. DEEP LISTENING</span>
+            <p>
+              Every transcendent identity begins in stillness. We do not impose generic templates or fleeting algorithmic trends. We practice relentless listening—interrogating the architecture of your vision, your heritage, and your ambitions until the singular, unrepeatable soul of your brand demands form.
+            </p>
+          </article>
+
+          <article class="p-8 rounded-lg border border-white/5 bg-[#0b0b0e] hover:border-amber-400/30 transition-all duration-300">
+            <span class="text-xs font-mono text-amber-400/80 block mb-2">// 02. RESTRAINT AS RADICAL LUXURY</span>
+            <p>
+              In an era suffocated by digital noise and visual clutter, restraint is the ultimate disruptor. We strip away the unnecessary until only the iconic, unyielding spine remains. Our work operates at the collision point of contemporary art direction and commercial gravity.
+            </p>
+          </article>
+
+          <article class="p-8 rounded-lg border border-white/5 bg-[#0b0b0e] hover:border-amber-400/30 transition-all duration-300">
+            <span class="text-xs font-mono text-amber-400/80 block mb-2">// 03. COMPLETE ARTIFACTS</span>
+            <p>
+              From monolithic brandbooks to sensory 35mm-grain photography and color-graded motion reels, we construct cohesive visual universes that command reverence rather than pleading for temporary attention.
+            </p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 02: SELECTED WORKS / PORTFOLIO -->
+    <section id="work" class="py-24 max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
+        <div>
+          <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 02 — REPERTORY ]</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white">SELECTED COMMISSIONS</h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2 font-mono text-xs">
+          <button type="button" class="filter-btn active px-3.5 py-1.5 rounded border border-amber-400 bg-amber-400/10 text-amber-300 transition-all cursor-pointer" data-filter="all">ALL (04)</button>
+          <button type="button" class="filter-btn px-3.5 py-1.5 rounded border border-white/10 hover:border-white/30 text-neutral-400 hover:text-white transition-all cursor-pointer" data-filter="identity">IDENTITY</button>
+          <button type="button" class="filter-btn px-3.5 py-1.5 rounded border border-white/10 hover:border-white/30 text-neutral-400 hover:text-white transition-all cursor-pointer" data-filter="photography">PHOTOGRAPHY</button>
+          <button type="button" class="filter-btn px-3.5 py-1.5 rounded border border-white/10 hover:border-white/30 text-neutral-400 hover:text-white transition-all cursor-pointer" data-filter="film">FILM & MOTION</button>
+        </div>
+      </div>
+
+      <!-- Asymmetric Portfolio Grid -->
+      <div id="worksGrid" class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+        <!-- Case 01: Aurelia Grand Sanctuary -->
+        <div class="portfolio-card md:col-span-7 group cursor-pointer" data-category="identity film" data-title="Aurelia Grand Sanctuary" data-sector="Luxury Boutique Hospitality · Amalfi Coast" data-discipline="Brand Identity &amp; Cinematic Launch Film" data-desc="Crafting a sensory, stone-and-light visual identity for a cliffside retreat in southern Italy. Encompassing custom wordmark typography, tactile print matter, and a 90-second 4K cinematic film capturing the Mediterranean golden hour.">
+          <div class="relative overflow-hidden rounded-lg aspect-[16/10] bg-[#111116] border border-white/10 mb-4">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+            <div class="card-zoom-img absolute inset-0 bg-cover bg-center" style="background: linear-gradient(45deg, #18120a 0%, #291d10 40%, #060608 100%);">
+              <div class="w-full h-full flex items-center justify-center p-8 text-center">
+                <div class="space-y-3 opacity-90 group-hover:opacity-100 transition-opacity">
+                  <span class="font-mono text-amber-400 text-xs tracking-widest">[ AMALFI SANCTUARY ]</span>
+                  <div class="w-12 h-12 mx-auto rounded-full border border-amber-400/50 flex items-center justify-center text-amber-300 group-hover:scale-110 transition-transform">
+                    ▶
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/75 border border-white/10 text-neutral-300">
+              IDENTITY + FILM // 2026
+            </div>
+            <div class="absolute bottom-4 left-4 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 001</span>
+              <h3 class="font-syne font-bold text-2xl text-white">AURELIA GRAND SANCTUARY</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Hospitality & Architecture · Complete Visual System & 4K Campaign Reel</p>
+        </div>
+
+        <!-- Case 02: Kinesis Athletic Labs -->
+        <div class="portfolio-card md:col-span-5 group cursor-pointer" data-category="photography film" data-title="Kinesis Athletic Labs" data-sector="High-Performance Athletics &amp; Biomechanics" data-discipline="Action Cinematography &amp; Editorial Portraiture" data-desc="Documenting the biomechanical elegance of elite athletes through high-contrast monochromatic lighting, high-speed camera capture, and rhythmic sound design.">
+          <div class="relative overflow-hidden rounded-lg aspect-[4/5] bg-[#111116] border border-white/10 mb-4">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+            <div class="card-zoom-img absolute inset-0 bg-cover bg-center" style="background: linear-gradient(135deg, #09090b 0%, #15151c 60%, #261d12 100%);">
+              <div class="w-full h-full flex items-center justify-center p-8">
+                <div class="text-center space-y-2">
+                  <span class="font-mono text-neutral-400 text-xs tracking-widest">[ HIGH CONTRAST MOVEMENT ]</span>
+                  <div class="text-2xl font-syne font-bold text-neutral-200">NOIR KINESIS</div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/75 border border-white/10 text-neutral-300">
+              PHOTO + REEL // 2025
+            </div>
+            <div class="absolute bottom-4 left-4 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 002</span>
+              <h3 class="font-syne font-bold text-xl text-white">KINESIS ATHLETIC LABS</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Sports & Human Performance · Direction, Editorial Imagery & Vertical Motion</p>
+        </div>
+
+        <!-- Case 03: Terra Cognita Parfums -->
+        <div class="portfolio-card md:col-span-5 group cursor-pointer" data-category="photography identity" data-title="Terra Cognita Parfums" data-sector="Artisanal Perfumery &amp; Ceramic Objects" data-discipline="Sculptural Still-Life &amp; Packaging Design" data-desc="Shadow-drenched product photography capturing mineral, soil, and amber perfume vessels with sculptural reverence. Includes tactile embossed packaging and typographic curation.">
+          <div class="relative overflow-hidden rounded-lg aspect-[4/5] bg-[#111116] border border-white/10 mb-4">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+            <div class="card-zoom-img absolute inset-0 bg-cover bg-center" style="background: linear-gradient(210deg, #130f09 0%, #231a0e 50%, #08080a 100%);">
+              <div class="w-full h-full flex items-center justify-center p-8">
+                <div class="text-center space-y-2">
+                  <span class="font-mono text-amber-400 text-xs tracking-widest">[ EXTRACTS & SHADOW ]</span>
+                  <div class="text-2xl font-syne font-bold text-neutral-200">TERRA VESSEL 01</div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/75 border border-white/10 text-neutral-300">
+              PHOTOGRAPHY // 2025
+            </div>
+            <div class="absolute bottom-4 left-4 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 003</span>
+              <h3 class="font-syne font-bold text-xl text-white">TERRA COGNITA PARFUMS</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Artisan Fragrance · Still-Life Art Direction & Bottle Monograms</p>
+        </div>
+
+        <!-- Case 04: Kronos Horology Archive -->
+        <div class="portfolio-card md:col-span-7 group cursor-pointer" data-category="film identity" data-title="Kronos Horology Archive" data-sector="Independent Swiss Haute Horlogerie" data-discipline="Macro Cinematography &amp; Launch Campaign" data-desc="High-speed macro camera exploration tracking mechanical balance wheels, obsidian dials, and tourbillon escapements. Accompanied by custom score and campaign storytelling.">
+          <div class="relative overflow-hidden rounded-lg aspect-[16/10] bg-[#111116] border border-white/10 mb-4">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+            <div class="card-zoom-img absolute inset-0 bg-cover bg-center" style="background: linear-gradient(60deg, #09090b 0%, #171410 50%, #2c2011 100%);">
+              <div class="w-full h-full flex items-center justify-center p-8">
+                <div class="space-y-2 text-center">
+                  <span class="font-mono text-amber-400 text-xs tracking-widest">[ 1000 FPS CHRONOGRAPH ]</span>
+                  <div class="text-2xl font-syne font-bold text-neutral-100">KRONOS TOURBILLON</div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 z-20 font-mono text-[10px] px-2.5 py-1 rounded bg-black/75 border border-white/10 text-neutral-300">
+              CINEMATIC FILM // 2026
+            </div>
+            <div class="absolute bottom-4 left-4 z-20">
+              <span class="text-amber-400 text-xs font-mono">CASE 004</span>
+              <h3 class="font-syne font-bold text-2xl text-white">KRONOS HOROLOGY ARCHIVE</h3>
+            </div>
+          </div>
+          <p class="text-neutral-400 text-xs font-mono">Precision Horology · Macro Product Cinematography & Storytelling</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 03: CAPABILITIES & DISCIPLINES -->
+    <section id="capabilities" class="py-24 border-t border-white/5 bg-[#060608]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl mb-16">
+          <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 03 — CAPABILITIES ]</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-4">THE REPERTOIRE</h2>
+          <p class="text-neutral-400 font-light text-base">
+            Disciplines orchestrated under a unified aesthetic spine. No disjointed agency handoffs.
+          </p>
+        </div>
+
+        <div class="divide-y divide-white/10 border-y border-white/10">
+          
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">01 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Brand Identity & Systems
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Visual strategy, custom monograms, typographic systems, brand books & packaging.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">02 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Commercial & Spatial Photography
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Hospitality architectural stills, product sculpture, and high-contrast editorial portraiture.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">03 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Cinematic Video & Motion Reels
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Direction, DaVinci Resolve color mastering, custom sound design & high-impact short-form films.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+          <div class="capability-row py-8 group cursor-pointer hover:pl-4 transition-all duration-300">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex items-baseline gap-6">
+                <span class="font-mono text-xs text-amber-400/80">04 //</span>
+                <div>
+                  <h3 class="font-syne font-bold text-2xl sm:text-3xl text-neutral-100 group-hover:text-amber-400 transition-colors">
+                    Visual Strategy & Creative Direction
+                  </h3>
+                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                    Radical repositioning, creative advisory, and launch campaign orchestration for auteur ventures.
+                  </p>
+                </div>
+              </div>
+              <span class="font-mono text-xs text-neutral-500 group-hover:text-amber-400 transition-colors">EXPLORE DISCIPLINE ↗</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: THE PROCESS (FROM VOID TO FORM) -->
+    <section id="process" class="py-24 border-t border-white/5 bg-[#08080a]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ 04 — METHODOLOGY ]</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white mb-4">FROM VOID TO FORM</h2>
+          <p class="text-neutral-400 font-light text-sm">
+            Three disciplined phases designed to extract authentic gravity and deliver timeless artifacts.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="p-8 rounded-lg bg-[#0d0d10] border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-syne text-3xl font-extrabold text-amber-400">01</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-neutral-400">IMMERSION</span>
+              </div>
+              <h3 class="font-syne font-bold text-xl text-white mb-3">THE EXTRACTION</h3>
+              <p class="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+                We sit down for deep, unfiltered listening. We interrogate what you stand for, what you reject, and what makes your venture unrepeatable. We uncover the golden core buried under corporate noise.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-amber-400/80">
+              ➔ Output: Strategic Creative Codex
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-8 rounded-lg bg-[#0d0d10] border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-syne text-3xl font-extrabold text-amber-400">02</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-neutral-400">SYNTHESIS</span>
+              </div>
+              <h3 class="font-syne font-bold text-xl text-white mb-3">THE VISION</h3>
+              <p class="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+                In our atelier, we test typographic tensions, shadow-and-light setups, narrative scripts, and tactile prototypes. You are presented with a unified art direction that leaves no room for ambiguity.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-amber-400/80">
+              ➔ Output: Art Direction Architecture
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-8 rounded-lg bg-[#0d0d10] border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="font-syne text-3xl font-extrabold text-amber-400">03</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-neutral-400">MANIFESTATION</span>
+              </div>
+              <h3 class="font-syne font-bold text-xl text-white mb-3">THE FORM</h3>
+              <p class="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+                Lights engage, lenses roll, and vector geometry is locked. We execute master deliverables across identity, photography, and film—delivering a brand ready to dominate its sector.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-amber-400/80">
+              ➔ Output: Production Masters & Brand System
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: CONTACT & INITIATION -->
+    <section id="contact" class="py-24 max-w-7xl mx-auto px-6 border-t border-white/10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="text-amber-400 font-mono text-xs tracking-widest block mb-2">[ INITIATE CREATION ]</span>
+            <h2 class="font-syne text-4xl sm:text-6xl font-extrabold text-white leading-none mb-6">
+              LET’S BRING YOUR VISION TO LIGHT.
+            </h2>
+            <p class="text-neutral-400 font-light text-sm sm:text-base leading-relaxed">
+              We take on a curated quota of 3 projects per quarter to preserve uncompromising creative depth. Reach out to discuss identity, photography, or cinematic commissions.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-4 border-t border-white/10 font-mono text-xs">
+            <div>
+              <span class="text-neutral-500 block mb-1">DIRECT TRANSMISSION:</span>
+              <a href="mailto:hello@ateliervoid.com" class="text-neutral-200 hover:text-amber-400 transition-colors">hello@ateliervoid.com</a>
+            </div>
+            <div>
+              <span class="text-neutral-500 block mb-1">HEADQUARTERS & COMMISSIONS:</span>
+              <span class="text-neutral-200">MEXICO CITY // TOKYO // GLOBAL COMMISSIONS</span>
+            </div>
+            <div>
+              <span class="text-neutral-500 block mb-1">PRIVATE CONSULTATION:</span>
+              <a href="#" class="text-amber-400 hover:underline">Reserve 25-min Director Discovery Call ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Minimalist Interactive Form -->
+        <div class="lg:col-span-7 bg-[#0b0b0f] p-8 sm:p-10 rounded-xl border border-white/10 relative">
+          <form id="inquiryForm" class="space-y-6">
+            <div>
+              <label class="block font-mono text-xs text-neutral-400 mb-2">01 // YOUR NAME OR ENTERPRISE</label>
+              <input type="text" required placeholder="Elena Rostova — Aurelia Hotels" class="w-full bg-transparent border-b border-white/20 pb-3 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors">
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-neutral-400 mb-2">02 // YOUR EMAIL ADDRESS</label>
+              <input type="email" required placeholder="elena@aurelia.com" class="w-full bg-transparent border-b border-white/20 pb-3 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors">
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-neutral-400 mb-3">03 // SCOPE OF ENGAGEMENT</label>
+              <div class="flex flex-wrap gap-2.5">
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Brand Identity</button>
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Commercial Photography</button>
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Cinematic Motion & Reels</button>
+                <button type="button" class="scope-chip px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-mono text-neutral-300 hover:border-amber-400 transition-all cursor-pointer">Full Re-Brand</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-neutral-400 mb-2">04 // THE ESSENCE OF YOUR PROJECT</label>
+              <textarea rows="3" required placeholder="Tell us about the project, your timeline, and what makes your vision distinct..." class="w-full bg-transparent border-b border-white/20 pb-3 text-sm text-neutral-100 placeholder:text-neutral-600 focus:outline-none focus:border-amber-400 transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-amber-400 hover:bg-amber-300 text-black font-mono font-bold text-xs tracking-widest uppercase rounded transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span>TRANSMIT INQUIRY</span>
+              <span>✦</span>
+            </button>
+          </form>
+
+          <div id="formSuccess" class="hidden absolute inset-0 bg-[#0b0b0f] rounded-xl flex flex-col items-center justify-center p-8 text-center">
+            <span class="text-4xl text-amber-400 mb-4">✦</span>
+            <h4 class="font-syne font-bold text-2xl text-white mb-2">INQUIRY TRANSMITTED</h4>
+            <p class="text-neutral-400 text-xs font-mono max-w-sm mb-6">
+              Your message has penetrated the void. We review all communications personally within 24 hours.
+            </p>
+            <button id="resetFormBtn" type="button" class="px-4 py-2 border border-white/20 text-xs font-mono rounded text-neutral-300 hover:text-white cursor-pointer">SEND ANOTHER MESSAGE</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-white/5 py-10 bg-[#030304]">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-[11px] text-neutral-500">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400">✦</span>
+        <span>ATELIER VOID © 2026 // ALL RIGHTS RESERVED</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">INSTAGRAM</a>
+        <a href="https://vimeo.com" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">VIMEO</a>
+        <a href="https://are.na" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">ARE.NA</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">LINKEDIN</a>
+      </div>
+
+      <div>
+        <span>CRAFTED IN LUX IN TENEBRIS</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== CASE STUDY MODAL DIALOG ==================== -->
+  <div id="caseModal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden items-center justify-center p-6" role="dialog" aria-modal="true">
+    <div class="bg-[#0e0e12] border border-white/10 rounded-xl max-w-2xl w-full p-8 relative space-y-6">
+      <button id="closeModalBtn" class="absolute top-6 right-6 text-neutral-400 hover:text-white font-mono text-sm cursor-pointer">[ESC / ✕]</button>
+      
+      <div>
+        <span id="modalCategory" class="text-amber-400 font-mono text-xs tracking-wider block mb-1">CATEGORY</span>
+        <h3 id="modalTitle" class="font-syne font-extrabold text-2xl sm:text-3xl text-white">PROJECT TITLE</h3>
+        <span id="modalSector" class="text-neutral-500 font-mono text-xs block mt-1">SECTOR & LOCATION</span>
+      </div>
+
+      <div class="h-48 rounded-lg bg-neutral-900 border border-white/5 flex items-center justify-center text-center p-4">
+        <div class="space-y-2">
+          <span class="text-amber-400 text-lg">✦</span>
+          <p class="font-mono text-xs text-neutral-400">[ 4K CINEMATIC STREAM & MASTER HIGH-RESOLUTION ASSETS ]</p>
+        </div>
+      </div>
+
+      <p id="modalDesc" class="text-neutral-300 text-sm font-light leading-relaxed">
+        Description...
+      </p>
+
+      <div class="flex items-center justify-between pt-4 border-t border-white/10 font-mono text-xs">
+        <span class="text-amber-400">STATUS: DELIVERED // MASTER ARCHIVE</span>
+        <button id="returnModalBtn" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded cursor-pointer">RETURN TO ARCHIVE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
