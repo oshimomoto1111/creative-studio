@@ -94,22 +94,21 @@ body {
 }
 
 /* ==========================================================================
-   RELATIVISTIC BLACK HOLE SINGULARITY (THE CREATIVE VOID)
+   RELATIVISTIC GARGANTUA BLACK HOLE (THE CREATIVE VOID)
    ========================================================================== */
-.hero-black-hole-wrapper {
+.hero-black-hole-stage {
   position: absolute;
   top: 48%;
-  right: -6%;
+  right: -5%;
   transform: translateY(-50%);
-  width: 860px;
-  height: 860px;
+  width: 960px;
+  height: 600px;
   pointer-events: none;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
-  filter: drop-shadow(0 0 80px rgba(229, 169, 60, 0.35));
+  filter: drop-shadow(0 0 100px rgba(229, 169, 60, 0.4));
   transition: opacity 0.5s ease;
 }
 
@@ -119,31 +118,31 @@ body {
   display: block;
 }
 
-.black-hole-vignette {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, transparent 62%, var(--void-bg) 96%);
-  pointer-events: none;
+@media (max-width: 1200px) {
+  .hero-black-hole-stage {
+    right: -12%;
+    width: 820px;
+    height: 520px;
+  }
 }
 
-@media (max-width: 1024px) {
-  .hero-black-hole-wrapper {
-    top: 25%;
+@media (max-width: 992px) {
+  .hero-black-hole-stage {
+    top: 40%;
     right: 50%;
     transform: translate(50%, -50%);
-    width: 600px;
-    height: 600px;
-    opacity: 0.85;
+    width: 680px;
+    height: 440px;
+    opacity: 0.7;
   }
 }
 
 @media (max-width: 640px) {
-  .hero-black-hole-wrapper {
-    top: 20%;
-    width: 420px;
-    height: 420px;
-    opacity: 0.8;
+  .hero-black-hole-stage {
+    top: 30%;
+    width: 480px;
+    height: 320px;
+    opacity: 0.65;
   }
 }
 

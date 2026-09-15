@@ -93,63 +93,60 @@
   <main class="relative z-10 pt-28">
 
     <!-- HERO SECTION -->
-    <section class="min-h-[88vh] flex flex-col justify-between max-w-7xl mx-auto px-6 py-12 relative overflow-hidden">
+    <section class="relative min-h-[92vh] flex flex-col justify-between max-w-7xl mx-auto px-6 py-8 overflow-hidden">
       
-      <!-- The Creative Void: Relativistic Black Hole Singularity -->
-      <div class="hero-black-hole-wrapper" aria-hidden="true">
+      <!-- The Creative Void: Relativistic Gargantua Black Hole Singularity -->
+      <div class="hero-black-hole-stage" aria-hidden="true">
         <canvas id="blackHoleCanvas"></canvas>
-        <div class="black-hole-vignette"></div>
       </div>
 
-      <div class="relative z-10">
-        <div class="flex flex-wrap items-center gap-3 mb-6">
-          <span class="px-3 py-1 rounded border border-amber-400/30 bg-amber-400/5 text-[11px] font-mono text-amber-400 tracking-wider">
+      <!-- Hero Header & Editorial Headline -->
+      <div class="relative z-10 pt-4 max-w-2xl">
+        <div class="flex flex-wrap items-center gap-3 mb-5">
+          <span class="px-3 py-1 rounded border border-amber-400/30 bg-amber-400/10 text-[11px] font-mono text-amber-400 tracking-wider">
             ● COMMISSIONS OPEN // Q3-Q4 2026
           </span>
-          <span class="text-neutral-500 font-mono text-xs">// AUTEUR CREATIVE STUDIO</span>
+          <span class="text-neutral-400 font-mono text-xs tracking-wider">// EX NIHILO / LUX IN TENEBRIS</span>
         </div>
 
-        <h1 class="font-syne font-extrabold text-4xl sm:text-6xl md:text-8xl tracking-tight leading-[0.95] text-neutral-100 max-w-5xl mb-8">
+        <h1 class="font-syne font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] text-white mb-5">
           WE BRING FORTH <br>
           <span class="gradient-text">WHAT SLEEPS</span> <br>
           IN THE VOID.
         </h1>
 
-        <!-- Cinematic Showreel Teaser Mockup -->
-        <div class="relative overflow-hidden rounded-xl border border-white/10 aspect-video md:aspect-[21/9] bg-[#0c0c0f] mb-8 group cursor-pointer" onclick="openCaseModal('Atelier Void Showreel', 'Global Production &amp; Direction // 2026', 'Master Cinema Reel &amp; Soundscape', 'A 90-second sensory journey exploring the interplay of extreme darkness and focused illumination across luxury hospitality, high-performance athletic bodies, and haute horlogerie.')" data-image="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=85">
-          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=85" alt="Cinematic Studio Reel Mockup" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-85 transition-all duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"></div>
-          <div class="absolute bottom-6 left-6 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full border border-amber-400/80 bg-black/60 backdrop-blur-md flex items-center justify-center text-amber-300 font-mono text-sm group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-black transition-all">
-              ▶
-            </div>
-            <div>
-              <span class="text-amber-400 font-mono text-[10px] tracking-widest block">// SHOWREEL 2026</span>
-              <h3 class="font-syne font-bold text-white text-base sm:text-xl">THE RADIANCE OF FORM — 4K MASTER CUT</h3>
-            </div>
-          </div>
-          <div class="absolute top-4 right-4 font-mono text-[10px] px-3 py-1 rounded bg-black/80 border border-white/10 text-neutral-300">
-            01:24 // 24 FPS
-          </div>
-        </div>
-      </div>
+        <p class="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-lg font-light">
+          An independent auteur studio dedicated to radical visual distinction. We extract the unspoken soul of luxury hospitality, high-performance athletic enterprises, and visionary brands—sculpting magnetic brand systems, sensory photography, and cinematic film.
+        </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end pt-8 border-t border-white/5">
-        <div class="md:col-span-6">
-          <p class="text-neutral-400 text-sm md:text-base leading-relaxed max-w-xl font-light">
-            An independent studio dedicated to radical visual distinction. We listen to the unspoken core of luxury hospitality, high-performance athletic ventures, and auteur brands—forging magnetic brand identities, sensory photography, and cinematic film.
-          </p>
-        </div>
-
-        <div class="md:col-span-6 flex flex-wrap items-center justify-start md:justify-end gap-4">
-          <a href="#work" class="px-6 py-3.5 bg-neutral-100 text-black font-mono text-xs tracking-wider rounded hover:bg-amber-400 transition-all">
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a href="#work" class="px-6 py-3.5 bg-neutral-100 text-black font-mono text-xs tracking-wider rounded hover:bg-amber-400 transition-all font-semibold">
             EXPLORE ARCHIVE ↓
           </a>
-          <a href="#contact" class="px-6 py-3.5 border border-white/15 text-neutral-300 font-mono text-xs tracking-wider rounded hover:border-amber-400/80 hover:text-white transition-all">
+          <a href="#contact" class="px-6 py-3.5 border border-white/20 text-neutral-200 font-mono text-xs tracking-wider rounded hover:border-amber-400/80 hover:text-white transition-all">
             INITIATE DIALOGUE ✦
           </a>
         </div>
       </div>
+
+      <!-- Hero Bottom Bar (Showreel & Cosmic Indicator) -->
+      <div class="relative z-10 pt-8 mt-12 border-t border-white/10 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+        <!-- Compact Master Cut Showreel Trigger -->
+        <div class="flex items-center gap-4 group cursor-pointer" onclick="openCaseModal('Atelier Void Master Reel', 'Global Production &amp; Direction // 2026', 'Master Cinema Reel &amp; Soundscape', 'A 90-second sensory journey exploring the interplay of extreme darkness and focused illumination across luxury hospitality, high-performance athletic bodies, and haute horlogerie.', 'assets/gargantua.jpg')">
+          <div class="w-12 h-12 rounded-full border border-amber-400/80 bg-black/70 backdrop-blur-md flex items-center justify-center text-amber-300 font-mono text-sm group-hover:scale-110 group-hover:bg-amber-400 group-hover:text-black transition-all shadow-lg shadow-amber-400/20">
+            ▶
+          </div>
+          <div>
+            <span class="text-amber-400 font-mono text-[10px] tracking-widest block">// SHOWREEL 2026</span>
+            <span class="font-syne font-bold text-white text-base hover:text-amber-300 transition-colors">THE RADIANCE OF FORM — 4K MASTER CUT ↗</span>
+          </div>
+        </div>
+
+        <div class="font-mono text-xs text-neutral-500">
+          <span>SINGULARITY ENGINE: ACTIVE // 60 FPS RELATIVISTIC SHADER</span>
+        </div>
+      </div>
+
     </section>
 
     <!-- SECTION 01: THE PHILOSOPHY / ABOUT -->
