@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none">
+  <defs>
+    <filter id="coffeeBlur">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <g opacity="0.65" filter="url(#coffeeBlur)">
+    <!-- Primary Cup Rim Ring -->
+    <circle cx="120" cy="120" r="76" stroke="#92400e" stroke-width="7" stroke-linecap="round" stroke-dasharray="120 18 40 10 70 25" opacity="0.75"/>
+    <circle cx="120" cy="120" r="80" stroke="#78350f" stroke-width="2.5" stroke-dasharray="80 30 110 20" opacity="0.6"/>
+    
+    <!-- Secondary Outer Runoff Ring -->
+    <path d="M 50,110 C 45,150 70,195 125,198 C 175,200 205,160 200,120 C 196,85 165,48 115,46 C 70,45 52,80 50,110" stroke="#b45309" stroke-width="3" stroke-dasharray="50 40 90 30" opacity="0.5"/>
+    
+    <!-- Organic Pool & Splatters -->
+    <path d="M 60,140 Q 45,160 55,175 Q 70,185 85,170 Q 75,150 60,140 Z" fill="#78350f" opacity="0.45"/>
+    
+    <!-- Drip Splatters -->
+    <circle cx="195" cy="75" r="4.5" fill="#78350f"/>
+    <circle cx="205" cy="65" r="2.5" fill="#92400e"/>
+    <circle cx="215" cy="85" r="1.8" fill="#b45309"/>
+    <circle cx="45" cy="70" r="3.2" fill="#78350f"/>
+    <circle cx="35" cy="60" r="1.5" fill="#92400e"/>
+    <circle cx="140" cy="210" r="4" fill="#78350f"/>
+    <circle cx="152" cy="220" r="2" fill="#92400e"/>
+    
+    <!-- Central Faint Watermark Ring -->
+    <circle cx="120" cy="120" r="68" stroke="#d97706" stroke-width="1.2" opacity="0.3"/>
+  </g>
+</svg>

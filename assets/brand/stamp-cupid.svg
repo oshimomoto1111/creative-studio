@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none">
+  <defs>
+    <filter id="retroGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FF4081" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Rubber Stamp Border -->
+  <circle cx="100" cy="100" r="92" stroke="#FF4081" stroke-width="3" stroke-dasharray="6 4" opacity="0.85"/>
+  <circle cx="100" cy="100" r="84" stroke="#F8F2E2" stroke-width="1.8" opacity="0.9"/>
+
+  <!-- Curved Text along Stamp Path -->
+  <path id="stampCurveTop" d="M 30,100 A 70,70 0 1,1 170,100" fill="none"/>
+  <path id="stampCurveBottom" d="M 170,100 A 70,70 0 0,1 30,100" fill="none"/>
+  <text font-family="'Shrikhand', cursive" font-size="12" fill="#F8F2E2" letter-spacing="2">
+    <textPath href="#stampCurveTop" startOffset="50%" text-anchor="middle">LOVERBOY COFFEE</textPath>
+  </text>
+  <text font-family="'Space Mono', monospace" font-size="9" fill="#FF4081" letter-spacing="3" font-weight="bold">
+    <textPath href="#stampCurveBottom" startOffset="50%" text-anchor="middle">★ NOB HILL ABQ ★</textPath>
+  </text>
+
+  <!-- Rebel Cupid / Diablito Enamorado Figure -->
+  <g transform="translate(100, 102)" filter="url(#retroGlow)">
+    
+    <!-- Cupid Angel Wings (Left & Right) -->
+    <path d="M -18,-10 C -35,-35 -50,-15 -35,5 C -25,18 -15,5 -18,-10 Z" fill="#F8F2E2" stroke="#D81E34" stroke-width="2"/>
+    <path d="M 18,-10 C 35,-35 50,-15 35,5 C 25,18 15,5 18,-10 Z" fill="#F8F2E2" stroke="#D81E34" stroke-width="2"/>
+
+    <!-- Devil / Cupid Tiny Horns -->
+    <path d="M -12,-32 Q -16,-44 -8,-40 Q -10,-33 -12,-32 Z" fill="#D81E34"/>
+    <path d="M 12,-32 Q 16,-44 8,-40 Q 10,-33 12,-32 Z" fill="#D81E34"/>
+
+    <!-- Head / Cherub Face -->
+    <circle cx="0" cy="-22" r="16" fill="#F8F2E2" stroke="#D81E34" stroke-width="2.5"/>
+
+    <!-- Retro 70s Heart-Shaped Sunglasses on Cupid -->
+    <g transform="translate(0, -22)">
+      <!-- Left Lens (Heart) -->
+      <path d="M -7,-4 C -7,-8 -2,-8 0,-4 C 2,-8 7,-8 7,-4 C 7,2 0,7 0,7 C 0,7 -7,2 -7,-4 Z" transform="translate(-6, 0) scale(0.9)" fill="#D81E34" stroke="#FF4081" stroke-width="1.2"/>
+      <!-- Right Lens (Heart) -->
+      <path d="M -7,-4 C -7,-8 -2,-8 0,-4 C 2,-8 7,-8 7,-4 C 7,2 0,7 0,7 C 0,7 -7,2 -7,-4 Z" transform="translate(6, 0) scale(0.9)" fill="#D81E34" stroke="#FF4081" stroke-width="1.2"/>
+      <!-- Bridge -->
+      <line x1="-2" y1="-3" x2="2" y2="-3" stroke="#FF4081" stroke-width="1.5"/>
+    </g>
+
+    <!-- Playful Grin -->
+    <path d="M -5,-12 Q 0,-7 5,-12" stroke="#D81E34" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Cupid Body / Torso -->
+    <path d="M -10,-6 C -12,12 -6,22 0,22 C 6,22 12,12 10,-6 Z" fill="#F8F2E2" stroke="#D81E34" stroke-width="2"/>
+
+    <!-- Left Hand Holding Cupid Arrow -->
+    <line x1="-12" y1="5" x2="-35" y2="-8" stroke="#FF4081" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="-38,-10 -30,-12 -33,-5" fill="#FF4081"/>
+
+    <!-- Right Hand Holding Loverboy Takeaway Coffee Cup -->
+    <g transform="translate(18, 0) rotate(10)">
+      <!-- Cup Body -->
+      <polygon points="-8,4 8,4 6,22 -6,22" fill="#D81E34" stroke="#F8F2E2" stroke-width="1.5"/>
+      <!-- Cup Lid -->
+      <rect x="-9" y="0" width="18" height="4" rx="1.5" fill="#F8F2E2"/>
+      <!-- Tiny Heart on Cup -->
+      <circle cx="0" cy="13" r="3" fill="#FF4081"/>
+      <!-- Steaming Heart Vapors -->
+      <path d="M -3,-3 Q -5,-10 -1,-15 Q 3,-20 0,-25" stroke="#FF4081" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+      <path d="M 2,-3 Q 0,-8 4,-14 Q 7,-18 5,-22" stroke="#F8F2E2" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.8"/>
+    </g>
+
+    <!-- Flying Legs with Winged Sneaker/Boots -->
+    <path d="M -6,22 Q -12,32 -8,38 L -3,38" stroke="#D81E34" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M 6,22 Q 10,32 14,36 L 19,36" stroke="#D81E34" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Devil Pointy Tail -->
+    <path d="M -10,16 Q -24,24 -20,35 Q -16,42 -22,46" stroke="#D81E34" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <polygon points="-24,48 -18,44 -26,42" fill="#D81E34"/>
+  </g>
+</svg>

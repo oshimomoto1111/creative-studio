@@ -65,8 +65,8 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.02;
-  background-image: radial-gradient(var(--color-hot-pink) 1px, transparent 1px);
+  opacity: 0.025;
+  background-image: radial-gradient(var(--color-hot-pink) 1.2px, transparent 1.2px);
   background-size: 16px 16px;
 }
 
@@ -116,6 +116,66 @@ body {
   animation: slowSpin 14s linear infinite;
 }
 
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot, -3deg)); }
+  50% { transform: translateY(-7px) rotate(var(--rot, -3deg)); }
+}
+
+.animate-float {
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   BRAND MOTIFS: STAMPS, STICKERS, BLENDING & TILT EFFECTS
+   ========================================================================== */
+.stamp-tilt-left {
+  --rot: -4deg;
+  transform: rotate(-4deg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.stamp-tilt-left:hover {
+  transform: rotate(-7deg) scale(1.08);
+  filter: drop-shadow(0 0 15px rgba(255, 64, 129, 0.8));
+}
+
+.stamp-tilt-right {
+  --rot: 5deg;
+  transform: rotate(5deg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.stamp-tilt-right:hover {
+  transform: rotate(8deg) scale(1.08);
+  filter: drop-shadow(0 0 15px rgba(255, 64, 129, 0.8));
+}
+
+.stamp-wax-seal {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.stamp-wax-seal:hover {
+  transform: scale(1.12) rotate(6deg);
+  filter: drop-shadow(0 0 18px rgba(216, 30, 52, 0.85));
+}
+
+/* Screen & Overlay Blending Modes for natural screenprinting look */
+.blend-screen {
+  mix-blend-mode: screen;
+}
+
+.blend-overlay {
+  mix-blend-mode: overlay;
+}
+
+.blend-soft {
+  mix-blend-mode: color-dodge;
+}
+
+.neon-sticker-glow {
+  filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.7));
+}
+
 /* ==========================================================================
    BUTTON & BADGE TOKENS
    ========================================================================== */
@@ -160,7 +220,7 @@ body {
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: var(--color-hotPink, #FF4081);
+  background-color: var(--color-hot-pink, #FF4081);
   transition: width 0.25s ease;
 }
 
@@ -304,5 +364,6 @@ dialog.menu-modal[open]::backdrop {
   html { scroll-behavior: auto; }
   .neon-text { animation: none !important; }
   .animate-spin-slow { animation: none !important; }
+  .animate-float { animation: none !important; }
   dialog.menu-modal { transition: none !important; transform: none !important; }
 }
