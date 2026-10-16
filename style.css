@@ -550,11 +550,48 @@ dialog.menu-modal[open]::backdrop {
   background: #FF4081;
 }
 
+/* ==========================================================================
+   MASTER SCREENPRINT EMBLEM & POP-ART CARD STYLES
+   ========================================================================== */
+.master-emblem-glow {
+  filter: drop-shadow(0 0 25px rgba(255, 64, 129, 0.45)) drop-shadow(0 0 50px rgba(216, 30, 52, 0.3));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.master-emblem-glow:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 0 35px rgba(255, 64, 129, 0.75)) drop-shadow(0 0 70px rgba(216, 30, 52, 0.5));
+}
+
+.pop-artwork-card {
+  border: 4px solid var(--ink-black);
+  box-shadow: 6px 6px 0px var(--ink-black), 12px 12px 0px var(--color-hot-pink);
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: #000000;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.pop-artwork-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 0px var(--ink-black), 16px 16px 0px var(--color-cherry-red);
+}
+
+@keyframes twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.85; }
+  50% { transform: scale(1.3) rotate(20deg); opacity: 1; }
+}
+
+.animate-twinkle {
+  animation: twinkle 2.5s infinite ease-in-out;
+}
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .neon-text { animation: none !important; }
   .animate-spin-slow { animation: none !important; }
   .animate-float { animation: none !important; }
+  .animate-twinkle { animation: none !important; }
   dialog.menu-modal { transition: none !important; transform: none !important; }
 }
