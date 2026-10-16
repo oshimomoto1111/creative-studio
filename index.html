@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LOVERBOY Neighborhood Coffee — Nob Hill, Albuquerque, NM</title>
-  <meta name="description" content="LOVERBOY is a 70s/80s vintage pop walk-up coffee window in Nob Hill, Albuquerque, NM. Specialty espresso, strawberry cream iced lattes, pastries, and green chile breakfast burritos. Grab, sip & fall in love.">
+  <meta name="description" content="LOVERBOY is a 70s/80s pop screenprint & tattoo romance walk-up coffee window in Nob Hill, Albuquerque, NM. Specialty espresso, strawberry cream iced lattes, and hatch green chile burritos.">
   <meta name="theme-color" content="#0f0a0a">
 
   <!-- Open Graph Meta -->
@@ -15,10 +15,10 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/brand/stamp-wax-seal.svg">
 
-  <!-- Google Fonts: Shrikhand (70s retro display), DM Sans (body), Space Mono (prices/codes) -->
+  <!-- Google Fonts: Rubik Bubbles (70s vinyl puff display), Fredoka (vintage rounded diner), Shrikhand (concert poster), Space Mono (ticket stamps) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Shrikhand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fredoka:wght@400;500;600;700&family=Rubik+Bubbles&family=Shrikhand&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,14 +28,19 @@
         extend: {
           colors: {
             bgDark: '#0f0a0a',
+            bgCard: '#180e10',
             cherryRed: '#D81E34',
             burgundy: '#4A0E17',
             hotPink: '#FF4081',
             cream: '#F8F2E2',
-            creamMuted: '#e8dfcb'
+            creamMuted: '#e8dfcb',
+            gold: '#F4B942',
+            inkBlack: '#000000'
           },
           fontFamily: {
-            display: ['Shrikhand', 'cursive'],
+            bubble: ['"Rubik Bubbles"', 'cursive'],
+            display: ['Shrikhand', 'cursive', 'sans-serif'],
+            rounded: ['Fredoka', '"DM Sans"', 'sans-serif'],
             body: ['"DM Sans"', 'system-ui', 'sans-serif'],
             mono: ['"Space Mono"', 'monospace']
           }
@@ -49,33 +54,33 @@
 </head>
 <body class="bg-[#0f0a0a] text-[#F8F2E2] font-body selection:bg-hotPink selection:text-white antialiased overflow-x-hidden">
 
-  <!-- Retro Halftone & Film Grain Overlays -->
+  <!-- Vintage Fanzine Film Grain & Ben-Day Halftone Dot Overlays -->
   <div class="vintage-grain" aria-hidden="true"></div>
   <div class="halftone-pattern" aria-hidden="true"></div>
 
   <!-- Ambient Neon Cursor Flare -->
   <div id="neonFlare" class="neon-flare" aria-hidden="true"></div>
 
-  <!-- ==================== TOP TICKER / LIVE STATUS ==================== -->
-  <aside class="sticky top-0 z-50 bg-[#160c0d]/95 backdrop-blur-md border-b border-[#D81E34]/30 py-2 px-4 text-xs font-mono tracking-wider text-[#F8F2E2]">
+  <!-- ==================== TOP TICKER / LIVE STATUS TICKET STUB ==================== -->
+  <aside class="sticky top-0 z-50 bg-[#14080a]/95 backdrop-blur-md border-b-2 border-black py-2 px-4 text-xs font-mono tracking-wider text-[#F8F2E2] shadow-md">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
       
       <!-- Live Window Status in Albuquerque MST -->
       <div class="flex items-center gap-2.5">
-        <span id="statusIndicatorDot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></span>
+        <span id="statusIndicatorDot" class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse border-2 border-black shadow-[0_0_8px_#34d399]"></span>
         <span id="liveStatusText" class="font-bold text-white uppercase tracking-widest text-[11px] sm:text-xs">
           CALCULATING LIVE WINDOW STATUS...
         </span>
       </div>
 
-      <!-- Center Ticker Note with Brand Motifs -->
-      <div class="hidden md:flex items-center gap-3 text-cream/70 text-[11px]">
+      <!-- Center Ticker Note with Ben-Day Motifs -->
+      <div class="hidden md:flex items-center gap-3 text-cream/80 text-[11px] font-rounded font-semibold">
         <span>WALK-UP WINDOW</span>
-        <span class="text-hotPink">♥</span>
+        <span class="text-hotPink">★</span>
         <span>NOB HILL, ABQ</span>
-        <span class="text-hotPink">♥</span>
+        <span class="text-hotPink">★</span>
         <span>ROUTE 66 HERITAGE</span>
-        <span class="text-hotPink">♥</span>
+        <span class="text-hotPink">★</span>
         <span>FRESH BURRITOS DAILY</span>
       </div>
 
@@ -85,7 +90,7 @@
           <span id="radioIcon">📻</span>
           <span id="radioStatus">RADIO: OFF</span>
         </button>
-        <a href="#hours" class="text-cream hover:text-hotPink transition-colors underline decoration-hotPink">
+        <a href="#hours" class="text-cream hover:text-hotPink transition-colors underline decoration-hotPink font-bold">
           FIND THE WINDOW ↗
         </a>
       </div>
@@ -96,166 +101,161 @@
   <!-- ==================== HEADER & NAVBAR ==================== -->
   <header class="relative z-40 max-w-7xl mx-auto px-6 pt-6 pb-4 flex flex-col md:flex-row items-center justify-between gap-6">
     
-    <!-- Brand Logo Mark (Arched bubble logo) with Organic Wax Seal Accent -->
+    <!-- Brand Logo Mark with Bold Black Ink Border & Hard Drop Shadow -->
     <a href="#" class="group flex items-center gap-4" aria-label="LOVERBOY Home">
-      <div class="relative overflow-hidden rounded-xl border border-hotPink/40 shadow-[0_0_15px_rgba(255,64,129,0.3)] group-hover:shadow-[0_0_25px_rgba(216,30,52,0.6)] transition-all duration-300">
-        <img src="assets/brand/logo-arched.jpg" alt="LOVERBOY Neighborhood Coffee" class="h-14 sm:h-16 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300">
+      <div class="relative overflow-hidden rounded-2xl border-4 border-black hard-shadow-sm group-hover:scale-105 transition-all duration-300 bg-bgCard">
+        <img src="assets/brand/logo-arched.jpg" alt="LOVERBOY Neighborhood Coffee" class="h-14 sm:h-16 w-auto object-contain">
       </div>
-      <img src="assets/brand/stamp-wax-seal.svg" alt="Loverboy Wax Seal" class="hidden sm:block w-10 h-10 stamp-wax-seal -ml-3 -mt-3 z-10" title="Certified Nob Hill Roast">
+      <img src="assets/brand/stamp-wax-seal.svg" alt="Loverboy Wax Seal" class="hidden sm:block w-11 h-11 stamp-wax-seal -ml-3 -mt-2 z-10" title="Certified Nob Hill Roast">
     </a>
 
-    <!-- Navigation Menu -->
-    <nav class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 font-display text-sm tracking-wide text-cream">
+    <!-- Navigation Menu (70s Rounded Vintage Typography) -->
+    <nav class="flex flex-wrap items-center justify-center gap-6 sm:gap-8 font-rounded font-bold text-sm sm:text-base tracking-wide text-cream">
       <a href="#window" class="nav-item hover:text-hotPink transition-colors">THE WINDOW</a>
       <a href="#mirror" class="nav-item hover:text-hotPink transition-colors">SELFIE MIRROR</a>
       <a href="#menu" class="nav-item hover:text-hotPink transition-colors">THE MENU</a>
       <a href="#hours" class="nav-item hover:text-hotPink transition-colors">HOURS &amp; VISIT</a>
     </nav>
 
-    <!-- Header Action Button with Kiss Mark Accent -->
+    <!-- Header Pop-Art Button with Tactile Push -->
     <div class="flex items-center gap-3 relative">
-      <a href="#menu" class="btn-cherry text-xs font-bold uppercase tracking-wider py-2.5 px-5 rounded-full border-2 border-cream transition-all shadow-lg hover:shadow-hotPink/50 flex items-center gap-2">
+      <a href="#menu" class="btn-pop-cherry text-xs sm:text-sm font-bold uppercase tracking-wider py-2.5 px-6 rounded-full flex items-center gap-2">
         <span>ORDER AT WINDOW</span>
         <span>☕</span>
       </a>
-      <img src="assets/brand/kiss-mark.svg" alt="Kiss Mark" class="hidden lg:block w-9 h-7 absolute -top-4 -right-4 stamp-tilt-right pointer-events-none opacity-80">
+      <img src="assets/brand/kiss-mark.svg" alt="Kiss Mark" class="hidden lg:block w-9 h-7 absolute -top-4 -right-4 die-cut-sticker-tilt-right pointer-events-none">
     </div>
 
   </header>
 
   <!-- ==================== COMPONENT 1: HERO SECTION ==================== -->
   <main>
-    <section id="window" class="relative z-10 max-w-7xl mx-auto px-6 pt-10 pb-20 lg:py-20 flex flex-col items-center text-center">
+    <section id="window" class="relative z-10 max-w-7xl mx-auto px-6 pt-8 pb-20 lg:py-16 flex flex-col items-center text-center">
       
-      <!-- Floating Brand Motifs around the Hero (Cupid & Heart Glasses) -->
-      <div class="hidden lg:block absolute left-8 top-20 pointer-events-none">
-        <div class="animate-float" style="--rot: -8deg;">
-          <img src="assets/brand/stamp-cupid.svg" alt="Rebel Cupid with Coffee" class="w-32 h-32 neon-sticker-glow opacity-90 hover:opacity-100 transition-opacity">
+      <!-- Floating Neo-Traditional Tattoo Flash Stickers (Swallow & Dagger Rose) -->
+      <div class="hidden lg:block absolute left-4 top-16 pointer-events-none">
+        <div class="animate-float" style="--rot: -7deg;">
+          <img src="assets/brand/tattoo-swallow-letter.svg" alt="Sailor Swallow with Love Letter" class="w-36 h-36 die-cut-sticker opacity-95 hover:opacity-100 transition-all">
         </div>
       </div>
 
-      <div class="hidden lg:block absolute right-8 top-28 pointer-events-none">
+      <div class="hidden lg:block absolute right-4 top-20 pointer-events-none">
         <div class="animate-float" style="--rot: 8deg;">
-          <img src="assets/brand/heart-sunglasses.svg" alt="70s Heart Sunglasses" class="w-36 h-20 neon-sticker-glow opacity-90 hover:opacity-100 transition-opacity">
+          <img src="assets/brand/tattoo-rose-dagger.svg" alt="Tattoo Rose with Portafilter Dagger" class="w-36 h-36 die-cut-sticker opacity-95 hover:opacity-100 transition-all">
         </div>
       </div>
 
-      <!-- Nob Hill Floating Badge with Kiss Mark -->
-      <div class="relative inline-flex items-center gap-2 px-5 py-2 rounded-full bg-burgundy/80 border border-hotPink/50 shadow-[0_0_20px_rgba(255,64,129,0.4)] text-xs font-mono tracking-widest text-cream mb-8 transform -rotate-1 hover:rotate-0 transition-transform">
-        <span class="text-hotPink">✦</span>
-        <span>WALK-UP WINDOW • NOB HILL, ABQ</span>
-        <span class="text-hotPink">✦</span>
-        <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="w-6 h-5 ml-1 inline-block opacity-90">
+      <!-- 70s Arched Tour Banner Badge -->
+      <div class="mb-6 max-w-sm sm:max-w-md mx-auto">
+        <img src="assets/brand/arched-merch-banner.svg" alt="Nob Hill Historic Route 66 Banner" class="w-full h-auto drop-shadow-md">
       </div>
 
-      <!-- Monumental Animated Neon Headline -->
+      <!-- Monumental Inflatable 70s Bubble/Puff Headline with Vinyl Gloss -->
       <div class="relative max-w-5xl mb-6">
-        <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-cream leading-[1.05] tracking-tight">
+        <h1 class="bubble-puff-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-normal">
           GRAB, SIP &amp; <br>
-          <span class="neon-text text-hotPink">FALL IN LOVE.</span>
+          <span class="bubble-puff-pink neon-text">FALL IN LOVE.</span>
         </h1>
-        <img src="assets/brand/stamp-wax-seal.svg" alt="Wax Seal" class="hidden sm:block absolute -top-6 -right-6 w-16 h-16 stamp-wax-seal cursor-pointer" title="Certified Passionate Coffee">
+        <img src="assets/brand/tattoo-sacred-heart.svg" alt="Sacred Heart Tattoo" class="hidden sm:block absolute -top-8 -right-8 w-20 h-20 die-cut-sticker cursor-pointer" title="Sacred Coffee Passion">
       </div>
 
-      <!-- Subhead Narrative -->
-      <p class="max-w-2xl text-base sm:text-lg text-cream/80 font-normal leading-relaxed mb-10">
-        Albuquerque’s walk-up coffee window on historic Route 66 in Nob Hill. We pour killer espresso, blend sweet strawberry cold cream, and serve warm green chile breakfast burritos straight through the glass.
+      <!-- Subhead Narrative (Warm Linen Fredoka Rounded Typography) -->
+      <p class="max-w-2xl text-base sm:text-lg text-cream/90 font-rounded font-medium leading-relaxed mb-10">
+        Albuquerque’s walk-up coffee window on historic Route 66 in Nob Hill. We pull killer espresso, whip sweet strawberry cold cream, and serve warm green chile breakfast burritos straight through the glass.
       </p>
 
-      <!-- Primary CTAs (Per Design Brief) -->
-      <div class="flex flex-wrap items-center justify-center gap-5 mb-16 relative">
+      <!-- Primary Pop-Art CTAs with Bold Ink Borders & Hard Shadows -->
+      <div class="flex flex-wrap items-center justify-center gap-6 mb-16 relative">
         
         <!-- [View Window Menu] CTA -->
-        <a href="#menu" class="btn-cherry text-sm sm:text-base font-display tracking-wider py-4 px-8 rounded-full border-2 border-cream text-cream bg-cherryRed hover:bg-[#b01426] transition-all duration-300 shadow-[0_0_20px_rgba(216,30,52,0.5)] hover:shadow-[0_0_35px_rgba(255,64,129,0.8)] hover:scale-105 transform flex items-center gap-2">
+        <a href="#menu" class="btn-pop-cherry text-sm sm:text-base tracking-wider py-4 px-8 rounded-full flex items-center gap-2">
           <span>VIEW WINDOW MENU</span>
           <span>📋</span>
         </a>
 
         <!-- [Find the Window / Get Directions] CTA -->
-        <a href="#hours" class="btn-neon-outline text-sm sm:text-base font-display tracking-wider py-4 px-8 rounded-full border-2 border-hotPink text-hotPink hover:bg-hotPink hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(255,64,129,0.3)] hover:shadow-[0_0_30px_rgba(255,64,129,0.8)] hover:scale-105 transform flex items-center gap-2">
+        <a href="#hours" class="btn-pop-pink text-sm sm:text-base tracking-wider py-4 px-8 rounded-full flex items-center gap-2">
           <span>FIND THE WINDOW / DIRECTIONS</span>
           <span>📍</span>
         </a>
 
       </div>
 
-      <!-- Centerpiece Visual: The Neon Lips Sign & Authentic Storefront Facade -->
+      <!-- Centerpiece Visual: Storefront Facade & Interior Lips in Pop-Art Screenprint Frame -->
       <div class="relative w-full max-w-5xl mx-auto">
         
-        <!-- Retro Glow Aura -->
-        <div class="absolute -inset-4 bg-gradient-to-r from-cherryRed/30 via-hotPink/40 to-burgundy/30 rounded-3xl blur-2xl opacity-75 animate-pulse" aria-hidden="true"></div>
-
-        <!-- Facade Container Card with Organic Stickers Overlapping the Edges -->
-        <div class="relative rounded-3xl border-2 border-hotPink/40 bg-[#140c0d] p-6 sm:p-10 shadow-2xl overflow-hidden">
+        <!-- Pop-Art Frame Container with Ben-Day Dots Background & Bold 4px Ink Border -->
+        <div class="relative rounded-[2.5rem] border-4 border-black hard-shadow-pop-cherry bg-[#180e10] bg-benday-dark p-6 sm:p-10 overflow-hidden">
           
-          <!-- Overlapping Organic Brand Stamps on Corners -->
-          <img src="assets/brand/stamp-cupid.svg" alt="Cupid Stamp" class="absolute -top-4 -right-4 w-24 h-24 stamp-tilt-right z-30 opacity-90 hidden sm:block">
-          <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="absolute -bottom-3 -left-2 w-14 h-10 stamp-tilt-left z-30 opacity-80">
+          <!-- Overlapping Die-Cut Stickers Pinned on Frame Corners -->
+          <img src="assets/brand/heart-sunglasses.svg" alt="Heart Sunglasses Sticker" class="absolute -top-3 -left-3 w-20 h-12 die-cut-sticker-tilt-left z-30 pointer-events-none">
+          <img src="assets/brand/stamp-cupid.svg" alt="Cupid Stamp" class="absolute -top-4 -right-4 w-22 h-22 die-cut-sticker-tilt-right z-30 opacity-95 hidden sm:block">
+          <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="absolute -bottom-3 -left-2 w-14 h-10 die-cut-sticker z-30 opacity-90">
 
-          <!-- Top Window Lintel Ribbon -->
-          <div class="flex items-center justify-between border-b border-cream/15 pb-4 mb-8 font-mono text-xs text-cream/70">
+          <!-- Top Window Lintel Ribbon / Screenprint Stamp -->
+          <div class="flex items-center justify-between border-b-2 border-black pb-4 mb-8 font-mono text-xs text-cream bg-black/40 px-4 py-2 rounded-xl">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-cherryRed"></span>
-              <span class="w-3 h-3 rounded-full bg-hotPink"></span>
-              <span class="w-3 h-3 rounded-full bg-cream"></span>
-              <span class="ml-2 font-bold tracking-widest text-cream">NOB HILL WALK-UP WINDOW #01</span>
+              <span class="w-3.5 h-3.5 rounded-full bg-cherryRed border border-black"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-hotPink border border-black"></span>
+              <span class="w-3.5 h-3.5 rounded-full bg-gold border border-black"></span>
+              <span class="ml-2 font-bold tracking-widest text-cream">WALK-UP WINDOW #01 // NOB HILL, ABQ</span>
             </div>
             <div class="text-hotPink tracking-widest font-bold">
-              HISTORIC ROUTE 66 • CENTRAL AVE
+              HISTORIC ROUTE 66 CORRIDOR
             </div>
           </div>
 
           <!-- Dual Visual Display: Storefront Photo + Neon Lips Artwork -->
           <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
-            <!-- Left: Authentic Storefront at Dusk -->
+            <!-- Left: Authentic Storefront at Dusk (with 3.5px Ink Border + Hard Drop Shadow) -->
             <div class="md:col-span-7 space-y-4">
-              <div class="relative group cursor-pointer overflow-hidden rounded-2xl border-2 border-hotPink/30 shadow-[0_0_25px_rgba(255,64,129,0.3)]">
+              <div class="relative group cursor-pointer overflow-hidden rounded-2xl border-4 border-black hard-shadow-md">
                 <img src="assets/brand/window-storefront.jpg" alt="Loverboy Walk-up Window in Nob Hill at Dusk" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
                 <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                  <span class="bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-hotPink/50 text-[10px] font-mono text-hotPink font-bold">
-                    ● PHYSICAL STOREFRONT // NOB HILL, ABQ
+                  <span class="bg-black border-2 border-hotPink px-3 py-1 rounded-full text-[10px] font-mono text-hotPink font-bold">
+                    ● PHYSICAL STOREFRONT // NOB HILL
                   </span>
-                  <span class="text-xs font-mono text-cream/90">
-                    CEDAR BENCH SEATING
+                  <span class="text-xs font-mono text-cream font-bold bg-black/70 px-2 py-0.5 rounded">
+                    CEDAR BENCHES
                   </span>
                 </div>
               </div>
 
-              <!-- Storefront Narrative Excerpt -->
-              <div class="flex items-center gap-3 p-3 rounded-xl bg-burgundy/40 border border-cream/15 text-xs font-mono text-cream/80">
+              <!-- Storefront Narrative Note -->
+              <div class="flex items-center gap-3 p-3.5 rounded-xl bg-black border-2 border-black text-xs font-mono text-cream/90">
                 <span class="text-lg">🪟</span>
-                <span>Order from the sidewalk window, wait on our cedar benches, and look inside for the neon lips!</span>
+                <span>Step up to the window, soak in the Nob Hill breeze on our cedar benches, and look inside for the neon lips!</span>
               </div>
             </div>
 
             <!-- Right: Interior Neon Sign (Lips Biting Rose) + Perks -->
             <div class="md:col-span-5 text-left space-y-5">
               
-              <div class="relative group overflow-hidden rounded-2xl border border-cream/20 shadow-[0_0_20px_rgba(216,30,52,0.4)]">
+              <div class="relative group overflow-hidden rounded-2xl border-4 border-black hard-shadow-md bg-black">
                 <img src="assets/brand/graphic-lips.jpg" alt="LOVERBOY Neon Lips with Rose" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute bottom-2 left-2 bg-black/80 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-hotPink/40 text-[9px] font-mono text-hotPink">
+                <div class="absolute bottom-2 left-2 bg-black px-3 py-1 rounded-full border border-hotPink text-[10px] font-mono text-hotPink font-bold">
                   INTERIOR NEON ARTWORK ✦
                 </div>
               </div>
 
-              <!-- Quick Perks Tags with Micro-Illustrations -->
-              <div class="grid grid-cols-2 gap-3 pt-2 font-mono text-[11px]">
-                <div class="p-3 rounded-xl bg-burgundy/60 border border-cream/10 text-cream hover:border-hotPink transition-colors">
-                  <span class="text-hotPink block text-sm mb-1">⚡ 100% ARABICA</span>
+              <!-- Quick Perks Tags with Screenprint Borders -->
+              <div class="grid grid-cols-2 gap-3 pt-2 font-rounded font-bold text-xs">
+                <div class="p-3 rounded-xl bg-black border-2 border-black text-cream hover:border-hotPink transition-colors">
+                  <span class="text-hotPink block text-sm mb-0.5">⚡ 100% ARABICA</span>
                   Fresh Roasted Weekly
                 </div>
-                <div class="p-3 rounded-xl bg-burgundy/60 border border-cream/10 text-cream hover:border-hotPink transition-colors">
-                  <span class="text-hotPink block text-sm mb-1">🍓 SWEET CREAM</span>
+                <div class="p-3 rounded-xl bg-black border-2 border-black text-cream hover:border-hotPink transition-colors">
+                  <span class="text-hotPink block text-sm mb-0.5">🍓 SWEET CREAM</span>
                   Scratch Strawberry
                 </div>
-                <div class="p-3 rounded-xl bg-burgundy/60 border border-cream/10 text-cream hover:border-hotPink transition-colors">
-                  <span class="text-hotPink block text-sm mb-1">🌯 NM BURRITOS</span>
+                <div class="p-3 rounded-xl bg-black border-2 border-black text-cream hover:border-hotPink transition-colors">
+                  <span class="text-hotPink block text-sm mb-0.5">🌯 NM BURRITOS</span>
                   Hatch Green Chile
                 </div>
-                <div class="p-3 rounded-xl bg-burgundy/60 border border-cream/10 text-cream hover:border-hotPink transition-colors">
-                  <span class="text-hotPink block text-sm mb-1">🪞 SELFIE SPOT</span>
+                <div class="p-3 rounded-xl bg-black border-2 border-black text-cream hover:border-hotPink transition-colors">
+                  <span class="text-hotPink block text-sm mb-0.5">🪞 SELFIE SPOT</span>
                   Tag @loverboycoffee
                 </div>
               </div>
@@ -275,54 +275,55 @@
     </section>
 
     <!-- ==================== COMPONENT 2: THE VIBE & "SELFIE MIRROR" ==================== -->
-    <section id="mirror" class="relative z-10 py-24 bg-[#140b0d] border-y border-cherryRed/30 overflow-hidden">
+    <section id="mirror" class="relative z-10 py-24 bg-[#140b0d] border-y-4 border-black overflow-hidden">
       
-      <!-- Background Graphic Accents -->
-      <img src="assets/brand/stamp-coffee-ring.svg" alt="Coffee Ring" class="absolute -left-20 top-10 w-96 h-96 opacity-15 blend-screen pointer-events-none" aria-hidden="true">
-      <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="absolute right-10 bottom-10 w-32 h-24 opacity-20 stamp-tilt-right pointer-events-none" aria-hidden="true">
+      <!-- Background Ben-Day & Coffee Ring Accents -->
+      <div class="absolute inset-0 bg-benday-dots opacity-15 pointer-events-none" aria-hidden="true"></div>
+      <img src="assets/brand/stamp-coffee-ring.svg" alt="Coffee Ring" class="absolute -left-20 top-10 w-96 h-96 opacity-20 blend-screen pointer-events-none" aria-hidden="true">
+      <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="absolute right-10 bottom-10 w-36 h-28 opacity-25 die-cut-sticker-tilt-right pointer-events-none" aria-hidden="true">
 
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         
-        <!-- Section Header -->
+        <!-- Section Header with Ben-Day Badge -->
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cherryRed/20 border border-cherryRed/40 text-hotPink font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(255,64,129,0.3)]">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cherryRed border-2 border-black text-cream font-mono text-xs tracking-widest uppercase mb-4 hard-shadow-sm">
             <span>♥ STREET CULTURE &amp; COMMUNITY ♥</span>
           </div>
-          <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-cream mb-4">
+          <h2 class="bubble-puff-title text-4xl sm:text-5xl lg:text-6xl text-cream mb-4">
             THE NOB HILL SELFIE MIRROR
           </h2>
-          <p class="text-base sm:text-lg text-cream/80 font-light">
+          <p class="text-base sm:text-lg text-cream/90 font-rounded font-medium">
             "Check your reflection, tag <strong class="text-hotPink font-bold">@loverboycoffee</strong>, spread the love."
           </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          <!-- Left Column: The Interactive Vintage Mirror Sandbox with Ornate Stickers -->
+          <!-- Left Column: Backstage Pop-Art Mirror with Marquee Bulbs & Tattoo Flash -->
           <div class="lg:col-span-7">
             
-            <div class="mirror-container relative mx-auto max-w-lg rounded-[2.5rem] border-4 border-hotPink/60 bg-[#080505] p-6 shadow-[0_0_40px_rgba(255,64,129,0.4)]">
+            <div class="mirror-container relative mx-auto max-w-lg rounded-[2.5rem] border-4 border-black bg-[#080505] p-6 hard-shadow-pop-pink">
               
-              <!-- Real Brand Stickers Decorating the Mirror Frame Corners -->
-              <img src="assets/brand/heart-sunglasses.svg" alt="Heart Sunglasses Sticker" class="absolute -top-5 -left-5 w-20 h-12 stamp-tilt-left z-40 neon-sticker-glow pointer-events-none">
-              <img src="assets/brand/kiss-mark.svg" alt="Kiss Mark Sticker" class="absolute -top-4 -right-4 w-14 h-11 stamp-tilt-right z-40 pointer-events-none">
-              <img src="assets/brand/stamp-wax-seal.svg" alt="Wax Seal Sticker" class="absolute -bottom-5 -left-4 w-14 h-14 stamp-wax-seal z-40 pointer-events-none">
-              <img src="assets/brand/stamp-cupid.svg" alt="Cupid Sticker" class="absolute -bottom-6 -right-6 w-20 h-20 stamp-tilt-right z-40 neon-sticker-glow pointer-events-none">
+              <!-- Die-Cut Tattoo Flash Stickers Decorating Mirror Frame Corners -->
+              <img src="assets/brand/tattoo-sacred-heart.svg" alt="Sacred Heart" class="absolute -top-6 -left-6 w-18 h-18 die-cut-sticker z-40 pointer-events-none">
+              <img src="assets/brand/heart-sunglasses.svg" alt="Heart Sunglasses" class="absolute -top-4 -right-4 w-18 h-11 die-cut-sticker-tilt-right z-40 pointer-events-none">
+              <img src="assets/brand/stamp-wax-seal.svg" alt="Wax Seal" class="absolute -bottom-5 -left-4 w-14 h-14 stamp-wax-seal z-40 pointer-events-none">
+              <img src="assets/brand/tattoo-rose-dagger.svg" alt="Tattoo Rose" class="absolute -bottom-6 -right-6 w-20 h-20 die-cut-sticker z-40 pointer-events-none">
 
               <!-- Lipstick Messages on Mirror Top & Bottom -->
               <div class="absolute top-8 left-8 right-8 z-30 flex justify-between items-center pointer-events-none">
                 <span class="font-display text-hotPink text-sm sm:text-base tracking-wider drop-shadow-[0_0_8px_#FF4081] transform -rotate-3">
                   YOU LOOK SO GOOD, LOVERBOY! ♥
                 </span>
-                <span class="text-xs font-mono bg-black/70 px-2.5 py-1 rounded-full text-cream border border-cream/20">
+                <span class="text-xs font-mono bg-black px-2.5 py-1 rounded-full text-cream border-2 border-black">
                   NOB HILL, ABQ
                 </span>
               </div>
 
-              <!-- Mirror Surface (Live WebCam or Animated Aesthetic Fallback) -->
-              <div class="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-gradient-to-b from-[#1a1113] via-[#0d0708] to-[#140a0c] border border-cream/20 flex flex-col items-center justify-center text-center p-6 shadow-inner">
+              <!-- Mirror Surface (Live WebCam or Default Graphic) -->
+              <div class="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-gradient-to-b from-[#1a1113] via-[#0d0708] to-[#140a0c] border-2 border-black flex flex-col items-center justify-center text-center p-6 shadow-inner">
                 
-                <!-- Live WebCam Video Feed Element (hidden until active) -->
+                <!-- Live WebCam Video Feed Element -->
                 <video id="mirrorVideo" autoplay playsinline muted class="hidden absolute inset-0 w-full h-full object-cover transform -scale-x-100"></video>
                 
                 <!-- Canvas for Capturing the Polaroid Snapshot -->
@@ -330,23 +331,23 @@
 
                 <!-- Default Mirror Graphic / Heart Illustration -->
                 <div id="mirrorDefaultView" class="space-y-4 max-w-xs transition-opacity duration-300">
-                  <div class="w-28 h-28 mx-auto rounded-full border-2 border-hotPink/50 shadow-[0_0_20px_rgba(255,64,129,0.4)] overflow-hidden">
+                  <div class="w-28 h-28 mx-auto rounded-full border-4 border-black hard-shadow-sm overflow-hidden bg-black">
                     <img src="assets/brand/graphic-heart.jpg" alt="Loverboy Heart with Coffee Sprouts" class="w-full h-full object-cover">
                   </div>
                   <h3 class="font-display text-xl text-cream">
                     READY FOR YOUR CLOSE-UP?
                   </h3>
-                  <p class="text-xs text-cream/70 font-light leading-relaxed">
-                    Activate the live mirror camera to snap your Loverboy Polaroid, add retro stickers, and share it on Instagram.
+                  <p class="text-xs text-cream/80 font-rounded font-medium leading-relaxed">
+                    Activate the live mirror camera to snap your Loverboy Polaroid, add retro tattoo stickers, and share it on Instagram.
                   </p>
                 </div>
 
-                <!-- Interactive Stickers Layer (Dragged / Stamped onto Mirror) -->
+                <!-- Interactive Stickers Layer -->
                 <div id="stickersLayer" class="absolute inset-0 pointer-events-none z-20"></div>
 
                 <!-- Bottom Lipstick Tag on Mirror -->
                 <div class="absolute bottom-6 left-6 right-6 z-30 flex justify-between items-center pointer-events-none">
-                  <span class="font-mono text-xs text-cream/70">@LOVERBOYCOFFEE</span>
+                  <span class="font-mono text-xs text-cream/70 font-bold">@LOVERBOYCOFFEE</span>
                   <span class="font-display text-hotPink text-xs drop-shadow-[0_0_6px_#FF4081]">
                     SPREAD THE LOVE 💋
                   </span>
@@ -359,30 +360,31 @@
                 
                 <div class="flex flex-wrap items-center justify-center gap-3">
                   <!-- Camera Toggle Button -->
-                  <button id="toggleCameraBtn" type="button" class="px-5 py-2.5 rounded-full bg-cherryRed hover:bg-[#b01426] text-cream font-display text-xs tracking-wider border border-cream/30 shadow-[0_0_15px_rgba(216,30,52,0.4)] transition-all cursor-pointer">
+                  <button id="toggleCameraBtn" type="button" class="btn-pop-cherry px-5 py-2.5 rounded-full text-xs tracking-wider cursor-pointer">
                     <span>TURN ON MIRROR CAMERA 📷</span>
                   </button>
 
                   <!-- Snap Polaroid Button -->
-                  <button id="snapPolaroidBtn" type="button" class="px-5 py-2.5 rounded-full bg-hotPink hover:bg-[#ff1a66] text-white font-display text-xs tracking-wider border border-white/40 shadow-[0_0_15px_rgba(255,64,129,0.5)] transition-all cursor-pointer">
+                  <button id="snapPolaroidBtn" type="button" class="btn-pop-pink px-5 py-2.5 rounded-full text-xs tracking-wider cursor-pointer">
                     <span>SNAP POLAROID 📸</span>
                   </button>
                 </div>
 
-                <!-- Fun Sticker Bar with Custom Motifs -->
-                <div class="flex items-center justify-center gap-2 pt-2 border-t border-cream/10">
-                  <span class="text-[11px] font-mono text-cream/60 mr-1">ADD STICKERS:</span>
-                  <button type="button" class="sticker-btn p-2 rounded-lg bg-burgundy/80 hover:bg-hotPink/30 border border-cream/20 text-base cursor-pointer" data-sticker="💋" title="Add Kisses">💋</button>
-                  <button type="button" class="sticker-btn p-2 rounded-lg bg-burgundy/80 hover:bg-hotPink/30 border border-cream/20 text-base cursor-pointer" data-sticker="☕" title="Add Coffee">☕</button>
-                  <button type="button" class="sticker-btn p-2 rounded-lg bg-burgundy/80 hover:bg-hotPink/30 border border-cream/20 text-base cursor-pointer" data-sticker="🌹" title="Add Rose">🌹</button>
-                  <button type="button" class="sticker-btn p-2 rounded-lg bg-burgundy/80 hover:bg-hotPink/30 border border-cream/20 text-base cursor-pointer" data-sticker="💖" title="Add Neon Heart">💖</button>
-                  <button type="button" class="sticker-btn p-2 rounded-lg bg-burgundy/80 hover:bg-hotPink/30 border border-cream/20 text-base cursor-pointer" data-sticker="✨" title="Add Sparkles">✨</button>
-                  <button type="button" class="sticker-btn p-2 rounded-lg bg-burgundy/80 hover:bg-hotPink/30 border border-cream/20 text-base cursor-pointer" data-sticker="🕶️" title="Heart Glasses">🕶️</button>
-                  <button id="clearStickersBtn" type="button" class="text-[10px] font-mono text-cream/50 hover:text-hotPink ml-2 cursor-pointer underline">Clear</button>
+                <!-- Tattoo Flash Sticker Bar -->
+                <div class="flex items-center justify-center gap-2 pt-2 border-t-2 border-black">
+                  <span class="text-[11px] font-mono text-cream/70 mr-1 font-bold">STICKERS:</span>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="💋" title="Add Kisses">💋</button>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="☕" title="Add Coffee">☕</button>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="🌹" title="Add Rose">🌹</button>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="💖" title="Add Sacred Heart">💖</button>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="🕊️" title="Add Swallow">🕊️</button>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="🗡️" title="Add Portafilter Dagger">🗡️</button>
+                  <button type="button" class="sticker-btn p-2 rounded-xl bg-black border-2 border-black hover:border-hotPink text-base cursor-pointer hard-shadow-sm" data-sticker="🕶️" title="Heart Glasses">🕶️</button>
+                  <button id="clearStickersBtn" type="button" class="text-[11px] font-mono text-cream/70 hover:text-hotPink ml-2 cursor-pointer underline font-bold">Clear</button>
                 </div>
 
                 <!-- Feedback Toast -->
-                <div id="mirrorFeedback" class="hidden text-center text-xs font-mono text-emerald-400"></div>
+                <div id="mirrorFeedback" class="hidden text-center text-xs font-mono text-emerald-400 font-bold"></div>
 
               </div>
 
@@ -390,15 +392,15 @@
 
           </div>
 
-          <!-- Right Column: Community Polaroid Feed & Stories -->
+          <!-- Right Column: Community Polaroid Feed with Bold Ink Frames -->
           <div class="lg:col-span-5 space-y-6">
             
             <div class="space-y-3">
-              <span class="text-xs font-mono text-hotPink tracking-widest uppercase block">// COMMUNITY SOCIAL FEED</span>
-              <h3 class="font-display text-3xl text-cream">
+              <span class="text-xs font-mono text-hotPink tracking-widest uppercase font-bold block">// COMMUNITY SOCIAL FEED</span>
+              <h3 class="bubble-puff-title text-3xl sm:text-4xl text-cream">
                 SEEN AT THE WINDOW.
               </h3>
-              <p class="text-sm text-cream/80 font-light leading-relaxed">
+              <p class="text-sm text-cream/90 font-rounded font-medium leading-relaxed">
                 Whether you're grabbing a double shot before work or hanging out with friends on Saturday morning, the mirror captures the spirit of Nob Hill.
               </p>
             </div>
@@ -407,67 +409,65 @@
             <div class="grid grid-cols-2 gap-4 pt-2">
               
               <!-- Polaroid 1 -->
-              <div class="polaroid-card p-3 bg-white text-black rounded shadow-lg transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300">
-                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 relative">
+              <div class="polaroid-card p-3 bg-white text-black rounded-lg transform -rotate-2">
+                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 relative border-2 border-black">
                   <img src="assets/brand/graphic-lips.jpg" alt="Loverboy lips" class="w-full h-full object-cover">
-                  <div class="absolute inset-0 bg-hotPink/10"></div>
                 </div>
-                <div class="font-mono text-[10px] text-zinc-800 text-center font-bold">
+                <div class="font-mono text-[10px] text-zinc-900 text-center font-bold">
                   "First stop in Nob Hill 🍓"
                 </div>
-                <div class="text-[9px] font-mono text-zinc-500 text-center">
+                <div class="text-[9px] font-mono text-zinc-600 text-center font-bold">
                   @maya_abq
                 </div>
               </div>
 
               <!-- Polaroid 2 -->
-              <div class="polaroid-card p-3 bg-white text-black rounded shadow-lg transform rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
-                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 relative">
+              <div class="polaroid-card p-3 bg-white text-black rounded-lg transform rotate-3">
+                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 relative border-2 border-black">
                   <img src="assets/brand/graphic-heart.jpg" alt="Loverboy heart" class="w-full h-full object-cover">
-                  <div class="absolute inset-0 bg-cherryRed/10"></div>
                 </div>
-                <div class="font-mono text-[10px] text-zinc-800 text-center font-bold">
+                <div class="font-mono text-[10px] text-zinc-900 text-center font-bold">
                   "Burrito + Cortado heaven"
                 </div>
-                <div class="text-[9px] font-mono text-zinc-500 text-center">
+                <div class="text-[9px] font-mono text-zinc-600 text-center font-bold">
                   @jordan_rides
                 </div>
               </div>
 
               <!-- Polaroid 3 -->
-              <div class="polaroid-card p-3 bg-white text-black rounded shadow-lg transform rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300">
-                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-burgundy to-bgDark">
-                  <img src="assets/brand/stamp-cupid.svg" alt="Cupid" class="w-14 h-14 mb-1">
-                  <div class="font-display text-hotPink text-[11px]">
+              <div class="polaroid-card p-3 bg-white text-black rounded-lg transform rotate-1">
+                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-burgundy to-bgDark border-2 border-black">
+                  <img src="assets/brand/tattoo-swallow-letter.svg" alt="Swallow" class="w-14 h-14 mb-1">
+                  <div class="font-display text-hotPink text-[10px]">
                     "LOVE AT FIRST SIP"
                   </div>
                 </div>
-                <div class="font-mono text-[10px] text-zinc-800 text-center font-bold">
+                <div class="font-mono text-[10px] text-zinc-900 text-center font-bold">
                   "The mirror never lies 💋"
                 </div>
-                <div class="text-[9px] font-mono text-zinc-500 text-center">
+                <div class="text-[9px] font-mono text-zinc-600 text-center font-bold">
                   @sofia_nm
                 </div>
               </div>
 
               <!-- Polaroid 4 -->
-              <div class="polaroid-card p-3 bg-white text-black rounded shadow-lg transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-300">
-                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 relative">
+              <div class="polaroid-card p-3 bg-white text-black rounded-lg transform -rotate-3">
+                <div class="aspect-square bg-[#1f1a1c] rounded overflow-hidden mb-2 relative border-2 border-black">
                   <img src="assets/brand/logo-arched.jpg" alt="Loverboy logo" class="w-full h-full object-cover">
                 </div>
-                <div class="font-mono text-[10px] text-zinc-800 text-center font-bold">
+                <div class="font-mono text-[10px] text-zinc-900 text-center font-bold">
                   "Spread the love, ABQ"
                 </div>
-                <div class="text-[9px] font-mono text-zinc-500 text-center">
+                <div class="text-[9px] font-mono text-zinc-600 text-center font-bold">
                   @nobhillvibes
                 </div>
               </div>
 
             </div>
 
-            <!-- Instagram CTA with Wax Seal -->
+            <!-- Instagram CTA -->
             <div class="pt-4 flex items-center gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-xs font-display tracking-wider text-hotPink hover:text-white transition-colors underline decoration-hotPink flex items-center gap-1.5">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-xs font-display tracking-wider text-hotPink hover:text-white transition-colors underline decoration-hotPink flex items-center gap-1.5 font-bold">
                 <span>TAG US ON INSTAGRAM @LOVERBOYCOFFEE</span>
                 <span>↗</span>
               </a>
@@ -481,94 +481,95 @@
     </section>
 
     <!-- ==================== COMPONENT 3: THE WINDOW MENU ==================== -->
-    <section id="menu" class="relative z-10 py-24 bg-[#0c0808] overflow-hidden">
+    <section id="menu" class="relative z-10 py-24 bg-[#0a0607] overflow-hidden">
       
-      <!-- Subtle Layered Coffee Ring Stains on Background -->
-      <img src="assets/brand/stamp-coffee-ring.svg" alt="Coffee Ring" class="absolute -right-24 top-1/4 w-[420px] h-[420px] opacity-10 blend-screen pointer-events-none" aria-hidden="true">
-      <img src="assets/brand/stamp-coffee-ring.svg" alt="Coffee Ring" class="absolute -left-20 bottom-10 w-80 h-80 opacity-10 blend-screen pointer-events-none" aria-hidden="true">
+      <!-- Subtle Layered Coffee Ring Stains & Halftone Background -->
+      <div class="absolute inset-0 bg-benday-dark opacity-10 pointer-events-none" aria-hidden="true"></div>
+      <img src="assets/brand/stamp-coffee-ring.svg" alt="Coffee Ring" class="absolute -right-24 top-1/4 w-[420px] h-[420px] opacity-15 blend-screen pointer-events-none" aria-hidden="true">
+      <img src="assets/brand/stamp-coffee-ring.svg" alt="Coffee Ring" class="absolute -left-20 bottom-10 w-80 h-80 opacity-15 blend-screen pointer-events-none" aria-hidden="true">
 
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         
-        <!-- Section Header -->
+        <!-- Section Header with Ben-Day Badge -->
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy/80 border border-cream/20 text-cream font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(216,30,52,0.3)]">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy border-2 border-black text-cream font-mono text-xs tracking-widest uppercase mb-4 hard-shadow-sm">
             <span>GRAB &amp; GO CLASSICS</span>
           </div>
-          <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-cream mb-4">
+          <h2 class="bubble-puff-title text-4xl sm:text-5xl lg:text-6xl text-cream mb-4">
             THE WINDOW MENU
           </h2>
-          <p class="text-base text-cream/80 font-light max-w-xl mx-auto">
+          <p class="text-base text-cream/90 font-rounded font-medium max-w-xl mx-auto">
             Vintage diner recipes crafted with modern specialty coffee standards. Pulled on a calibrated Synesso machine.
           </p>
         </div>
 
-        <!-- Menu Board Container: Deep Wine / Vintage Diner Chalkboard Style -->
-        <div class="menu-board-frame relative rounded-3xl border-4 border-[#350b11] bg-burgundy p-6 sm:p-10 shadow-[0_0_40px_rgba(74,14,23,0.8)]">
+        <!-- Menu Board Container: 70s Silkscreen Chalkboard Style with 4px Ink Border & Hard Shadow -->
+        <div class="menu-board-frame relative rounded-[2.5rem] bg-[#220c11] p-6 sm:p-10">
           
-          <!-- Organic Decorative Motifs pinned to Menu Board Corners -->
+          <!-- Decorative Motifs pinned to Menu Board Corners -->
           <img src="assets/brand/stamp-wax-seal.svg" alt="Loverboy Wax Seal" class="absolute -top-6 -left-6 w-16 h-16 stamp-wax-seal z-30 hidden sm:block">
-          <img src="assets/brand/love-letter.svg" alt="Love Letter Envelope" class="absolute -bottom-8 -right-6 w-32 h-24 stamp-tilt-right z-30 hidden lg:block opacity-95">
+          <img src="assets/brand/tattoo-swallow-letter.svg" alt="Swallow" class="absolute -bottom-8 -right-6 w-32 h-28 die-cut-sticker-tilt-right z-30 hidden lg:block opacity-95">
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
 
             <!-- Category 1: ESPRESSO BAR -->
             <div class="menu-category-column space-y-6">
               
-              <div class="border-b-2 border-cream/20 pb-3 flex items-center justify-between">
-                <h3 class="font-display text-2xl text-cream tracking-wide">
+              <div class="border-b-3 border-black pb-3 flex items-center justify-between">
+                <h3 class="font-rounded font-bold text-2xl text-cream tracking-wide">
                   ESPRESSO BAR
                 </h3>
-                <span class="text-xs font-mono text-hotPink">HOT / ICED</span>
+                <span class="text-xs font-mono font-bold text-hotPink bg-black px-2 py-0.5 rounded border border-black">HOT / ICED</span>
               </div>
 
               <!-- Item 1.1 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Double Shot', '$3.75', 'Single origin seasonal espresso pulled short with dense crema and notes of deep cacao, brown sugar, and dried cherry.', 'Zero Sugar • Dairy-Free • High Caffeine')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Double Shot</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$3.75</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Double Shot</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$3.75</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Single origin seasonal roast with rich cocoa &amp; candied pecan notes.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Single origin seasonal roast with rich cocoa &amp; candied pecan notes.</p>
               </div>
 
               <!-- Item 1.2 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Americano', '$4.25', 'Double espresso shot lengthened with pure hot mountain water or poured over craft ice cubes.', 'Crisp & Refreshing • Zero Sugar • 12oz')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Americano</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$4.25</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Americano</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$4.25</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Clean, long black coffee with deep aroma and sparkling clarity.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Clean, long black coffee with deep aroma and sparkling clarity.</p>
               </div>
 
               <!-- Item 1.3 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Cortado', '$4.75', 'Equal parts rich double espresso and velvety textured whole or oat milk served in a 4oz glass.', 'Perfect 1:1 Ratio • 4oz • Velvety')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Cortado</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$4.75</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Cortado</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$4.75</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Equal parts double espresso &amp; silky micro-foamed milk (4oz).</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Equal parts double espresso &amp; silky micro-foamed milk (4oz).</p>
               </div>
 
               <!-- Item 1.4 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Vanilla Bean Latte', '$6.00', 'Double shot of espresso, house-scraped real Madagascar vanilla bean syrup, and steamed organic milk.', 'Real Vanilla Beans • Best-Seller • 12oz / 16oz')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Vanilla Bean Latte</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$6.00</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Vanilla Bean Latte</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$6.00</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Real scraped Madagascar vanilla bean syrup &amp; espresso.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Real scraped Madagascar vanilla bean syrup &amp; espresso.</p>
               </div>
 
               <!-- Item 1.5 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Dark Mocha', '$6.25', 'Valrhona 70% dark chocolate melted directly into double espresso, topped with textured milk and dark cocoa nibs.', 'Valrhona Dark Chocolate • Rich & Velvety • 12oz / 16oz')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Dark Mocha</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$6.25</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Dark Mocha</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$6.25</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Valrhona dark chocolate melted into double espresso.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Valrhona dark chocolate melted into double espresso.</p>
               </div>
 
             </div>
@@ -576,55 +577,55 @@
             <!-- Category 2: COLD FAVORITES -->
             <div class="menu-category-column space-y-6">
               
-              <div class="border-b-2 border-cream/20 pb-3 flex items-center justify-between">
-                <h3 class="font-display text-2xl text-cream tracking-wide">
+              <div class="border-b-3 border-black pb-3 flex items-center justify-between">
+                <h3 class="font-rounded font-bold text-2xl text-cream tracking-wide">
                   COLD FAVORITES
                 </h3>
-                <span class="text-xs font-mono text-hotPink">ON CRAFT ICE</span>
+                <span class="text-xs font-mono font-bold text-hotPink bg-black px-2 py-0.5 rounded border border-black">ON CRAFT ICE</span>
               </div>
 
-              <!-- Signature Item: Strawberry Cream Iced Latte with Wax Seal -->
-              <div class="menu-item group cursor-pointer p-4 rounded-xl bg-[#2a080d] border-2 border-hotPink shadow-[0_0_25px_rgba(255,64,129,0.4)] relative" onclick="openMenuDetail('Strawberry Cream Iced Latte', '$6.75', 'Our undisputed signature drink: house-simmered organic strawberry compote layered over craft ice, cold organic whole or oat milk, freshly pulled espresso float, and whipped sweet cold cream.', '★ LOVERBOY SIGNATURE DRINK • Must Try')">
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="px-2 py-0.5 rounded bg-hotPink text-white font-mono font-bold text-[10px] tracking-widest">
+              <!-- Pop-Art Signature Item: Strawberry Cream Iced Latte -->
+              <div class="menu-item group cursor-pointer p-4 rounded-2xl bg-[#360910] border-3 border-black hard-shadow-pop-pink relative" onclick="openMenuDetail('Strawberry Cream Iced Latte', '$6.75', 'Our undisputed signature drink: house-simmered organic strawberry compote layered over craft ice, cold organic whole or oat milk, freshly pulled espresso float, and whipped sweet cold cream.', '★ LOVERBOY SIGNATURE DRINK • Must Try')">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="px-2.5 py-0.5 rounded-full bg-hotPink text-white font-mono font-bold text-[10px] tracking-widest border border-black">
                     ★ LOVERBOY SIGNATURE
                   </span>
-                  <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="w-5 h-4 inline-block opacity-85">
+                  <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="w-6 h-5 inline-block opacity-90">
                 </div>
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-white group-hover:text-hotPink transition-colors">Strawberry Cream Iced Latte</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-hotPink text-base">$6.75</span>
+                  <h4 class="font-rounded font-bold text-lg text-white group-hover:text-hotPink transition-colors">Strawberry Cream Iced Latte</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$6.75</span>
                 </div>
-                <p class="text-xs font-light text-cream/90 mt-1">House strawberry reduction, cold sweet cream &amp; double espresso float.</p>
+                <p class="text-xs font-rounded font-medium text-cream/90 mt-1">House strawberry reduction, cold sweet cream &amp; double espresso float.</p>
               </div>
 
               <!-- Item 2.2 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Flash Cold Brew', '$5.50', 'Steeped for 18 hours using a dual-stage filtration method. Impossibly smooth, zero bitterness, packed with natural sweetness.', '18-Hour Slow Steep • Smooth • Zero Acid Bite')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Flash Cold Brew</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$5.50</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Flash Cold Brew</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$5.50</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">18-hour slow steep over ice. Ultra-smooth, zero bitterness.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">18-hour slow steep over ice. Ultra-smooth, zero bitterness.</p>
               </div>
 
               <!-- Item 2.3 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Espresso Tonic', '$6.25', 'Chilled Fever-Tree premium tonic water, double espresso shot float, and expressed fresh citrus peel.', 'Sparkling Citrus • Refreshing Afternoon Pick-Me-Up')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Espresso Tonic</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$6.25</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Espresso Tonic</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$6.25</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Fever-Tree tonic, double espresso float &amp; candied orange peel.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Fever-Tree tonic, double espresso float &amp; candied orange peel.</p>
               </div>
 
-              <!-- Customizations Bar -->
-              <div class="p-3.5 rounded-lg bg-black/40 border border-cream/15 text-xs font-mono space-y-1">
+              <!-- Customizations Bar with Bold Ink Box -->
+              <div class="p-3.5 rounded-xl bg-black border-2 border-black text-xs font-mono space-y-1 hard-shadow-sm">
                 <div class="text-hotPink font-bold">CUSTOMIZE YOUR CUP:</div>
-                <div class="text-cream/70 flex justify-between"><span>Oat Milk / Almond Milk</span> <span>+$0.85</span></div>
-                <div class="text-cream/70 flex justify-between"><span>Extra Espresso Shot</span> <span>+$1.25</span></div>
-                <div class="text-cream/70 flex justify-between"><span>Sweet Strawberry Cold Foam</span> <span>+$1.50</span></div>
+                <div class="text-cream/80 flex justify-between"><span>Oat Milk / Almond Milk</span> <span class="font-bold text-gold">+$0.85</span></div>
+                <div class="text-cream/80 flex justify-between"><span>Extra Espresso Shot</span> <span class="font-bold text-gold">+$1.25</span></div>
+                <div class="text-cream/80 flex justify-between"><span>Sweet Strawberry Cold Foam</span> <span class="font-bold text-gold">+$1.50</span></div>
               </div>
 
             </div>
@@ -632,50 +633,50 @@
             <!-- Category 3: BITES & BAKERY -->
             <div class="menu-category-column space-y-6">
               
-              <div class="border-b-2 border-cream/20 pb-3 flex items-center justify-between">
-                <h3 class="font-display text-2xl text-cream tracking-wide">
+              <div class="border-b-3 border-black pb-3 flex items-center justify-between">
+                <h3 class="font-rounded font-bold text-2xl text-cream tracking-wide">
                   BITES &amp; BAKERY
                 </h3>
-                <span class="text-xs font-mono text-hotPink">SERVED WARM</span>
+                <span class="text-xs font-mono font-bold text-hotPink bg-black px-2 py-0.5 rounded border border-black">SERVED WARM</span>
               </div>
 
-              <!-- Item 3.1 -->
-              <div class="menu-item group cursor-pointer p-3.5 rounded-xl bg-black/30 border border-cream/15 hover:border-hotPink transition-colors" onclick="openMenuDetail('NM Green Chile Breakfast Burritos', '$8.50', 'Made fresh daily in Albuquerque. Fluffy scrambled eggs, crispy papitas, melted sharp cheddar cheese, and authentic flame-roasted Hatch green chile wrapped in a toasted flour tortilla.', 'Local Albuquerque Staple • Hatch Green Chile • Wrapped Warm')">
+              <!-- Item 3.1: NM Green Chile Breakfast Burrito -->
+              <div class="menu-item group cursor-pointer p-3.5 rounded-xl bg-black border-2 border-black hover:border-hotPink transition-colors hard-shadow-sm" onclick="openMenuDetail('NM Green Chile Breakfast Burritos', '$8.50', 'Made fresh daily in Albuquerque. Fluffy scrambled eggs, crispy papitas, melted sharp cheddar cheese, and authentic flame-roasted Hatch green chile wrapped in a toasted flour tortilla.', 'Local Albuquerque Staple • Hatch Green Chile • Wrapped Warm')">
                 <div class="flex items-center gap-1.5 mb-1">
                   <span class="text-xs">🌶️</span>
                   <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">ABQ FAVORITE</span>
                 </div>
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Green Chile Burrito</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$8.50</span>
+                  <h4 class="font-rounded font-bold text-lg text-cream group-hover:text-hotPink transition-colors">Green Chile Burrito</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$8.50</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Hatch green chile, egg, crispy papitas, cheddar &amp; house salsa.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Hatch green chile, egg, crispy papitas, cheddar &amp; house salsa.</p>
               </div>
 
               <!-- Item 3.2 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Daily Pastries', '$4.50', 'Baked every morning: flaky butter croissants, cardamom morning buns, and chocolate-hazelnut babka slices.', 'Fresh Every Morning • Sourced Locally')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Daily Pastries</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$4.50</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Daily Pastries</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$4.50</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Flaky butter croissants, sourdough cookies &amp; seasonal scones.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Flaky butter croissants, sourdough cookies &amp; seasonal scones.</p>
               </div>
 
               <!-- Item 3.3 -->
               <div class="menu-item group cursor-pointer" onclick="openMenuDetail('Cherry Almond Scone', '$4.75', 'Tender cream scone studded with tart dried cherries and topped with a toasted almond glaze.', 'Sweet & Tart • Perfect with Americano')">
                 <div class="flex justify-between items-baseline gap-2">
-                  <h4 class="font-display text-lg text-cream group-hover:text-hotPink transition-colors">Cherry Almond Scone</h4>
-                  <span class="menu-dots flex-grow border-b border-dotted border-cream/30 mx-2"></span>
-                  <span class="font-mono font-bold text-cream text-base">$4.75</span>
+                  <h4 class="font-rounded font-semibold text-lg text-cream group-hover:text-hotPink transition-colors">Cherry Almond Scone</h4>
+                  <span class="menu-dots flex-grow border-b-2 border-dotted border-cream/30 mx-2"></span>
+                  <span class="font-mono font-bold text-gold text-base">$4.75</span>
                 </div>
-                <p class="text-xs font-light text-cream/70 mt-1">Tart red cherries, almond glaze &amp; golden crust.</p>
+                <p class="text-xs font-rounded font-normal text-cream/70 mt-1">Tart red cherries, almond glaze &amp; golden crust.</p>
               </div>
 
               <!-- Grab & Go Guarantee Note -->
-              <div class="p-4 rounded-xl border border-cream/10 bg-black/40 text-center font-mono text-[11px] text-cream/70">
-                <span class="text-hotPink block text-sm mb-1">⚡ 90-SECOND WINDOW GUARANTEE</span>
+              <div class="p-4 rounded-xl border-2 border-black bg-black text-center font-mono text-[11px] text-cream/80 hard-shadow-sm">
+                <span class="text-hotPink font-bold block text-sm mb-1">⚡ 90-SECOND WINDOW GUARANTEE</span>
                 Fast, friendly walk-up service so you never miss a beat.
               </div>
 
@@ -684,7 +685,7 @@
           </div>
 
           <!-- Bottom Menu Banner -->
-          <div class="mt-10 pt-6 border-t-2 border-cream/20 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-cream/80">
+          <div class="mt-10 pt-6 border-t-3 border-black flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-cream/90 font-bold">
             <div>
               <span>♥ PLANT-BASED MILKS AVAILABLE (OAT &amp; ALMOND)</span>
             </div>
@@ -699,53 +700,53 @@
     </section>
 
     <!-- ==================== COMPONENT 4: VISIT US & LIVE HOURS (FOOTER) ==================== -->
-    <footer id="hours" class="relative z-10 pt-20 pb-12 bg-bgDark border-t border-cherryRed/30 overflow-hidden">
+    <footer id="hours" class="relative z-10 pt-20 pb-12 bg-bgDark border-t-4 border-black overflow-hidden">
       
       <!-- Faint Background Stamp -->
-      <img src="assets/brand/stamp-cupid.svg" alt="Cupid" class="absolute -right-10 -bottom-10 w-64 h-64 opacity-10 pointer-events-none" aria-hidden="true">
+      <img src="assets/brand/tattoo-sacred-heart.svg" alt="Sacred Heart" class="absolute -right-10 -bottom-10 w-72 h-72 opacity-10 pointer-events-none" aria-hidden="true">
 
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-cream/15">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b-2 border-black">
           
-          <!-- Column 1: Live Hours & Status (Albuquerque MST) -->
+          <!-- Column 1: Live Hours & Tour Dates Format -->
           <div class="lg:col-span-5 space-y-6">
             
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cherryRed/20 border border-cherryRed/40 text-hotPink font-mono text-xs tracking-wider">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cherryRed border-2 border-black text-cream font-mono text-xs tracking-wider hard-shadow-sm">
               <span>● NOB HILL OPERATING HOURS</span>
             </div>
 
-            <h3 class="font-display text-3xl sm:text-4xl text-cream">
+            <h3 class="bubble-puff-title text-3xl sm:text-4xl text-cream">
               THE WINDOW IS OPEN.
             </h3>
 
-            <!-- Schedule Card -->
-            <div class="p-6 rounded-2xl bg-burgundy/40 border border-cream/15 space-y-4 font-mono text-xs relative">
-              <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="absolute top-4 right-4 w-10 h-7 opacity-75 stamp-tilt-left">
+            <!-- Schedule Card with Bold Ink Border & Perforated Ticket Edge -->
+            <div class="p-6 rounded-2xl bg-[#1c0d10] border-3 border-black hard-shadow-sm space-y-4 font-mono text-xs relative">
+              <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="absolute top-4 right-4 w-10 h-7 opacity-85 die-cut-sticker-tilt-left">
 
-              <div class="flex justify-between items-center pb-3 border-b border-cream/10">
-                <span class="text-cream/80">MONDAY — FRIDAY</span>
+              <div class="flex justify-between items-center pb-3 border-b border-cream/20">
+                <span class="text-cream/80 font-bold">MONDAY — FRIDAY</span>
                 <span class="font-bold text-white">7:00 AM — 3:00 PM MST</span>
               </div>
 
-              <div class="flex justify-between items-center pb-3 border-b border-cream/10">
-                <span class="text-cream/80">SATURDAY — SUNDAY</span>
+              <div class="flex justify-between items-center pb-3 border-b border-cream/20">
+                <span class="text-cream/80 font-bold">SATURDAY — SUNDAY</span>
                 <span class="font-bold text-hotPink">7:30 AM — 4:00 PM MST</span>
               </div>
 
-              <div class="pt-2 flex items-center justify-between text-cream/60 text-[11px]">
-                <span>LOCAL TIME: <strong id="localClockDisplay" class="text-cream font-bold">12:00:00 MST</strong></span>
-                <span id="footerStatusBadge" class="text-emerald-400 font-bold">● OPEN NOW</span>
+              <div class="pt-2 flex items-center justify-between text-cream/70 text-[11px] font-bold">
+                <span>LOCAL TIME: <strong id="localClockDisplay" class="text-gold">12:00:00 MST</strong></span>
+                <span id="footerStatusBadge" class="text-emerald-400">● OPEN NOW</span>
               </div>
 
             </div>
 
             <!-- Direction Actions -->
-            <div class="flex flex-wrap gap-3">
-              <a href="https://maps.google.com/?q=Nob+Hill+Albuquerque+NM" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-full bg-cherryRed hover:bg-[#b01426] text-cream font-display text-xs tracking-wider border border-cream/30 transition-all shadow-[0_0_15px_rgba(216,30,52,0.4)]">
+            <div class="flex flex-wrap gap-4">
+              <a href="https://maps.google.com/?q=Nob+Hill+Albuquerque+NM" target="_blank" rel="noopener noreferrer" class="btn-pop-cherry px-6 py-3 rounded-full text-xs tracking-wider">
                 OPEN IN GOOGLE MAPS ↗
               </a>
-              <a href="https://maps.apple.com/?q=Nob+Hill+Albuquerque+NM" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-full border border-cream/30 hover:border-hotPink text-cream hover:text-hotPink font-display text-xs tracking-wider transition-all">
+              <a href="https://maps.apple.com/?q=Nob+Hill+Albuquerque+NM" target="_blank" rel="noopener noreferrer" class="btn-pop-outline px-6 py-3 rounded-full text-xs tracking-wider">
                 APPLE MAPS ↗
               </a>
             </div>
@@ -755,25 +756,25 @@
           <!-- Column 2: Location Card with Vintage Airmail Love Letter Envelope -->
           <div class="lg:col-span-4 space-y-6">
             
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-burgundy/80 border border-cream/20 text-cream/70 font-mono text-xs">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-burgundy border-2 border-black text-cream font-mono text-xs hard-shadow-sm">
               <span>LOCATION &amp; NEIGHBORHOOD</span>
             </div>
 
             <!-- Love Letter Envelope Graphic Component -->
-            <div class="stamp-tilt-left hover:rotate-0 transition-transform cursor-pointer">
-              <img src="assets/brand/love-letter.svg" alt="Air Mail to Loverboy Coffee Nob Hill" class="w-full max-w-sm rounded-lg shadow-xl">
+            <div class="die-cut-sticker-tilt-left hover:rotate-0 transition-transform cursor-pointer">
+              <img src="assets/brand/love-letter.svg" alt="Air Mail to Loverboy Coffee Nob Hill" class="w-full max-w-sm rounded-lg shadow-2xl">
             </div>
 
-            <!-- Loverboy Mixtape Widget -->
-            <div class="p-4 rounded-xl bg-burgundy/30 border border-hotPink/30 flex items-center justify-between gap-4">
+            <!-- Loverboy Mixtape Vinyl Player Widget -->
+            <div class="p-4 rounded-2xl bg-black border-2 border-black hard-shadow-sm flex items-center justify-between gap-4">
               <div class="flex items-center gap-3">
-                <span class="text-2xl animate-spin-slow">💿</span>
+                <span class="text-3xl animate-spin-slow">💿</span>
                 <div>
-                  <div class="font-display text-xs text-cream">LOVERBOY WINDOW JAMS</div>
-                  <div class="text-[10px] font-mono text-hotPink">70s Yacht Rock &amp; Disco Soul</div>
+                  <div class="font-rounded font-bold text-sm text-cream">LOVERBOY WINDOW JAMS</div>
+                  <div class="text-[10px] font-mono text-hotPink font-bold">70s Yacht Rock &amp; Disco Soul</div>
                 </div>
               </div>
-              <button id="mixtapePlayBtn" type="button" class="px-3 py-1.5 rounded-full bg-hotPink text-white font-mono text-[10px] font-bold hover:bg-[#ff1a66] transition-colors cursor-pointer">
+              <button id="mixtapePlayBtn" type="button" class="btn-pop-pink px-4 py-1.5 rounded-full font-mono text-[10px] font-bold cursor-pointer">
                 PLAY ✦
               </button>
             </div>
@@ -784,30 +785,30 @@
           <div class="lg:col-span-3 space-y-6 flex flex-col justify-between">
             
             <div>
-              <div class="w-24 h-24 mx-auto lg:mx-0 rounded-2xl overflow-hidden border-2 border-hotPink/50 shadow-[0_0_20px_rgba(255,64,129,0.3)] mb-4">
+              <div class="w-24 h-24 mx-auto lg:mx-0 rounded-2xl overflow-hidden border-4 border-black hard-shadow-sm mb-4 bg-black">
                 <img src="assets/brand/graphic-heart.jpg" alt="Loverboy Heart Mark" class="w-full h-full object-cover">
               </div>
 
-              <h4 class="font-display text-xl text-cream">
+              <h4 class="font-rounded font-bold text-2xl text-cream">
                 SPREAD THE LOVE.
               </h4>
-              <p class="text-xs text-cream/70 font-light mt-1">
+              <p class="text-xs text-cream/80 font-rounded font-normal mt-1 leading-relaxed">
                 Follow our morning drops, secret drink specials, and community weekend events.
               </p>
             </div>
 
             <div class="space-y-3 font-mono text-xs">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2.5 rounded-lg bg-burgundy/40 hover:bg-hotPink/20 border border-cream/10 text-cream hover:text-hotPink transition-all">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-black border-2 border-black text-cream hover:text-hotPink hard-shadow-sm transition-all">
                 <span>INSTAGRAM</span>
-                <span>@loverboycoffee ↗</span>
+                <span class="font-bold">@loverboycoffee ↗</span>
               </a>
-              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2.5 rounded-lg bg-burgundy/40 hover:bg-hotPink/20 border border-cream/10 text-cream hover:text-hotPink transition-all">
+              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-black border-2 border-black text-cream hover:text-hotPink hard-shadow-sm transition-all">
                 <span>TIKTOK</span>
-                <span>@loverboycoffee ↗</span>
+                <span class="font-bold">@loverboycoffee ↗</span>
               </a>
             </div>
 
-            <div class="font-mono text-[10px] text-cream/50">
+            <div class="font-mono text-[11px] text-cream/70 font-bold">
               #LoverboyCoffee • #NobHillABQ
             </div>
 
@@ -816,9 +817,9 @@
         </div>
 
         <!-- Colophon Bottom Bar -->
-        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-cream/60">
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-cream/70 font-bold">
           <div class="flex items-center gap-2">
-            <img src="assets/brand/stamp-wax-seal.svg" alt="Wax Seal" class="w-5 h-5 opacity-80">
+            <img src="assets/brand/stamp-wax-seal.svg" alt="Wax Seal" class="w-6 h-6">
             <span>LOVERBOY NEIGHBORHOOD COFFEE © 2026 // ALL RIGHTS RESERVED</span>
           </div>
           <div class="text-hotPink font-bold">
@@ -836,37 +837,37 @@
   <!-- ==================== MENU ITEM DETAIL MODAL DIALOG ==================== -->
   <dialog id="menuDetailModal" class="menu-modal" aria-labelledby="modalItemName">
     <div class="menu-modal-backdrop" id="menuModalBackdrop"></div>
-    <div class="menu-modal-card p-6 sm:p-8 rounded-3xl bg-[#1f0d11] border-2 border-hotPink shadow-[0_0_40px_rgba(255,64,129,0.5)] max-w-md w-full relative">
+    <div class="menu-modal-card p-6 sm:p-8 rounded-[2rem] bg-[#1a080c] border-4 border-black hard-shadow-pop-pink max-w-md w-full relative">
       
-      <button id="closeMenuModalBtn" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black/60 border border-cream/30 text-cream hover:text-hotPink flex items-center justify-center font-mono text-xs cursor-pointer">
+      <button id="closeMenuModalBtn" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-black border-2 border-black text-cream hover:text-hotPink flex items-center justify-center font-mono text-xs font-bold cursor-pointer">
         ✕
       </button>
 
       <div class="mb-4 flex items-center justify-between">
-        <span id="modalItemBadge" class="px-2.5 py-0.5 rounded-full bg-hotPink text-white font-mono text-[10px] font-bold uppercase tracking-wider">
+        <span id="modalItemBadge" class="px-3 py-1 rounded-full bg-hotPink text-white font-mono text-[10px] font-bold uppercase tracking-wider border-2 border-black">
           SPECIALTY
         </span>
-        <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="w-6 h-5 opacity-80">
+        <img src="assets/brand/kiss-mark.svg" alt="Kiss" class="w-7 h-5 opacity-90 die-cut-sticker">
       </div>
 
-      <h3 id="modalItemName" class="font-display text-3xl text-cream mb-2">
+      <h3 id="modalItemName" class="font-rounded font-bold text-3xl text-cream mb-2">
         Item Name
       </h3>
 
-      <div class="text-hotPink font-mono text-xl font-bold mb-4" id="modalItemPrice">
+      <div class="text-gold font-mono text-2xl font-bold mb-4" id="modalItemPrice">
         $0.00
       </div>
 
-      <p id="modalItemDesc" class="text-cream/80 text-sm font-light leading-relaxed mb-6">
+      <p id="modalItemDesc" class="text-cream/90 text-sm font-rounded font-normal leading-relaxed mb-6">
         Item description...
       </p>
 
-      <div class="p-3.5 rounded-xl bg-black/50 border border-cream/15 text-xs font-mono text-cream/70 mb-6">
+      <div class="p-3.5 rounded-xl bg-black border-2 border-black text-xs font-mono text-cream/80 mb-6 hard-shadow-sm">
         <span class="text-hotPink font-bold block mb-1">WINDOW PREPARATION:</span>
         <span id="modalItemNotes">Freshly pulled to order.</span>
       </div>
 
-      <button id="modalOrderWindowBtn" class="w-full py-3.5 rounded-full bg-cherryRed hover:bg-[#b01426] text-cream font-display text-sm tracking-wider border border-cream/30 shadow-[0_0_15px_rgba(216,30,52,0.5)] transition-all cursor-pointer">
+      <button id="modalOrderWindowBtn" class="btn-pop-cherry w-full py-3.5 rounded-full text-sm tracking-wider cursor-pointer">
         ORDER AT THE WINDOW ☕
       </button>
 

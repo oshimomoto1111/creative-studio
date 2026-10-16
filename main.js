@@ -195,11 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
       snapshotCanvas.width = width;
       snapshotCanvas.height = height;
 
-      // 1. Draw Classic White Polaroid Base
+      // 1. Draw Classic White Polaroid Base with black ink border
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, width, height);
+      ctx.lineWidth = 8;
+      ctx.strokeStyle = '#000000';
+      ctx.strokeRect(4, 4, width - 8, height - 8);
 
-      // 2. Photo Area (Dark inset)
+      // 2. Photo Area (Dark inset with bold ink border)
       const photoX = 40;
       const photoY = 40;
       const photoWidth = 520;
@@ -207,6 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       ctx.fillStyle = '#140c0d';
       ctx.fillRect(photoX, photoY, photoWidth, photoHeight);
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = '#000000';
+      ctx.strokeRect(photoX, photoY, photoWidth, photoHeight);
 
       // 3. Draw Camera Video Feed OR Default Graphic
       if (isCameraActive && mirrorVideo && mirrorVideo.readyState >= 2) {
@@ -225,22 +231,22 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillRect(photoX, photoY, photoWidth, photoHeight);
 
         ctx.fillStyle = '#FF4081';
-        ctx.font = 'bold 36px sans-serif';
+        ctx.font = 'bold 38px "Rubik Bubbles", "Shrikhand", cursive, sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('LOVERBOY', width / 2, 280);
 
         ctx.fillStyle = '#F8F2E2';
-        ctx.font = '20px sans-serif';
+        ctx.font = 'bold 18px "Fredoka", sans-serif';
         ctx.fillText('NEIGHBORHOOD COFFEE', width / 2, 320);
 
         ctx.fillStyle = '#FF4081';
         ctx.font = '48px sans-serif';
-        ctx.fillText('💋 ☕ 🌹', width / 2, 400);
+        ctx.fillText('💋 ☕ 🌹 🕊️', width / 2, 400);
       }
 
       // 4. Render Stamped Stickers onto Canvas
       const activeStickers = stickersLayer ? stickersLayer.querySelectorAll('.mirror-sticker') : [];
-      ctx.font = '42px sans-serif';
+      ctx.font = '44px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
@@ -252,15 +258,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillText(s.textContent, x, y);
       });
 
-      // 5. Polaroid Bottom Text
+      // 5. Polaroid Bottom Text (Screenprint / Fanzine stamp)
       ctx.fillStyle = '#D81E34';
-      ctx.font = 'bold 24px cursive, sans-serif';
+      ctx.font = 'bold 26px "Rubik Bubbles", "Shrikhand", cursive, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('LOVERBOY NOB HILL, ABQ', width / 2, 630);
 
-      ctx.fillStyle = '#333333';
-      ctx.font = '13px monospace';
-      ctx.fillText('TAG @LOVERBOYCOFFEE • SPREAD THE LOVE ♥', width / 2, 675);
+      ctx.fillStyle = '#111111';
+      ctx.font = 'bold 12px "Space Mono", monospace';
+      ctx.fillText('TAG @LOVERBOYCOFFEE • ROUTE 66 SIPS ♥', width / 2, 675);
 
       // 6. Trigger Instant Download
       const dataUrl = snapshotCanvas.toDataURL('image/png');

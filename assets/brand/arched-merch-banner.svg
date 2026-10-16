@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" fill="none">
+  <defs>
+    <pattern id="bendayDotsPink" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.4" fill="#FF4081" opacity="0.6"/>
+    </pattern>
+    <filter id="bannerShadow" x="-5%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#000000" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- Ribbon Back Folds -->
+  <g filter="url(#bannerShadow)">
+    <path d="M45 55 L10 85 L60 80 L52 50 Z" fill="#4A0E17" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M455 55 L490 85 L440 80 L448 50 Z" fill="#4A0E17" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Arched Main Ribbon Body -->
+  <g filter="url(#bannerShadow)">
+    <path d="M50 45 C150 5 350 5 450 45 L442 95 C345 58 155 58 58 95 Z" fill="#F8F2E2" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+    
+    <!-- Ben-Day Halftone Shading Layer on Lower Half of Ribbon -->
+    <path d="M54 70 C152 35 348 35 446 70 L442 95 C345 58 155 58 58 95 Z" fill="url(#bendayDotsPink)"/>
+
+    <!-- Inner Ink Border Stitching -->
+    <path d="M62 52 C155 16 345 16 438 52" stroke="#000000" stroke-width="1.8" stroke-dasharray="4 3"/>
+    <path d="M68 87 C158 52 342 52 432 87" stroke="#000000" stroke-width="1.8" stroke-dasharray="4 3"/>
+
+    <!-- Arched Text on Path -->
+    <path id="archCurve" d="M65 72 C165 30 335 30 435 72" fill="none"/>
+    <text font-family="'Shrikhand', 'Space Mono', cursive" font-size="20" font-weight="bold" fill="#D81E34" letter-spacing="4" stroke="#000000" stroke-width="0.8">
+      <textPath href="#archCurve" startOffset="50%" text-anchor="middle">
+        ★ NOB HILL • HISTORIC ROUTE 66 ★
+      </textPath>
+    </text>
+  </g>
+</svg>

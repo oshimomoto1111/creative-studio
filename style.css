@@ -1,24 +1,39 @@
 /* ==========================================================================
    LOVERBOY NEIGHBORHOOD COFFEE — DESIGN SYSTEM & TOKENS
-   Aesthetic: 70s/80s Vintage Pop, Passionate Romance, Neon Walk-up Window
-   Location: Nob Hill, Albuquerque, NM
+   Aesthetic: "Vintage 70s/80s Pop-Art Screenprint & Neo-traditional Tattoo Romance"
+   Influences: Silkscreen posters, Ben-Day halftone shading, bold ink outlines,
+               vinyl bubble/puff lettering, fanzines & cult streetwear decal culture.
+   Location: Nob Hill, Albuquerque, NM (Historic Route 66 Corridor)
    ========================================================================== */
 
 :root {
   /* Core Colors */
   --bg-dark: #0f0a0a;             /* Negro carbón / fondo principal */
+  --bg-card: #180e10;             /* Tintas oscuras de fanzine */
   --color-cherry-red: #D81E34;    /* Rojo cereza intenso */
   --color-burgundy: #4A0E17;      /* Borgoña / Vino oscuro */
   --color-hot-pink: #FF4081;      /* Rosa chicle / Neón pop */
-  --color-cream: #F8F2E2;         /* Blanco crema vintage / Lino */
+  --color-cream: #F8F2E2;         /* Blanco crema vintage / Lino cálido */
   --color-cream-muted: #e8dfcb;
+  --color-gold: #F4B942;          /* Mostaza / Oro vintage de serigrafía */
+  --ink-black: #000000;           /* Tinta negra pura para contornos bold */
 
-  /* Accents */
+  /* Pop-Art & Screenprint Hard Drop Shadows */
+  --shadow-hard-sm: 3px 3px 0px #000000;
+  --shadow-hard-md: 5px 5px 0px #000000;
+  --shadow-hard-lg: 8px 8px 0px #000000;
+  --shadow-pop-cherry: 5px 5px 0px #000000, 9px 9px 0px #D81E34;
+  --shadow-pop-pink: 5px 5px 0px #000000, 9px 9px 0px #FF4081;
+  --shadow-pop-gold: 5px 5px 0px #000000, 9px 9px 0px #F4B942;
+
+  /* Neon Ambient Glows */
   --neon-glow: 0 0 15px rgba(255, 64, 129, 0.7), 0 0 30px rgba(216, 30, 52, 0.5);
-  --neon-text-glow: 0 0 7px #FF4081, 0 0 15px #FF4081, 0 0 30px #D81E34;
+  --neon-text-glow: 0 0 8px #FF4081, 0 0 18px #FF4081, 0 0 32px #D81E34;
 
   /* Typography */
-  --font-display: 'Shrikhand', 'Cooper Black', cursive, sans-serif; /* Bubble retro 70s */
+  --font-bubble: 'Rubik Bubbles', cursive;
+  --font-display: 'Shrikhand', cursive, sans-serif;
+  --font-rounded: 'Fredoka', 'DM Sans', sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'Space Mono', monospace;
 }
@@ -47,7 +62,7 @@ body {
 }
 
 /* ==========================================================================
-   RETRO OVERLAYS (GRAIN & HALFTONE)
+   ANALOG OVERLAYS: FILM GRAIN & BEN-DAY HALFTONE DOT MATRIX
    ========================================================================== */
 .vintage-grain {
   position: fixed;
@@ -56,7 +71,7 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.035;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -65,9 +80,9 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.025;
-  background-image: radial-gradient(var(--color-hot-pink) 1.2px, transparent 1.2px);
-  background-size: 16px 16px;
+  opacity: 0.035;
+  background-image: radial-gradient(var(--color-hot-pink) 1.5px, transparent 1.6px);
+  background-size: 14px 14px;
 }
 
 /* Ambient Neon Flare following Cursor */
@@ -80,17 +95,88 @@ body {
   pointer-events: none;
   z-index: 2;
   background: radial-gradient(
-    550px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
-    rgba(255, 64, 129, 0.06),
-    rgba(216, 30, 52, 0.02) 40%,
+    600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(255, 64, 129, 0.07),
+    rgba(216, 30, 52, 0.03) 40%,
     transparent 70%
   );
   transition: opacity 0.4s ease;
 }
 
 /* ==========================================================================
-   NEON GLOW & PULSE ANIMATIONS
+   BEN-DAY HALFTONE SCREENPRINT UTILITY CLASSES
    ========================================================================== */
+.bg-benday-dots {
+  background-image: radial-gradient(circle, var(--color-hot-pink) 1.5px, transparent 1.6px);
+  background-size: 10px 10px;
+}
+
+.bg-benday-dark {
+  background-image: radial-gradient(circle, rgba(216, 30, 52, 0.45) 1.6px, transparent 1.7px);
+  background-size: 12px 12px;
+}
+
+.bg-benday-gold {
+  background-image: radial-gradient(circle, rgba(244, 185, 66, 0.5) 1.6px, transparent 1.7px);
+  background-size: 10px 10px;
+}
+
+.bg-benday-cream {
+  background-image: radial-gradient(circle, rgba(248, 242, 226, 0.18) 1.5px, transparent 1.6px);
+  background-size: 11px 11px;
+}
+
+/* Screenprint Texture Overlays */
+.blend-screen {
+  mix-blend-mode: screen;
+}
+
+.blend-overlay {
+  mix-blend-mode: overlay;
+}
+
+/* ==========================================================================
+   70S BUBBLE / PUFF VINYL TYPOGRAPHY & TEXT SHADOWS
+   ========================================================================== */
+.font-bubble {
+  font-family: var(--font-bubble);
+  letter-spacing: 0.03em;
+}
+
+.font-rounded {
+  font-family: var(--font-rounded);
+}
+
+/* Vinyl Specular Bubble Highlights (3D Inflated Pop Lettering) */
+.bubble-puff-title {
+  font-family: var(--font-bubble);
+  color: var(--color-cream);
+  text-shadow: 
+    3px 3px 0px var(--color-burgundy),
+    6px 6px 0px var(--ink-black),
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.85);
+  line-height: 1.05;
+}
+
+.bubble-puff-pink {
+  font-family: var(--font-bubble);
+  color: var(--color-hot-pink);
+  text-shadow: 
+    3px 3px 0px var(--color-cherry-red),
+    6px 6px 0px var(--ink-black),
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.9);
+}
+
+.bubble-puff-red {
+  font-family: var(--font-bubble);
+  color: var(--color-cherry-red);
+  text-shadow: 
+    3px 3px 0px var(--color-burgundy),
+    6px 6px 0px var(--ink-black),
+    -1.5px -1.5px 0px rgba(255, 255, 255, 0.8);
+}
+
+/* Neon Glow & Pulse Animations */
 .neon-text {
   text-shadow: var(--neon-text-glow);
   animation: neonPulse 3.5s infinite ease-in-out;
@@ -102,9 +188,253 @@ body {
     opacity: 1;
   }
   50% {
-    text-shadow: 0 0 12px #FF4081, 0 0 26px #FF4081, 0 0 45px #D81E34, 0 0 60px #FF4081;
-    opacity: 0.96;
+    text-shadow: 0 0 14px #FF4081, 0 0 28px #FF4081, 0 0 48px #D81E34, 0 0 65px #FF4081;
+    opacity: 0.97;
   }
+}
+
+/* ==========================================================================
+   POP-ART HARD INK SHADOWS & BOLD INK BORDERS
+   ========================================================================== */
+.ink-border-thick {
+  border: 3.5px solid var(--ink-black);
+}
+
+.ink-border-sm {
+  border: 2px solid var(--ink-black);
+}
+
+.hard-shadow-sm {
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.hard-shadow-md {
+  box-shadow: var(--shadow-hard-md);
+}
+
+.hard-shadow-lg {
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.hard-shadow-pop-cherry {
+  box-shadow: var(--shadow-pop-cherry);
+}
+
+.hard-shadow-pop-pink {
+  box-shadow: var(--shadow-pop-pink);
+}
+
+.hard-shadow-pop-gold {
+  box-shadow: var(--shadow-pop-gold);
+}
+
+/* ==========================================================================
+   DIE-CUT STICKER EFFECT (STREETWEAR & TATTOO FLASH DECAL)
+   ========================================================================== */
+.die-cut-sticker {
+  filter: drop-shadow(0 0 0 3px #FFFFFF) drop-shadow(4px 4px 0px #000000);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.die-cut-sticker:hover {
+  transform: scale(1.1) rotate(4deg);
+  filter: drop-shadow(0 0 0 3.5px #FF4081) drop-shadow(6px 6px 0px #000000);
+}
+
+.die-cut-sticker-tilt-left {
+  --rot: -5deg;
+  transform: rotate(-5deg);
+  filter: drop-shadow(0 0 0 3px #FFFFFF) drop-shadow(4px 4px 0px #000000);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.die-cut-sticker-tilt-left:hover {
+  transform: rotate(-8deg) scale(1.1);
+  filter: drop-shadow(0 0 0 3.5px #FF4081) drop-shadow(6px 6px 0px #000000);
+}
+
+.die-cut-sticker-tilt-right {
+  --rot: 6deg;
+  transform: rotate(6deg);
+  filter: drop-shadow(0 0 0 3px #FFFFFF) drop-shadow(4px 4px 0px #000000);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.die-cut-sticker-tilt-right:hover {
+  transform: rotate(9deg) scale(1.1);
+  filter: drop-shadow(0 0 0 3.5px #FF4081) drop-shadow(6px 6px 0px #000000);
+}
+
+/* Wax Seal with Hard Drop Shadow */
+.stamp-wax-seal {
+  filter: drop-shadow(3px 3px 0px #000000);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.stamp-wax-seal:hover {
+  transform: scale(1.14) rotate(8deg);
+  filter: drop-shadow(5px 5px 0px #000000) drop-shadow(0 0 15px rgba(216, 30, 52, 0.8));
+}
+
+/* ==========================================================================
+   BUTTONS: POP-ART TACTILE PUSH & SCREENPRINT PUNCH
+   ========================================================================== */
+.btn-pop-cherry {
+  background-color: var(--color-cherry-red);
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  border: 3px solid var(--ink-black);
+  box-shadow: 4px 4px 0px var(--ink-black);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.btn-pop-cherry:hover {
+  background-color: #e5253c;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--ink-black), 10px 10px 0px var(--color-hot-pink);
+}
+
+.btn-pop-cherry:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--ink-black);
+}
+
+.btn-pop-pink {
+  background-color: var(--color-hot-pink);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  border: 3px solid var(--ink-black);
+  box-shadow: 4px 4px 0px var(--ink-black);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.btn-pop-pink:hover {
+  background-color: #ff5c93;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--ink-black), 10px 10px 0px var(--color-cherry-red);
+}
+
+.btn-pop-pink:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--ink-black);
+}
+
+.btn-pop-outline {
+  background-color: transparent;
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  border: 3px solid var(--color-cream);
+  box-shadow: 4px 4px 0px var(--ink-black);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pop-outline:hover {
+  background-color: var(--color-hot-pink);
+  color: #FFFFFF;
+  border-color: var(--ink-black);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--ink-black), 10px 10px 0px var(--color-cherry-red);
+}
+
+.btn-pop-outline:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--ink-black);
+}
+
+/* Nav Item Pop Underline */
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: var(--color-hot-pink);
+  box-shadow: 2px 2px 0px #000;
+  transition: width 0.25s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   CONCERT TICKET STUB & FANZINE BADGES
+   ========================================================================== */
+.ticket-badge {
+  position: relative;
+  border: 2.5px solid var(--ink-black);
+  box-shadow: 3px 3px 0px var(--ink-black);
+  background-color: var(--color-burgundy);
+}
+
+.ticket-badge::before,
+.ticket-badge::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--bg-dark);
+  border: 2px solid var(--ink-black);
+  border-radius: 50%;
+}
+
+.ticket-badge::before {
+  left: -7px;
+}
+
+.ticket-badge::after {
+  right: -7px;
+}
+
+/* ==========================================================================
+   POLAROID STYLES & RETRO PHOTO EFFECTS
+   ========================================================================== */
+.polaroid-card {
+  border: 3.5px solid var(--ink-black);
+  box-shadow: 6px 6px 0px var(--ink-black),
+              10px 10px 0px rgba(74, 14, 23, 0.7);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+
+.polaroid-card:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 8px 8px 0px var(--ink-black),
+              14px 14px 0px var(--color-hot-pink);
+}
+
+/* Draggable / Stamped Stickers on Mirror */
+.mirror-sticker {
+  position: absolute;
+  font-size: 2rem;
+  user-select: none;
+  cursor: pointer;
+  filter: drop-shadow(0 0 0 2px #fff) drop-shadow(3px 3px 0 #000);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Floating animation */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot, -3deg)); }
+  50% { transform: translateY(-7px) rotate(var(--rot, -3deg)); }
+}
+
+.animate-float {
+  animation: gentleFloat 4s ease-in-out infinite;
 }
 
 @keyframes slowSpin {
@@ -116,154 +446,13 @@ body {
   animation: slowSpin 14s linear infinite;
 }
 
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0px) rotate(var(--rot, -3deg)); }
-  50% { transform: translateY(-7px) rotate(var(--rot, -3deg)); }
-}
-
-.animate-float {
-  animation: gentleFloat 4s ease-in-out infinite;
-}
-
 /* ==========================================================================
-   BRAND MOTIFS: STAMPS, STICKERS, BLENDING & TILT EFFECTS
-   ========================================================================== */
-.stamp-tilt-left {
-  --rot: -4deg;
-  transform: rotate(-4deg);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
-}
-
-.stamp-tilt-left:hover {
-  transform: rotate(-7deg) scale(1.08);
-  filter: drop-shadow(0 0 15px rgba(255, 64, 129, 0.8));
-}
-
-.stamp-tilt-right {
-  --rot: 5deg;
-  transform: rotate(5deg);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
-}
-
-.stamp-tilt-right:hover {
-  transform: rotate(8deg) scale(1.08);
-  filter: drop-shadow(0 0 15px rgba(255, 64, 129, 0.8));
-}
-
-.stamp-wax-seal {
-  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
-}
-
-.stamp-wax-seal:hover {
-  transform: scale(1.12) rotate(6deg);
-  filter: drop-shadow(0 0 18px rgba(216, 30, 52, 0.85));
-}
-
-/* Screen & Overlay Blending Modes for natural screenprinting look */
-.blend-screen {
-  mix-blend-mode: screen;
-}
-
-.blend-overlay {
-  mix-blend-mode: overlay;
-}
-
-.blend-soft {
-  mix-blend-mode: color-dodge;
-}
-
-.neon-sticker-glow {
-  filter: drop-shadow(0 0 10px rgba(255, 64, 129, 0.7));
-}
-
-/* ==========================================================================
-   BUTTON & BADGE TOKENS
-   ========================================================================== */
-.btn-cherry {
-  background-color: var(--color-cherry-red);
-  color: var(--color-cream);
-  border: 2px solid var(--color-cream);
-  box-shadow: 0 0 15px rgba(216, 30, 52, 0.5);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-cherry:hover {
-  background-color: #b01426;
-  box-shadow: 0 0 25px rgba(255, 64, 129, 0.8), 0 0 45px rgba(216, 30, 52, 0.6);
-  transform: translateY(-2px);
-}
-
-.btn-neon-outline {
-  background-color: transparent;
-  color: var(--color-hot-pink);
-  border: 2px solid var(--color-hot-pink);
-  box-shadow: 0 0 15px rgba(255, 64, 129, 0.3);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-neon-outline:hover {
-  background-color: var(--color-hot-pink);
-  color: #ffffff;
-  box-shadow: 0 0 30px rgba(255, 64, 129, 0.8);
-  transform: translateY(-2px);
-}
-
-/* Nav item hover line */
-.nav-item {
-  position: relative;
-}
-
-.nav-item::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: var(--color-hot-pink, #FF4081);
-  transition: width 0.25s ease;
-}
-
-.nav-item:hover::after {
-  width: 100%;
-}
-
-/* ==========================================================================
-   POLAROID STYLES & RETRO PHOTO EFFECTS
-   ========================================================================== */
-.polaroid-card {
-  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.7),
-              0 0 10px rgba(255, 64, 129, 0.15);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s ease;
-}
-
-.polaroid-card:hover {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.85),
-              0 0 25px rgba(255, 64, 129, 0.4);
-}
-
-/* Draggable / Stamped Stickers on Mirror */
-.mirror-sticker {
-  position: absolute;
-  font-size: 2rem;
-  user-select: none;
-  cursor: pointer;
-  filter: drop-shadow(0 0 8px rgba(255, 64, 129, 0.8));
-  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes popIn {
-  0% { transform: scale(0); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* ==========================================================================
-   VINTAGE DINER MENU BOARD STYLING
+   VINTAGE SILKSCREEN DINER MENU BOARD
    ========================================================================== */
 .menu-board-frame {
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.7),
-              0 0 30px rgba(74, 14, 23, 0.8);
+  border: 4px solid var(--ink-black);
+  box-shadow: 8px 8px 0px var(--ink-black),
+              14px 14px 0px var(--color-burgundy);
 }
 
 .menu-item {
@@ -276,6 +465,7 @@ body {
 
 .menu-dots {
   border-bottom-style: dotted;
+  border-bottom-width: 2px;
 }
 
 /* ==========================================================================
@@ -329,7 +519,7 @@ dialog.menu-modal::backdrop {
 }
 
 dialog.menu-modal[open]::backdrop {
-  background-color: rgba(15, 10, 10, 0.85);
+  background-color: rgba(15, 10, 10, 0.88);
   backdrop-filter: blur(8px);
 
   @starting-style {
@@ -346,17 +536,18 @@ dialog.menu-modal[open]::backdrop {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #0f0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #4A0E17;
-  border-radius: 3px;
+  background: #D81E34;
+  border: 2px solid #000;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D81E34;
+  background: #FF4081;
 }
 
 /* Reduced Motion Override */

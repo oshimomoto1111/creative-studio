@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <filter id="inkShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#000000" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- Espresso Portafilter "Dagger" passing through the Rose -->
+  <g filter="url(#inkShadow)">
+    <!-- Wooden Portafilter Handle (Top Left) -->
+    <path d="M40 25 L65 50 L52 63 L27 38 Z" fill="#4A0E17" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M46 20 C42 16 35 16 31 20 L24 27 C20 31 20 38 24 42 L32 50 L48 34 Z" fill="#F4B942" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Metal Shaft of Portafilter -->
+    <line x1="58" y1="56" x2="105" y2="103" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+    <line x1="58" y1="56" x2="105" y2="103" stroke="#F8F2E2" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Bottom Spout / Piercing Tip of the Dagger (Bottom Right) -->
+    <path d="M140 140 L195 195 L202 210 L188 202 L132 148 Z" fill="#F8F2E2" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- Golden Spout Dual Pour -->
+    <circle cx="188" cy="202" r="3.5" fill="#F4B942" stroke="#000000" stroke-width="2"/>
+    <!-- Fresh Espresso Drop Falling -->
+    <path d="M198 214 C195 220 198 226 201 226 C203 226 205 220 198 214 Z" fill="#D81E34" stroke="#000000" stroke-width="2"/>
+  </g>
+
+  <!-- Neo-traditional Rose Leaves with Barbed Thorns -->
+  <g filter="url(#inkShadow)">
+    <!-- Top Leaf -->
+    <path d="M130 50 C165 40 185 60 175 85 C150 85 135 65 130 50 Z" fill="#2E7D32" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M135 55 L170 80" stroke="#000000" stroke-width="2"/>
+    <path d="M150 65 L160 55" stroke="#000000" stroke-width="2"/>
+    <path d="M155 75 L168 70" stroke="#000000" stroke-width="2"/>
+    <path d="M145 52 C155 45 168 50 175 60 C165 65 152 60 145 52 Z" fill="#81C784"/>
+
+    <!-- Bottom Leaf -->
+    <path d="M70 140 C55 165 70 190 95 185 C98 160 82 145 70 140 Z" fill="#2E7D32" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M75 145 L92 180" stroke="#000000" stroke-width="2"/>
+    <path d="M80 155 L70 162" stroke="#000000" stroke-width="2"/>
+    <path d="M85 168 L78 178" stroke="#000000" stroke-width="2"/>
+    <path d="M72 150 C65 160 68 172 78 178 C80 168 78 158 72 150 Z" fill="#81C784"/>
+  </g>
+
+  <!-- Blooming Neo-Traditional Red Rose -->
+  <g filter="url(#inkShadow)">
+    <!-- Outer Petals (Deep Cherry Red & Burgundy Shading) -->
+    <path d="M75 105 C70 70 110 65 120 75 C135 65 175 70 168 105 C180 130 150 155 120 158 C90 155 60 130 75 105 Z" fill="#D81E34" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+
+    <!-- Bottom Outer Lip -->
+    <path d="M88 130 C105 155 138 155 152 130 C138 142 105 142 88 130 Z" fill="#4A0E17" stroke="#000000" stroke-width="3"/>
+
+    <!-- Mid Petals Layer (Hot Pink & White Glare) -->
+    <path d="M92 95 C90 82 110 78 120 85 C132 78 150 82 148 95 C155 115 135 130 120 132 C105 130 85 115 92 95 Z" fill="#FF4081" stroke="#000000" stroke-width="3.5"/>
+
+    <!-- Core Spiral / Bud -->
+    <path d="M108 92 C108 86 115 82 120 84 C126 82 132 86 132 92 C132 102 122 108 120 108 C118 108 108 102 108 92 Z" fill="#4A0E17" stroke="#000000" stroke-width="3"/>
+    <path d="M114 88 C115 85 122 85 124 88 C124 93 118 96 116 94 Z" fill="#F4B942" stroke="#000000" stroke-width="2"/>
+
+    <!-- Vinyl Specular Highlights on Petals -->
+    <path d="M85 95 C82 108 88 120 95 125 C92 115 88 105 85 95 Z" fill="#FFFFFF" opacity="0.8"/>
+    <path d="M155 95 C158 108 152 120 145 125 C148 115 152 105 155 95 Z" fill="#FFFFFF" opacity="0.8"/>
+  </g>
+
+  <!-- Tattoo Scroll Banner Wrapping Across the Rose -->
+  <g filter="url(#inkShadow)" transform="translate(15, 120)">
+    <!-- Back Ribbon Fold Tails -->
+    <path d="M12 40 L-2 58 L28 52 L22 35 Z" fill="#4A0E17" stroke="#000000" stroke-width="3"/>
+    <path d="M198 40 L212 58 L182 52 L188 35 Z" fill="#4A0E17" stroke="#000000" stroke-width="3"/>
+
+    <!-- Main Parchment Banner -->
+    <path d="M20 30 C75 12 135 12 190 30 L185 58 C132 38 78 38 25 58 Z" fill="#F8F2E2" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+
+    <!-- Banner Text -->
+    <text x="105" y="47" font-family="'Shrikhand', 'Space Mono', cursive" font-weight="bold" font-size="12" fill="#D81E34" text-anchor="middle" stroke="#000000" stroke-width="0.7" letter-spacing="1.5">
+      GRAB, SIP &amp; FALL IN LOVE
+    </text>
+  </g>
+</svg>

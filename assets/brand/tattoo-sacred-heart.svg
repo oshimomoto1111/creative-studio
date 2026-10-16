@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <!-- Halftone Ben-Day Dot Radiant Aura -->
+  <defs>
+    <pattern id="bendayGold" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.8" fill="#F4B942" opacity="0.8"/>
+    </pattern>
+    <filter id="shadowInk" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#000000" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- Golden Sunburst Aura Rays with Bold Ink Borders -->
+  <g filter="url(#shadowInk)">
+    <!-- Sunburst Triangles -->
+    <path d="M120 15 L128 65 L112 65 Z" fill="#F4B942" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M175 35 L155 78 L142 68 Z" fill="#FF4081" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M210 85 L165 105 L160 90 Z" fill="#F4B942" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M215 145 L165 135 L168 150 Z" fill="#D81E34" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M180 195 L145 165 L158 155 Z" fill="#F4B942" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M120 225 L112 175 L128 175 Z" fill="#FF4081" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M65 195 L95 165 L82 155 Z" fill="#F4B942" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M25 145 L75 135 L72 150 Z" fill="#D81E34" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M30 85 L75 105 L80 90 Z" fill="#F4B942" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M65 35 L85 78 L98 68 Z" fill="#FF4081" stroke="#000000" stroke-width="2.5" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Piercing Cupid Arrow -->
+  <g filter="url(#shadowInk)">
+    <!-- Arrow Tail Feathers -->
+    <path d="M25 45 L50 70 L40 75 L18 55 Z" fill="#F8F2E2" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M32 38 L45 50" stroke="#000000" stroke-width="2.5"/>
+    <path d="M22 48 L35 60" stroke="#000000" stroke-width="2.5"/>
+    <!-- Arrow Shaft -->
+    <line x1="38" y1="58" x2="200" y2="185" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    <line x1="38" y1="58" x2="200" y2="185" stroke="#F4B942" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Arrow Head Point -->
+    <path d="M195 178 L220 200 L188 195 Z" fill="#D81E34" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Sacred Anatomical Heart Body with Bold Ink -->
+  <g filter="url(#shadowInk)">
+    <!-- Aorta and Arteries with Coffee Bean Buds -->
+    <path d="M102 75 C100 50 115 45 125 55 C132 45 145 52 142 75 Z" fill="#4A0E17" stroke="#000000" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- Green Coffee Leaf Sprouts on Aorta -->
+    <path d="M125 55 C125 40 140 38 145 42 C142 52 132 55 125 55 Z" fill="#388E3C" stroke="#000000" stroke-width="2.5"/>
+    <path d="M108 58 C100 45 88 48 85 55 C92 62 102 62 108 58 Z" fill="#388E3C" stroke="#000000" stroke-width="2.5"/>
+
+    <!-- Heart Main Bulb -->
+    <path d="M120 95 
+             C90 60 55 85 62 120 
+             C68 150 100 178 120 195 
+             C140 178 172 150 178 120 
+             C185 85 150 60 120 95 Z" 
+          fill="#D81E34" stroke="#000000" stroke-width="4.5" stroke-linejoin="round"/>
+
+    <!-- Neo-traditional Shading: Burgundy Dark Half -->
+    <path d="M120 95 
+             C135 110 148 135 140 165 
+             C130 182 120 195 120 195 
+             C140 178 172 150 178 120 
+             C185 85 150 60 120 95 Z" 
+          fill="#4A0E17" opacity="0.65"/>
+
+    <!-- Vinyl Highlight on Left Muscle -->
+    <path d="M78 105 C74 122 84 140 92 148 C90 138 85 120 88 108 C90 100 82 100 78 105 Z" 
+          fill="#FFFFFF" opacity="0.75"/>
+    
+    <!-- Hot Pink Flame / Glow Accent -->
+    <path d="M110 115 C100 125 105 145 115 155 C120 142 122 130 118 122 Z" 
+          fill="#FF4081"/>
+
+    <!-- Coffee Bean Seed Piercing Center -->
+    <g transform="translate(120, 132) rotate(25) scale(0.9)">
+      <ellipse cx="0" cy="0" rx="9" ry="13" fill="#F4B942" stroke="#000000" stroke-width="2.5"/>
+      <path d="M0 -11 Q4 0 0 11 Q-4 0 0 -11" fill="#4A0E17" stroke="#000000" stroke-width="1.8"/>
+    </g>
+  </g>
+
+  <!-- Drops of Coffee / Passion Nectar -->
+  <path d="M120 200 C116 208 120 215 123 215 C126 215 128 208 120 200 Z" fill="#D81E34" stroke="#000000" stroke-width="2"/>
+  <path d="M142 188 C139 194 142 200 145 200 C147 200 149 194 142 188 Z" fill="#FF4081" stroke="#000000" stroke-width="1.8"/>
+</svg>
